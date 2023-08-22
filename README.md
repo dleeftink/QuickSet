@@ -1,3 +1,3 @@
 # QuickSet
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/stackblitz-starters-7g3npa)
+A performant set implementation when working with unsigned integers that aren't too large.
