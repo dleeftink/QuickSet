@@ -1,5 +1,4 @@
-// run `node index.js` in the terminal
-
+import batch from './core/batch.js';
 import minsum from './rank/minsum.js';
 import winsum from './rank/winsum.js';
 import expects from './util/expects.js';
@@ -25,17 +24,19 @@ export default class QuickSet {
     
     if (span < slot) slot = span;
     
+    Object.defineProperty(this,'bits', {
+      writable: false,
+      enumerable: false,
+      configurable: false,
+    });
+
     Object.assign(this.constructor.prototype, {
-      minsum,winsum,expects,
-    })
-
-    this.constructor.prototype.sum = this[mode];
-
+      batch,minsum,winsum,expects,
+    });
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
-    this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
     // this.view = new Float64Array(data);      
 
@@ -55,13 +56,8 @@ export default class QuickSet {
     this.tmin   = freq //?? 0; // keeps track of min in window
     this.tmax   = 0; // keeps track of max in window
 
-
-    Object.defineProperty(this,'bits', {
-      writable: false,
-      enumerable: false,
-      configurable: false,
-    })
-
+    this.constructor.prototype.sum = this[mode];
+    this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
 
   }
 
@@ -73,33 +69,8 @@ export default class QuickSet {
   // placeholder
   }
 
-  batch(...data) {
-    
-    if(data[0].length && typeof data[0] !== 'string' && arguments.length == 1) { 
-      data = data[0];
-    } else if(data[1].length && typeof data[1] !== 'string' && arguments.length == 2) {
-      var data = data[0];
-      var vals = data[1];
-      var stride = vals.length; //=> doesn't work yet
-    }
-    
-    let len = data.length;
-   
-    if(!vals) {
-      for (var i = 0; i < len; i = i + 1) {
-        //let uint = data[i]
-        // if( uint < this.clip || uint > this.span ) continue
-        this.sum(data[i])
-      }
-    } else {
-      for (var i = 0; i < len; i = i + 1) {
-        let uint = data[i]
-        // if( uint < this.clip || uint > this.span ) continue
-        this.sum(uint,vals[i%stride])
-      }
-    }
-
-    // return this
+  batch() {
+  // placeholder 
   }
 
   clear(slot) {
