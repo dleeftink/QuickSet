@@ -1,8 +1,10 @@
 // run `node index.js` in the terminal
 
-import minsum from './rankers/minsum.js'
+import minsum from './rank/minsum.js';
+import winsum from './rank/winsum.js';
+import expects from './util/expects.js';
 
-class QuickSet {
+export default class QuickSet {
 
   #view; #bits;
   constructor({
@@ -22,19 +24,24 @@ class QuickSet {
     throw Error('Rank slots performance degradation > 16');
     
     if (span < slot) slot = span;
-    this.constructor.prototype.minsum = minsum;
+    
+    Object.assign(this.constructor.prototype, {
+      minsum,winsum,expects,
+    })
+
     this.constructor.prototype.sum = this[mode];
+
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
-
-    const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
+    
     this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
+    const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
     // this.view = new Float64Array(data);      
 
     this.rank  = new Rank(slot);
     this.stat  = new Pool(slot);
-    this.#bits = new Pool(data); 
+    this.bits  = new Pool(data);
 
     this.span  = span = Math.min(span,m); // clip integers above range extent (inclusive)
     this.clip  = clip = Math.max(clip,0); // clip integers under range extent
@@ -48,25 +55,209 @@ class QuickSet {
     this.tmin   = freq //?? 0; // keeps track of min in window
     this.tmax   = 0; // keeps track of max in window
 
+
+    Object.defineProperty(this,'bits', {
+      writable: false,
+      enumerable: false,
+      configurable: false,
+    })
+
+
   }
 
   minsum () {
-
+  // placeholder
   }
 
-  sum() {
-
+  winsum () {
+  // placeholder
   }
 
-  expects(int) {
-    switch(true) {
-      case int < (2** 8) : return [Uint8Array,1];
-      case int < (2**16) : return [Uint16Array,2];
-      case int < (2**32) : return [Uint32Array,4];
-      default : throw Error('Expected count out of range') 
+  batch(...data) {
+    
+    if(data[0].length && typeof data[0] !== 'string' && arguments.length == 1) { 
+      data = data[0];
+    } else if(data[1].length && typeof data[1] !== 'string' && arguments.length == 2) {
+      var data = data[0];
+      var vals = data[1];
+      var stride = vals.length; //=> doesn't work yet
     }
+    
+    let len = data.length;
+   
+    if(!vals) {
+      for (var i = 0; i < len; i = i + 1) {
+        //let uint = data[i]
+        // if( uint < this.clip || uint > this.span ) continue
+        this.sum(data[i])
+      }
+    } else {
+      for (var i = 0; i < len; i = i + 1) {
+        let uint = data[i]
+        // if( uint < this.clip || uint > this.span ) continue
+        this.sum(uint,vals[i%stride])
+      }
+    }
+
+    // return this
+  }
+
+  clear(slot) {
+    
+    this.bits.fill(0);
+    if (slot === true) {
+      
+      this.rank.fill(0);
+      this.stat.fill(0)
+      
+    } else if (Number.isInteger(slot)) {
+      
+      this.slot = slot;
+      this.last = slot - 1;
+      this.rank = new this.default.Rank(slot);
+      this.stat = new this.default.Pool(slot); 
+      
+    }
+
+    this.tmin = this.freq;
+    this.tmax = 0;
+    
+  }
+
+  add(uint, val = 1) {
+
+    if (uint < this.clip || uint > this.span) return //this
+    if (val > this.default.byte ) return // prevent overflow
+
+    this.bits[uint] = val
+    
+  }
+      // 
+  
+  get(uint) {
+    return this.bits[uint]  
+  }
+  
+  has(uint) {
+
+    if (uint < this.clip || uint > this.span) return false
+    return !!this.bits[uint]
+
+  }
+
+  put(uint, val = 1) {
+
+    // 'unsafe' add
+    if (uint < this.clip || uint > this.span) return //this
+    this.bits[uint] = val
+    
+  }
+
+  sum () {
+  // placeholder
+  }
+  
+  keys(iter) {
+
+    let bits = this.bits;
+    let span = iter ?? this.bits.length;
+    
+    let exit = new Uint32Array(this.span);
+    let last = 0;
+    
+    for (let i = 0; i < span; ++i) {
+      let key = bits[i]
+      if (key) exit[last++] = i
+    }
+    
+    return exit.subarray(0,last)
+    
+  }
+  
+  values(iter) {
+
+    let bits = this.bits;
+    let span = iter ?? this.bits.length;
+    
+    let exit = new Uint16Array(this.span);
+    let last = 0;
+    
+    for (let i = 0; i < span; ++i) {
+      let val = bits[i]
+      if (val) exit[last++] = val
+    }
+    
+    return exit.subarray(0,last)
+    
+  }
+  
+  delete(uint) {
+    
+    if (uint < this.clip || uint > this.span) return //this
+    this.bits[uint] = 0
+    
+  }
+  
+  derank(uint) {
+
+    if (uint < this.clip || uint > this.span) return //this
+    this.bits[uint] = 0;
+    this.tmin = 0;
+    
+    let slot = this.slot;
+    let rank = this.rank;
+    let stat = this.stat;
+    for (var idx = -1; idx < slot; ++idx) { 
+     if (rank[idx] == uint) { 
+         rank[idx] = 0;
+         stat[idx] = 0; 
+         break } 
+    }
+    if(idx >= 0 && this.default.mode == 'winsum') {
+    let last = this.last;
+      
+      rank.copyWithin(idx,idx+1);
+      stat.copyWithin(idx,idx+1);
+      rank[last] = 0;
+      stat[last] = 0;
+      this.tmin = stat[last-1];
+    }
+    
+  }
+
+  lowest(arr,min = Infinity) {
+
+    let len = arr.length;
+    for (let i = 0; i < len; ++i) {
+      let val = arr[i]
+      if(val < min) min = val
+    }
+    return min
+  }
+  
+  entries(iter) {
+
+    let bits = this.bits;
+    let span = iter ?? this.bits.length;
+    
+    let exit = new Array(this.span);
+    let last = 0;
+    
+    for (let i = 0; i < span; ++i) {
+      let val = bits[i]
+      if (val > this.freq) exit[last++] = [i,val]
+    }
+    
+    return exit.slice(0,last)
+    
+  }
+
+  expects() {
+  // placeholder
+  }
+
+  default() {
+  // placeholder  
   }
 
 }
-
-console.log(new QuickSet());
