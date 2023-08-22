@@ -37,13 +37,16 @@ export default class QuickSet {
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
+    this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
+    this.constructor.prototype.sum = this[mode];
+
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
     // this.view = new Float64Array(data);      
 
     this.rank  = new Rank(slot);
     this.stat  = new Pool(slot);
     this.bits  = new Pool(data);
-
+    
     this.span  = span = Math.min(span,m); // clip integers above range extent (inclusive)
     this.clip  = clip = Math.max(clip,0); // clip integers under range extent
 
@@ -56,8 +59,6 @@ export default class QuickSet {
     this.tmin   = freq //?? 0; // keeps track of min in window
     this.tmax   = 0; // keeps track of max in window
 
-    this.constructor.prototype.sum = this[mode];
-    this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
 
   }
 
