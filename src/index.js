@@ -24,14 +24,14 @@ export default class QuickSet {
     
     if (span < slot) slot = span;
     
-    Object.defineProperty(this,'bits', {
-      writable: false,
-      enumerable: false,
-      configurable: false,
-    });
-
     Object.assign(this.constructor.prototype, {
       batch,minsum,winsum,expects,
+    });
+
+    Object.defineProperty(this,'bits', {
+        writable: false,
+        enumerable: false,
+        configurable: false,
     });
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
