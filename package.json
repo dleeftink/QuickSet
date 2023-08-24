@@ -1,10 +1,33 @@
 {
-  "name": "QuickSet",
+  "name": "@suptxt/quickset",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "fast",
+    "quick",
+    "set",
+    "performant",
+    "top-k",
+    "LFU",
+    "sorted",
+    "ordered",
+    "ranked",
+    "window",
+    "integer",
+    "typedArray"
+  ],
+  "files": [
+    "src/**/*.js"
+  ],
   "module": "src/index.js",
-  "main": "src/index.js"
+  "main": "src/index.js",
+  "exports": {
+    "default": "./src/index.js"
+  },
+  "engines": {
+    "node": ">=17"
+  }
 }
