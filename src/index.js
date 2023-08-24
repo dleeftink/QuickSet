@@ -12,7 +12,7 @@ export class QuickSet {
     throw Error('Expected integer beyond memory range');
 
     if (high > (2**32)-1) 
-    throw Error('Expected frequency beyond counting extent');
+    throw Error('Expected count beyond frequency range');
 
     if (slot > 16) 
     throw Error('Rank slots performance degradation > 16');
