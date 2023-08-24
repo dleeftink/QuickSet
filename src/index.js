@@ -1,4 +1,3 @@
-
 import batch from './core/batch.js';
 import clear from './core/clear.js';
 
