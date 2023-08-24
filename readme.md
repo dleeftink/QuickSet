@@ -19,8 +19,6 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `new QuickSet({...})`
 
-#### `.clear(true | <= 16)`
-
 ## API
 
 ### Setters
@@ -38,6 +36,8 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 #### `.get(uint)`
 
 ### Jetters 
+
+#### `.clear(true | <= 16)`
 
 #### `.delete(uint)`
 
