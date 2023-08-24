@@ -37,4 +37,4 @@ for (let n = 0; n < iter; ++n) {
 
 let t2 = performance.now() - t1;
 
-console.log(temp, set,t2);
+console.log(temp, set.keys(),t2);

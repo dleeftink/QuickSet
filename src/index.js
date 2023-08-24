@@ -14,6 +14,8 @@ import invalid from './util/invalid.js';
 import { get, has } from './core/getters.js';
 import { add, del, put } from './core/setters.js';
 
+import { keys, values, entries } from './core/sorters.js';
+
 export default class QuickSet {
 
   #view; #bits;
@@ -36,7 +38,8 @@ export default class QuickSet {
     if (span < slot) slot = span;
 
     Object.assign(this.constructor.prototype, {
-      add,put,get,has,batch,clear,unique,minsum,winsum,expects,derank,lowest,delete:del,invalid
+      add,put,get,has,batch,clear,unique,minsum,winsum,expects,derank,lowest,delete:del,invalid,
+      keys,values,entries
     });
 
     this.constructor.prototype.sum = this[mode];
@@ -114,38 +117,12 @@ export default class QuickSet {
   // placeholder
   }
   
-  keys(iter) {
-
-    let bits = this.bits;
-    let span = iter ?? this.bits.length;
-    
-    let exit = new Uint32Array(this.span);
-    let last = 0;
-    
-    for (let i = 0; i < span; ++i) {
-      let key = bits[i]
-      if (key) exit[last++] = i
-    }
-    
-    return exit.subarray(0,last)
-    
+  keys() {
+  // placeholder
   }
   
-  values(iter) {
-
-    let bits = this.bits;
-    let span = iter ?? this.bits.length;
-    
-    let exit = new Uint16Array(this.span);
-    let last = 0;
-    
-    for (let i = 0; i < span; ++i) {
-      let val = bits[i]
-      if (val) exit[last++] = val
-    }
-    
-    return exit.subarray(0,last)
-    
+  values(){
+  // placeholder
   }
   
   delete() {
@@ -160,21 +137,8 @@ export default class QuickSet {
   // placeholder
   }
   
-  entries(iter) {
-
-    let bits = this.bits;
-    let span = iter ?? this.bits.length;
-    
-    let exit = new Array(this.span);
-    let last = 0;
-    
-    for (let i = 0; i < span; ++i) {
-      let val = bits[i]
-      if (val > this.freq) exit[last++] = [i,val]
-    }
-    
-    return exit.slice(0,last)
-    
+  entries() {
+  // placeholder
   }
 
   expects() {
