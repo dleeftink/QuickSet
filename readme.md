@@ -12,3 +12,9 @@ Whereas `minsum` ejects integers from their initial point of insertion (i.e. ran
 
 This makes QuickSet a faster alternative to counting and sorting all elements in a set, preventing costly sorting operations and providing a ranked window of most frequent  integers up till a break point of your choosing. 
 This allows you to work with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying data follows a non-uniform distribution.
+
+## Quickstart 
+
+## API
+
+### `new QuickSet({...})`
