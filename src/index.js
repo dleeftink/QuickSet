@@ -51,7 +51,7 @@ export default class QuickSet {
     this.tmin = freq //?? 0; // keeps track of min in window
     this.tmax = 0; // keeps track of max in window
 
-  }
+  }    
 
   minsum () {
   // placeholder
@@ -63,6 +63,10 @@ export default class QuickSet {
 
   unique () {
   // placeholder 
+  }
+
+  lowest() {
+  // placeholder
   }
 
   batch() {
@@ -96,11 +100,7 @@ export default class QuickSet {
   keys() {
   // placeholder
   }
-  
-  values(){
-  // placeholder
-  }
-  
+    
   delete() {
   // placeholder    
   }
@@ -109,10 +109,10 @@ export default class QuickSet {
   // placeholder    
   }
 
-  lowest() {
-  // placeholder
+  values() {
+    // placeholder
   }
-  
+
   entries() {
   // placeholder
   }
