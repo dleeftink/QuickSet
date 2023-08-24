@@ -121,6 +121,10 @@ export default class QuickSet {
   // placeholder
   }
 
+  invalid() {
+  // placeholder  
+  }
+
   default() {
   // placeholder  
   }
