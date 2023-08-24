@@ -7,17 +7,17 @@ function add(uint, val = 1) {
 
 }
 
-function put(uint, val = 1) {
-
-  // 'unsafe' add
-  this.bits[uint] = val
-  
-}
-
 function del(uint) {
 
   if ( uint < this.clip || uint > this.span || !Number.isInteger(uint) || !Number.isInteger(val)) return;
   this.bits[uint] = 0
+  
+}
+
+function put(uint, val = 1) {
+
+  // 'unsafe' add
+  this.bits[uint] = val
   
 }
 

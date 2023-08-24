@@ -1,15 +1,17 @@
 
-import { add, del, put } from './core/setters.js';
-import { get, has } from './core/getters.js';
-
 import batch from './core/batch.js';
 import clear from './core/clear.js';
 
+import derank from './rank/derank.js';
+import lowest from './util/lowest.js';
 import minsum from './rank/minsum.js';
 import winsum from './rank/winsum.js';
 import unique from './core/unique.js';
 
 import expects from './util/expects.js';
+
+import { get, has } from './core/getters.js';
+import { add, del, put } from './core/setters.js';
 
 export default class QuickSet {
 
@@ -36,7 +38,7 @@ export default class QuickSet {
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
    
     Object.assign(this.constructor.prototype, {
-      add,put,get,has,batch,clear,unique,minsum,winsum,expects,delete:del,
+      add,put,get,has,batch,clear,unique,minsum,winsum,expects,delete:del,derank,lowest
     });
 
     Object.defineProperty(this,'bits', {
@@ -148,41 +150,12 @@ export default class QuickSet {
   // placeholder    
   }
   
-  derank(uint) {
-
-    if (uint < this.clip || uint > this.span) return //this
-    this.bits[uint] = 0;
-    this.tmin = 0;
-    
-    let slot = this.slot;
-    let rank = this.rank;
-    let stat = this.stat;
-    for (var idx = -1; idx < slot; ++idx) { 
-     if (rank[idx] == uint) { 
-         rank[idx] = 0;
-         stat[idx] = 0; 
-         break } 
-    }
-    if(idx >= 0 && this.default.mode == 'winsum') {
-    let last = this.last;
-      
-      rank.copyWithin(idx,idx+1);
-      stat.copyWithin(idx,idx+1);
-      rank[last] = 0;
-      stat[last] = 0;
-      this.tmin = stat[last-1];
-    }
-    
+  derank() {
+  // placeholder    
   }
 
-  lowest(arr,min = Infinity) {
-
-    let len = arr.length;
-    for (let i = 0; i < len; ++i) {
-      let val = arr[i]
-      if(val < min) min = val
-    }
-    return min
+  lowest() {
+  // placeholder
   }
   
   entries(iter) {
