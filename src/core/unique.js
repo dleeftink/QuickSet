@@ -1,6 +1,4 @@
 export default function unique(...data) {
-
-  let isInt = Number.isInteger;
   
   if (typeof data[0] == 'object' && data[0].length) {
     data = data[0];

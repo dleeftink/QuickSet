@@ -1,9 +1,10 @@
 import batch from './core/batch.js';
 import clear from './core/clear.js';
 
-import unique from './core/unique.js';
 import minsum from './rank/minsum.js';
 import winsum from './rank/winsum.js';
+import unique from './core/unique.js';
+
 import expects from './util/expects.js';
 
 export default class QuickSet {
@@ -73,21 +74,20 @@ export default class QuickSet {
   // placeholder
   }
 
+  unique () {
+  // placeholder 
+  }
+
   batch() {
   // placeholder 
   }
 
   clear() {
-  //placeholder   
+  // placeholder   
   }
 
-  add(uint, val = 1) {
-
-    if (uint < this.clip || uint > this.span) return //this
-    if (val > this.default.byte ) return // prevent overflow
-
-    this.bits[uint] = val
-    
+  add() {
+  // placeholder
   }
   
   get(uint) {

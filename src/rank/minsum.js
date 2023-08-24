@@ -1,6 +1,7 @@
 export default function minsum (uint, val = 1) {
+
   // range guard
-  if (!Number.isInteger(uint) || uint < this.clip || uint > this.span) return;
+  if( uint < this.clip || uint > this.span || !Number.isInteger(uint) || !Number.isInteger(val)) return;
 
   var old = this.bits[uint]; //let val = 1 + (this.bits[uint]++) // => unweighted
       val = old + val;
@@ -11,10 +12,11 @@ export default function minsum (uint, val = 1) {
   }
 
   this.bits[uint] = val;
+  let  rank = this.rank,
+       stat = this.stat;
 
-  let rank = this.rank,
-    stat = this.stat;
   if (val > this.tmin && val > this.freq) {
+
     var slot = this.slot;
     var last = this.last;
 
