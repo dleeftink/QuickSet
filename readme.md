@@ -19,12 +19,6 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `new QuickSet({...})`
 
-### Bulk
-
-#### `.batch(...uints[, values])`
-
-#### `.unique(...uints)`
-
 ## API
 
 ### Setters
@@ -59,10 +53,12 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `.values(iters[, reverse])`
 
-#### `.entries(iters[, reverse])`
+#### `.entries(iters[, reverse])` 
 
-### Disposal 
+### Bulk
+
+#### `.batch(...uints[, values])`
 
 #### `.clear(true || 0-16)`
 
-
+#### `.unique(...uints)`
