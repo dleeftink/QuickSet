@@ -1,5 +1,5 @@
 import prototype from './proto.js'
-export default class QuickSet {
+export class QuickSet {
 
   constructor({
     mode = "minsum" || "winsum", 
