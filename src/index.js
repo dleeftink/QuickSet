@@ -23,7 +23,10 @@ export default class QuickSet {
     throw Error('Rank slots performance degradation > 16');
     
     if (span < slot) slot = span;
-    
+
+    let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
+    let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
+   
     Object.assign(this.constructor.prototype, {
       batch,minsum,winsum,expects,
     });
@@ -33,9 +36,6 @@ export default class QuickSet {
         enumerable: false,
         configurable: false,
     });
-
-    let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
-    let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
     this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
     this.constructor.prototype.sum = this[mode];

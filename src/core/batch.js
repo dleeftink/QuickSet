@@ -1,31 +1,36 @@
 export default function batch(...data) {
-  if (data[0].length && typeof data[0] !== 'string' && arguments.length == 1) {
-    data = data[0];
-  } else if (
-    data[1].length &&
-    typeof data[1] !== 'string' &&
-    arguments.length == 2
+  
+  let vals, step;
+
+  if (
+    typeof data[0] == "object" && data[0].length &&
+    typeof data[1] == "object" && data[1].length
   ) {
-    var data = data[0];
-    var vals = data[1];
-    var stride = vals.length; //=> doesn't work yet
+    vals = data[1];
+    data = data[0];
+    step = vals.length;
+  } else if (typeof data[0] == "object" && data[0].length) {
+    data = data[0];
   }
 
-  let len = data.length;
+  let span = data.length;
 
-  if (!vals) {
-    for (var i = 0; i < len; i = i + 1) {
-      //let uint = data[i]
-      // if( uint < this.clip || uint > this.span ) continue
-      this.sum(data[i]);
-    }
-  } else {
-    for (var i = 0; i < len; i = i + 1) {
+  if (vals) {
+
+    for (var i = 0; i < span; i = i + 1) {
       let uint = data[i];
-      // if( uint < this.clip || uint > this.span ) continue
-      this.sum(uint, vals[i % stride]);
+      this.sum(uint, vals[i % step]);
     }
+
+  } else {
+
+    for (var i = 0; i < span; i = i + 1) {
+      let uint = data[i];
+      this.sum(uint);
+    }
+    
   }
 
-  // return this
+  return this
+
 }

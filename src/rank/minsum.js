@@ -1,6 +1,6 @@
 export default function minsum (uint, val = 1) {
   // range guard
-  if (uint < this.clip || uint > this.span) return;
+  if (!Number.isInteger(uint) || uint < this.clip || uint > this.span) return;
 
   var old = this.bits[uint]; //let val = 1 + (this.bits[uint]++) // => unweighted
       val = old + val;
