@@ -10,7 +10,7 @@ In addition, two modes are provided for establishing top-k ranks, `minsum` and `
 Both modes eject the least frequent integer from the ranking upon inserting items that occur more frequently, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (also known as *Least Frequently Used* or LFU). 
 Whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps a sorted ranking  in decreasing order of occurrence (slightly more computationally expensive).
 
-This makes QuickSet a faster alternative to counting and sorting all elements in a set, preventing costly sorting operations and providing a ranked window of most frequent  integers up till a break point of your choosing. 
+This makes QuickSet a faster alternative to counting and sorting all elements in a given set, preventing costly sorting operations and providing a ranked window of most frequent  integers up till a break point of your choosing. 
 This allows you to work with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying data follows a non-uniform distribution.
 
 ## Quickstart 
