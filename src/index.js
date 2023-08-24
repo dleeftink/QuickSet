@@ -1,4 +1,7 @@
 import batch from './core/batch.js';
+import clear from './core/clear.js';
+
+import unique from './core/unique.js';
 import minsum from './rank/minsum.js';
 import winsum from './rank/winsum.js';
 import expects from './util/expects.js';
@@ -28,13 +31,13 @@ export default class QuickSet {
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
    
     Object.assign(this.constructor.prototype, {
-      batch,minsum,winsum,expects,
+      batch,clear,unique,minsum,winsum,expects,
     });
 
     Object.defineProperty(this,'bits', {
-        writable: false,
-        enumerable: false,
-        configurable: false,
+      writable: false,
+      enumerable: false,
+      configurable: false,
     });
     
     this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
@@ -43,21 +46,21 @@ export default class QuickSet {
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
     // this.view = new Float64Array(data);      
 
-    this.rank  = new Rank(slot);
-    this.stat  = new Pool(slot);
-    this.bits  = new Pool(data);
+    this.rank = new Rank(slot);
+    this.stat = new Pool(slot);
+    this.bits = new Pool(data);
     
-    this.span  = span = Math.min(span,m); // clip integers above range extent (inclusive)
-    this.clip  = clip = Math.max(clip,0); // clip integers under range extent
+    this.span = span = Math.min(span,m); // clip integers above range extent (inclusive)
+    this.clip = clip = Math.max(clip,0); // clip integers under range extent
 
-    this.high  = high = Math.min(high,b); // skip integers more frequent than (exclusive)
-    this.freq  = freq = Math.max(freq,0); // skip integers less frequent than
+    this.high = high = Math.min(high,b); // skip integers more frequent than (exclusive)
+    this.freq = freq = Math.max(freq,0); // skip integers less frequent than
     
-    this.slot  = slot; // ranked integer slots
-    this.last  = slot - 1 ; // last item const
+    this.slot = slot; // ranked integer slots
+    this.last = slot - 1 ; // last item const
 
-    this.tmin   = freq //?? 0; // keeps track of min in window
-    this.tmax   = 0; // keeps track of max in window
+    this.tmin = freq //?? 0; // keeps track of min in window
+    this.tmax = 0; // keeps track of max in window
 
 
   }
@@ -74,26 +77,8 @@ export default class QuickSet {
   // placeholder 
   }
 
-  clear(slot) {
-    
-    this.bits.fill(0);
-    if (slot === true) {
-      
-      this.rank.fill(0);
-      this.stat.fill(0)
-      
-    } else if (Number.isInteger(slot)) {
-      
-      this.slot = slot;
-      this.last = slot - 1;
-      this.rank = new this.default.Rank(slot);
-      this.stat = new this.default.Pool(slot); 
-      
-    }
-
-    this.tmin = this.freq;
-    this.tmax = 0;
-    
+  clear() {
+  //placeholder   
   }
 
   add(uint, val = 1) {
@@ -104,7 +89,6 @@ export default class QuickSet {
     this.bits[uint] = val
     
   }
-      // 
   
   get(uint) {
     return this.bits[uint]  
