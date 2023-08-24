@@ -1,23 +1,6 @@
-import batch from './core/batch.js';
-import clear from './core/clear.js';
-
-import minsum from './rank/minsum.js';
-import winsum from './rank/winsum.js';
-import derank from './rank/derank.js';
-import unique from './core/unique.js';
-import lowest from './util/lowest.js';
-
-import expects from './util/expects.js';
-import invalid from './util/invalid.js';
-
-import { get, has } from './core/getters.js';
-import { add, del, put } from './core/setters.js';
-
-import { keys, values, entries } from './core/sorters.js';
-
+import prototype from './proto.js'
 export default class QuickSet {
 
-  #view; #bits;
   constructor({
     mode = "minsum" || "winsum", 
     clip = 0 , span = 512 , // integer range min - max
@@ -36,20 +19,15 @@ export default class QuickSet {
     
     if (span < slot) slot = span;
 
-    Object.assign(this.constructor.prototype, {
-      add,put,get,has,batch,clear,unique,minsum,winsum,expects,derank,lowest,delete:del,invalid,
-      keys,values,entries
-    });
-
-    this.constructor.prototype.sum = this[mode];
+    Object.assign(this.constructor.prototype, prototype);
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
     this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
+    this.constructor.prototype.sum = this[mode];
 
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
-    // this.view = new Float64Array(data);      
 
     this.rank = new Rank(slot);
     this.stat = new Pool(slot);
@@ -72,7 +50,6 @@ export default class QuickSet {
 
     this.tmin = freq //?? 0; // keeps track of min in window
     this.tmax = 0; // keeps track of max in window
-
 
   }
 
