@@ -11,7 +11,7 @@ let set = new QuickSet({
   span: 2 ** 10,
   high: 32,
   slot: 4,
-  freq: 1,
+  freq: 2,
   mode: 'minsum',
 });
 

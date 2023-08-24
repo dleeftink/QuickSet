@@ -15,7 +15,7 @@ import { add, del, put } from './core/setters.js';
 
 import { keys, values, entries } from './core/sorters.js';
 
-let prototype = {
+const prototype = {
   add,
   put,
   get,
