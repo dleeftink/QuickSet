@@ -1,9 +1,11 @@
 export default function minsum (uint, val = 1) {
+  
   let invalid = this.invalid;
+
   // range guard
   if( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
 
-  var old = this.bits[uint]; //let val = 1 + (this.bits[uint]++) // => unweighted
+  var old = this.bits[uint];
       val = old + val;
 
   // count guard
