@@ -35,4 +35,18 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `.get(uint)`
 
+### Rankers
+
+#### `.minsum(uint[, value])`
+
+#### `.winsum(uint[, value])`
+
+### Sorters 
+
+#### `.keys(iters[, reverse])`
+
+#### `.values(iters[, reverse])`
+
+#### `.entries(iters[, reverse])`
+
 
