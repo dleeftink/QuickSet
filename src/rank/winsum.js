@@ -1,7 +1,7 @@
 export default function winsum(uint,val = 1) {
 
   let invalid = this.invalid;
-  
+
   // range guard  
   if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
 
@@ -25,10 +25,11 @@ export default function winsum(uint,val = 1) {
       if(ins == undefined && stat[i] <= val) ins = i;
 
    }
-    if(ins == undefined) return
+
+   if(ins == undefined) return
      
-    if ( idx >= 0 ) {
-      if ( ins > idx ) return // TO DO: overwrite buffer when restarting count to prevent having to .fill(0)
+   if ( idx >= 0 ) {
+    if ( ins > idx ) return // TO DO: overwrite buffer when restarting count to prevent having to .fill(0)
       
       rank.copyWithin(ins+1,ins,idx);
       stat.copyWithin(ins+1,ins,idx);
@@ -46,7 +47,10 @@ export default function winsum(uint,val = 1) {
 
       this.tmin = stat[this.last] ?? 0  // min always last // Math.max(this.freq,stat[this.last])
        // TO DO: autotuning in case freq settings == 0
+       
     }
+
     this.tmax = stat[0] ?? 0 // max is always first
+  
   } 
 }
