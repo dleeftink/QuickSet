@@ -1,6 +1,6 @@
 {
   "name": "@suptxt/quickset",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
