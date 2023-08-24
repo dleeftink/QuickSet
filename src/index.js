@@ -1,3 +1,7 @@
+
+import { add, del, put } from './core/setters.js';
+import { get, has } from './core/getters.js';
+
 import batch from './core/batch.js';
 import clear from './core/clear.js';
 
@@ -32,7 +36,7 @@ export default class QuickSet {
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
    
     Object.assign(this.constructor.prototype, {
-      batch,clear,unique,minsum,winsum,expects,
+      add,put,get,has,batch,clear,unique,minsum,winsum,expects,delete:del,
     });
 
     Object.defineProperty(this,'bits', {
@@ -90,23 +94,16 @@ export default class QuickSet {
   // placeholder
   }
   
-  get(uint) {
-    return this.bits[uint]  
+  get() {
+  // placeholder
   }
   
-  has(uint) {
-
-    if (uint < this.clip || uint > this.span) return false
-    return !!this.bits[uint]
-
+  has() {
+  // placeholder
   }
 
-  put(uint, val = 1) {
-
-    // 'unsafe' add
-    if (uint < this.clip || uint > this.span) return //this
-    this.bits[uint] = val
-    
+  put() {
+  // placeholder
   }
 
   sum () {
@@ -147,11 +144,8 @@ export default class QuickSet {
     
   }
   
-  delete(uint) {
-    
-    if (uint < this.clip || uint > this.span) return //this
-    this.bits[uint] = 0
-    
+  delete() {
+  // placeholder    
   }
   
   derank(uint) {
