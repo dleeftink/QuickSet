@@ -15,6 +15,24 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 ## Quickstart 
 
+## Constructor 
+
+#### `new QuickSet({...})`
+
 ## API
 
-### `new QuickSet({...})`
+### Setters
+
+#### `.add(uint[, value])`
+
+#### `.put(uint[, value])`
+
+#### `.sum(uint[, value])`
+
+### Getters
+
+#### `.has(uint)`
+
+#### `.get(uint)`
+
+
