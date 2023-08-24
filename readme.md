@@ -21,6 +21,12 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 ## API
 
+### Bulk
+
+#### `.batch(...uints[, values])`
+
+#### `.unique(...uints)`
+
 ### Setters
 
 #### `.add(uint[, value])`
@@ -55,10 +61,6 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `.entries(iters[, reverse])` 
 
-### Bulk
-
-#### `.batch(...uints[, values])`
+### Disposal
 
 #### `.clear(true || 0-16)`
-
-#### `.unique(...uints)`
