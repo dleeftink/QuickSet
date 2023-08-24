@@ -9,6 +9,7 @@ import winsum from './rank/winsum.js';
 import unique from './core/unique.js';
 
 import expects from './util/expects.js';
+import invalid from './util/invalid.js';
 
 import { get, has } from './core/getters.js';
 import { add, del, put } from './core/setters.js';
@@ -34,21 +35,16 @@ export default class QuickSet {
     
     if (span < slot) slot = span;
 
-    let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
-    let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
-   
     Object.assign(this.constructor.prototype, {
-      add,put,get,has,batch,clear,unique,minsum,winsum,expects,delete:del,derank,lowest
+      add,put,get,has,batch,clear,unique,minsum,winsum,expects,derank,lowest,delete:del,invalid
     });
 
-    Object.defineProperty(this,'bits', {
-      writable: false,
-      enumerable: false,
-      configurable: false,
-    });
+    this.constructor.prototype.sum = this[mode];
+
+    let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
+    let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
     this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
-    this.constructor.prototype.sum = this[mode];
 
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
     // this.view = new Float64Array(data);      
@@ -56,6 +52,12 @@ export default class QuickSet {
     this.rank = new Rank(slot);
     this.stat = new Pool(slot);
     this.bits = new Pool(data);
+
+    Object.defineProperty(this,'bits', {
+      writable: false,
+      enumerable: false,
+      configurable: false,
+    });
     
     this.span = span = Math.min(span,m); // clip integers above range extent (inclusive)
     this.clip = clip = Math.max(clip,0); // clip integers under range extent

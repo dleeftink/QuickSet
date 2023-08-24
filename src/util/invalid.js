@@ -1,0 +1,1 @@
+export default (input) => (input ^ 0) !== input

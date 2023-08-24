@@ -1,7 +1,8 @@
 export default function winsum(uint,val = 1) {
 
+  let invalid = this.invalid;
   // range guard  
-  if( uint < this.clip || uint > this.span || !Number.isInteger(uint) || !Number.isInteger(val)) return;
+  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
 
   var old = this.bits[uint]; // val = 1 + (this.bits[uint]++); // => unweighted
       val = old + val; 

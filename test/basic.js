@@ -11,7 +11,7 @@ let set = new QuickSet({
   span: 2 ** 10,
   high: 32,
   slot: 8,
-  freq: 2,
+  freq: 1,
   mode: 'minsum',
 });
 
@@ -21,15 +21,15 @@ let iter = 10000;
 let temp = Array(iter);
 
 for (let n = 0; n < iter; ++n) {
-  //let ints = real[n]
-  //let span = ints.length;
+
   set.clear(true);
 
   // unrolling only works when multiples of two
   for (let i = 0; i < span; i = i + 2) {
     //let key = ints[i] //+ ( n % 255);
-    set.sum(ints[i]);
-    set.sum(ints[i + 1]);
+    set.sum(ints[i]+ ( n % 255))
+    set.sum(ints[i + 1]+ ( n % 255));
+    
   }
 
   //temp[n] = set.rank.slice(0)
@@ -37,4 +37,4 @@ for (let n = 0; n < iter; ++n) {
 
 let t2 = performance.now() - t1;
 
-console.log(temp, set, t2);
+console.log(temp, set,t2);

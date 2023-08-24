@@ -9,4 +9,4 @@ function has(uint) {
 
 }
 
-export default { get, has }
+export { get, has }

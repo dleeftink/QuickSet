@@ -1,6 +1,8 @@
 function add(uint, val = 1) {
 
-  if ( uint < this.clip || uint > this.span || !Number.isInteger(uint) || !Number.isInteger(val)) return;
+  let invalid = this.invalid;
+
+  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
   if ( val  > this.default.byte ) return; // prevent overflow
 
   this.bits[uint] = val;
@@ -9,7 +11,9 @@ function add(uint, val = 1) {
 
 function del(uint) {
 
-  if ( uint < this.clip || uint > this.span || !Number.isInteger(uint) || !Number.isInteger(val)) return;
+  let invalid = this.invalid;
+
+  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
   this.bits[uint] = 0
   
 }
@@ -21,4 +25,4 @@ function put(uint, val = 1) {
   
 }
 
-export default { add, del, put }
+export { add, del, put }
