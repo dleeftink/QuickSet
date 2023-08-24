@@ -50,7 +50,7 @@ export default function winsum(uint,val = 1) {
       // TO DO: autotuning in case freq settings == 0
       this.tmin = stat[this.last] ?? 0  // min always last // Math.max(this.freq,stat[this.last])
 
-   }
+    }
 
     this.tmax = stat[0] ?? 0 // max is always first
   
