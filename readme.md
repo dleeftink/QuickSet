@@ -15,7 +15,7 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 ## Quickstart 
 
-## Config 
+## Configuration
 
 #### `new QuickSet({...})`
 
