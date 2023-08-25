@@ -30,7 +30,7 @@ let config = {
   high: 128, // max expected integer count (0 ... 2^32)
   freq:   1, // min expected integer count (0 ... 2^32)
 
-  slot:   0, // top - k ranked window slots (0 ... 16)
+  slot:   0, // top -k ranked window slots (0 ... 16)
 
 }
 ```
