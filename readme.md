@@ -80,7 +80,7 @@ let uints = [0,1,1,2,4,6,7,7,1]
 
 ```
 
-Columnar example (for duplicate intgers, values are summed):
+Columnar example (values are summed for duplicate integers):
 
 ``` js
 
