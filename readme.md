@@ -269,3 +269,7 @@ set.sum(2,4);
 ### Disposal
 
 #### `.clear(true || 0-16)`
+
+## Caveats
+
+## Tips
