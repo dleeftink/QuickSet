@@ -19,6 +19,18 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `new QuickSet({...})`
 
+```js
+let config = {
+
+  clip:   0,
+  span: 512,
+
+  freq:   1,
+  high: 128,
+  
+}
+```
+
 ##### `span: ...`
 
 ##### `clip: ...`
