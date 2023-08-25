@@ -189,20 +189,24 @@ let set = new QuickSet({
 
 ```
 
-This method is useful for 'tombstoning' integers:
+This method is useful for 'tombstoning' integers, e.g. setting an integer's value higher than the `high` watermark prevents it to be picked up by the top-k window:
 
 ``` js
 let set = new QuickSet({
-      high: 255
+      high: 127,
+      slot: 2
     });
 
-    set.put(1,255);
-    set.put(2,256);
+    set.put(1,128);
+    set.sum(2,4);
+    set.sum(1,1); 
 
-// set.keys()   = [ 1 , 2 ]
-// set.values() = [ 255,0 ]
+// set.rank = [ 2, 0 ]
+// set.stat = [ 4, 0 ]
 
 ```
+
+This technique is useful to maintain a 'drop' list of integers, or keep unwanted integers out of the top-k ranking without having to validate integers during expansive `.sum()` operations (these 'tombstoned' values are simply ignored).
 
 #### `.sum(uint[, value])`
 
