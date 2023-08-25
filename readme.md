@@ -35,15 +35,17 @@ let config = {
 }
 ```
 
-##### `span: ...`
+##### `span: 0 ... 2^28`
+Maximum expected integer in set (upper range bound). Values above this number are ignored when added to the set.
 
-##### `clip: ...`
+##### `clip: 0 ... 2^28`
+Minimum expected integer in set (lower range bound). Values below this number are ignored when added to the set.
 
-##### `high: ...`
+##### `high: 0 ... 2^32`
 
-##### `freq: ...`
+##### `freq: 0 ... 2^32`
 
-##### `slot: ...`
+##### `slot: 0 ... 16`
 
 ## API
 
