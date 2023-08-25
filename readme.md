@@ -42,12 +42,10 @@ Maximum expected integer in set (upper range bound). Values above this number ar
 Minimum expected integer in set (lower range bound). Values below this number are ignored when added to the set.
 
 ##### `high: 0 ... 2^32`
-Maximum expected count of discrete 
-integers in set (upper frequency bound per integer). Counting is maximised to this value. 
+Maximum expected count of each discrete integer in set (upper frequency bound per integer). Counting is maximised to this value. 
 
 ##### `freq: 0 ... 2^32`
-Minimum expected count of discrete 
-integers in set (lower frequency bound per integer). Functions as minimum threshold for integers to be included in top-k window.
+Minimum expected count of each discrete integer in set (lower frequency bound per integer). Functions as minimum threshold for integers to be included in top-k window.
 
 ##### `slot: 0 ... 16`
 Amount of top-k slots to keep track of most frequent integers in set.
@@ -57,6 +55,15 @@ Amount of top-k slots to keep track of most frequent integers in set.
 ### Bulk
 
 #### `.batch(...uints[, values])`
+
+Example:
+
+``` js
+
+let uints = [0,1,1,2,4,6,7]
+    set.batch(uints)
+
+```
 
 #### `.unique(...uints)`
 
