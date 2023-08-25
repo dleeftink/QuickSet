@@ -24,6 +24,8 @@ Creates a new QuickSet instance with default settings (top-k window is turned of
 ```js
 let config = {
 
+  mode: "minsum" || "winsum",
+
   span: 512, // max expected integer range (0 ... 2^28)
   clip:   0, // min expected integer range (0 ... 2^28)
   
@@ -34,6 +36,9 @@ let config = {
 
 }
 ```
+
+##### `mode: "minsum" || "winsum"`
+Sets the default summing mode when using `.sum()`. See [rankers](#rankers) for more.
 
 ##### `span: 0 ... 2^28`
 Maximum expected integer in set (upper range bound). Values above this number are ignored when added to the set.
@@ -209,6 +214,31 @@ let set = new QuickSet({
 This technique can be used to build a 'drop' list of integers, or keep unwanted integers out of the top-k ranking without having to validate integers during expansive `.sum()` operations ('tombstoned' values are simply ignored).
 
 #### `.sum(uint[, value])`
+
+Inserts integer into the set and increases its frequency by one (or optional custom weight/value) if already present. Also updates the top-k window based on `mode` if the integer count exceeds the minimum `freq` value.
+
+Example:
+
+``` js
+
+let set = new QuickSet({
+      mode: "minsum",
+      high: 16,
+      freq:  2,
+      slot:  4,
+    })
+
+set.sum(1);
+set.sum(2);
+set.sum(1);
+set.sum(1);
+set.sum(9);
+set.sum(2,4);
+
+// set.rank = [ 1 , 2 , 0 , 0 ];
+// set.stat = [ 3 , 5 , 0 , 0 ]; 
+
+```
 
 ### Getters
 
