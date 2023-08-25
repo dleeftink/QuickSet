@@ -19,7 +19,7 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `new QuickSet({...config})`
 
-Creates a new QuickSet instance with default settings:
+Creates a new QuickSet instance with default settings (top-k window is turned off by default):
 
 ```js
 let config = {
