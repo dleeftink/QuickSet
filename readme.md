@@ -19,6 +19,14 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `new QuickSet({...})`
 
+##### `span: ...`
+
+##### `clip: ...`
+
+##### `high: ...`
+
+##### `freq: ...`
+
 ## API
 
 ### Bulk
