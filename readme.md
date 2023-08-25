@@ -22,12 +22,14 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 ```js
 let config = {
 
-  clip:   0,
-  span: 512,
+  slot:   8,
 
-  freq:   1,
-  high: 128,
+  span: 512,
+  clip:   0,
   
+  high: 128,
+  freq:   1,
+
 }
 ```
 
