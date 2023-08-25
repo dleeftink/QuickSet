@@ -172,11 +172,26 @@ let set = new QuickSet()
 #### `.put(uint[, value])`
 'Unsafe' adds an integer to the set with an optional value without checking if the integer falls within range or its value exceeds the `high` frequency mark. Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
 
-Should in theory provide better performance compared to `.add()` with the risk of adding integers beyond the configured range or expected frequency (potentially causing overflows).
+Should in theory provide better performance compared to `.add()` with the risk of adding integers beyond the configured range or expected frequency (potentially causing overflows). 
 
 Example:
 
+``` js
+let set = new QuickSet({
+      high: 255
+    });
+
+    set.put(1,255);
+    set.put(2,256);
+
+// set.keys()   = [ 1 , 2 ]
+// set.values() = [ 255,0 ]
+
 ```
+
+This method is useful for 'tombstoning' integers:
+
+``` js
 let set = new QuickSet({
       high: 255
     });
