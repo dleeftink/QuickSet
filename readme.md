@@ -17,7 +17,7 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 ## Configuration
 
-#### `new QuickSet({...})`
+#### `new QuickSet({...config})`
 
 ```js
 let config = {
@@ -25,10 +25,10 @@ let config = {
   span: 512, // max expected integer
   clip:   0, // min expected integer
   
-  high: 128, // max expected count
-  freq:   1, // min expected count
+  high: 128, // max expected integer frequency
+  freq:   1, // min expected integer frequency
 
-  slot:   8, // ranked window slots
+  slot:   8, // top-k ranked window slots
 
 }
 ```
