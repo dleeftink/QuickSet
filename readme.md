@@ -270,6 +270,6 @@ set.sum(2,4);
 
 #### `.clear(true || 0-16)`
 
-## Caveats
+## Tipss
 
-## Tips
+## Caveats
