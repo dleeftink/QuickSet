@@ -106,7 +106,7 @@ let vals  = [1,3]
 
 ```
 
-The batch operation is chainable: 
+Batch operations are chainable: 
 
 ``` js
 
