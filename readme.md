@@ -25,8 +25,8 @@ let config = {
   span: 512, // max expected integer
   clip:   0, // min expected integer
   
-  high: 128, // max expected integer frequency
-  freq:   1, // min expected integer frequency
+  high: 128, // max expected integer count
+  freq:   1, // min expected integer count
 
   slot:   8, // top-k ranked window slots
 
