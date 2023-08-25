@@ -24,8 +24,8 @@ Creates a new QuickSet instance with default settings:
 ```js
 let config = {
 
-  span: 512, // max expected integer (0 ... 2^28)
-  clip:   0, // min expected integer (0 ... 2^28)
+  span: 512, // max expected integer range (0 ... 2^28)
+  clip:   0, // min expected integer range (0 ... 2^28)
   
   high: 128, // max expected integer count (0 ... 2^32)
   freq:   1, // min expected integer count (0 ... 2^32)
