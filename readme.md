@@ -22,13 +22,13 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 ```js
 let config = {
 
-  slot:   8,
-
-  span: 512,
-  clip:   0,
+  span: 512, // max expected integer
+  clip:   0, // min expected integer
   
-  high: 128,
-  freq:   1,
+  high: 128, // max expected count
+  freq:   1, // min expected count
+
+  slot:   8, // ranked window slots
 
 }
 ```
