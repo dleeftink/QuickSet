@@ -11,7 +11,7 @@ Both eject the least frequent integer from the ranking upon inserting new items,
 But whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps a sorted ranking  in decreasing order of occurrence (slightly more computationally expensive).
 
 This makes QuickSet a faster alternative to counting and sorting all elements in a given set, preventing costly sorting operations and providing a ranked window of most frequent  integers up till a break point of your choosing. 
-This allows you to work with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying data follows a non-uniform distribution.
+This allows you to work with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
 
 ## Quickstart 
 
