@@ -153,6 +153,21 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 
 #### `.add(uint[, value])`
+Insert single integers with optional value. Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
+
+Example:
+
+``` js
+
+let set = new QuickSet()
+    set.add(1);
+    set.add(2,1);
+    set.add(2,4);
+
+// set.keys()   = [ 1,2 ]
+// set.values() = [ 1,4 ]
+
+```
 
 #### `.put(uint[, value])`
 
