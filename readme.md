@@ -4,7 +4,7 @@ A performant sorted *Least Frequently Used* (LFU) set implementation for working
 
 ## How it works
 Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (any range between 0 and 2^28) and frequency of occurance. 
-Additionally, it keeps track of how often individual integers are added to the set, providing a (sorted) top-k window of most frequently occurring integers. 
+Additionally, it keeps track of how often individual integers are added to the set, providing a (sorted) top-k window of most frequentl integers. 
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum`. 
 Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (also known as *Least Frequently Used* or LFU). 
