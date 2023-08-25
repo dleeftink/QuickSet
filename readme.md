@@ -80,6 +80,14 @@ let uints = [0,1,1,2,4,6,7,7,1]
 
 ```
 
+Columnar example:
+
+```
+
+
+
+```
+
 #### `.unique(...uints)`
 
 ### Setters
