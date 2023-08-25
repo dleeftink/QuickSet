@@ -106,6 +106,14 @@ let vals  = [1,3]
 
 ```
 
+The batch operation is chainable: 
+
+``` js
+
+set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
+
+```
+
 #### `.unique(...uints)`
 
 ### Setters
