@@ -1,6 +1,6 @@
 # QuickSet
 
-A performant sorted *Least Frequently Used* (LFU) set implementation for working with reasonably sized integers. Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (spanning from 0 to 2^16), or quickly extracting unique integers from a large pool of numbers in one go (between 0 and 2^28).
+A performant sorted *Least Frequently Used* (LFU) set implementation for working with reasonably sized integers. Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (spanning from 0 to 2^16), or extracting unique integers from a large pool of numbers in one pass (between 0 and 2^28).
 
 ## How it works
 Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (any range between 0 and 2^28) and frequency of occurance. 
