@@ -10,7 +10,7 @@ Two modes are provided for establishing top-k ranks, `minsum` and `winsum`.
 Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (also known as *Least Frequently Used* or LFU). 
 But whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps a sorted ranking  in decreasing order of occurrence (slightly more computationally expensive).
 
-This makes QuickSet a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations while providing a ranked window of most frequent  integers up till a break point of your choosing. 
+This makes `QuickSet` a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations while providing a ranked window of most frequent  integers up till a break point of your choosing. 
 This allows you to work with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
 
 ## Quickstart 
@@ -153,7 +153,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 
 #### `.add(uint[, value])`
-Insert single integers with optional value. Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
+Insert single integers to the set within the configured range with an optional weight/value. Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
 
 Example:
 
@@ -170,6 +170,24 @@ let set = new QuickSet()
 ```
 
 #### `.put(uint[, value])`
+'Unsafe' adds an integer to the set with an optional value without checking if the integer falls within range or its value exceeds the `high` frequency mark. Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
+
+Should in theory provide better performance compared to `.add()` with the risk of adding integers beyond the configured range or expected frequency (potentially causing overflows).
+
+Example:
+
+```
+let set = new QuickSet({
+      high: 255
+    });
+
+    set.put(1,255);
+    set.put(2,256);
+
+// set.keys()   = [ 1 , 2 ]
+// set.values() = [ 255,0 ]
+
+```
 
 #### `.sum(uint[, value])`
 
