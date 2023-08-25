@@ -55,7 +55,7 @@ Amount of top-k slots to keep track of most frequent integers in set.
 ### Bulk
 
 #### `.batch(...uints[, values])`
-Method for batch loading integers and possible weights/values into the set.
+Batch loading method for adding integers and optional  weights/values into the set.
 
 Basic example:
 
@@ -116,8 +116,7 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 ```
 
 #### `.unique(...uints)`
-
-
+Batch loading method for inserting unique integers into the set once. Overwrites previously set values (i.e. integer frequency).
 
 Basic example:
 
@@ -128,6 +127,26 @@ let set = new QuickSet()
 
 // set.keys()   = [0,1,2,4,6,7]
 // set.values() = [1,1,1,1,1,1]
+
+```
+
+Array example:
+
+``` js
+
+let uints = [0,2,4,1,6,7,1,2]
+    set.unique(uints);
+
+// set.keys()   = [0,1,2,4,6,7]
+// set.values() = [1,1,1,1,1,1]
+
+```
+
+Unique operations are chainable: 
+
+``` js
+
+set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 
 ```
 
