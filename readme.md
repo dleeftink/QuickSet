@@ -56,12 +56,27 @@ Amount of top-k slots to keep track of most frequent integers in set.
 
 #### `.batch(...uints[, values])`
 
-Example:
+Basic example:
 
 ``` js
 
-let uints = [0,1,1,2,4,6,7]
+let set = new QuickSet();
+    set.batch(0,1,1,2,4,6,7,7,1)
+
+// set.keys()   = [0,1,2,4,6,7,1]
+// set.values() = [1,3,1,1,1,2,1]
+
+```
+
+Array example:
+
+``` js
+
+let uints = [0,1,1,2,4,6,7,7,1]
     set.batch(uints)
+
+// set.keys()   = [0,1,2,4,6,7,1]
+// set.values() = [1,3,1,1,1,2,1]
 
 ```
 
