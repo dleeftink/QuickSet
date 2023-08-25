@@ -80,11 +80,29 @@ let uints = [0,1,1,2,4,6,7,7,1]
 
 ```
 
-Columnar example:
+Columnar example (for duplicate intgers, values are summed):
+
+``` js
+
+let uints = [1,5,7,1]
+let vals  = [1,2,3,4]
+    set.batch(uints, vals)
+
+// set.keys()   = [1,5,7]
+// set.values() = [5,2,3]
 
 ```
 
+Columnar example (strided, duplicate values are summed):
 
+``` js
+
+let uints = [1,2,2,5]
+let vals  = [1,3]
+    set.batch(uints, vals)
+
+// set.keys()   = [1,2,5]
+// set.values() = [1,4,3]
 
 ```
 
