@@ -19,16 +19,18 @@ This allows you to work with frequently occuring items 'earlier' compared to pro
 
 #### `new QuickSet({...config})`
 
+Creates a new QuickSet instance with default settings:
+
 ```js
 let config = {
 
-  span: 512, // max expected integer
-  clip:   0, // min expected integer
+  span: 512, // max expected integer (0 ... 2^28)
+  clip:   0, // min expected integer (0 ... 2^28)
   
-  high: 128, // max expected integer count
-  freq:   1, // min expected integer count
+  high: 128, // max expected integer count (0 ... 2^32)
+  freq:   1, // min expected integer count (0 ... 2^32)
 
-  slot:   8, // top-k ranked window slots
+  slot:   0, // top-k ranked window slots (0 ... 16)
 
 }
 ```
