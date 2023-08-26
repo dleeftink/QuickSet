@@ -515,7 +515,6 @@ Implementation forthcoming.
 Implementation forthcoming.
 
 ## Tips
-
 1. Reuse a single instance
 2. Randomly switch between modes
 3. Use multiple QuickSets with a small integer span
@@ -523,6 +522,8 @@ Implementation forthcoming.
 5. Set `freq` to a value higher than 1 for top-k window speed-ups
 
 ## Caveats
-
 1. Large sets affect performance
 2. Only limited top-k slots available (<16)
+
+## Benchmarks
+T.B.D.
