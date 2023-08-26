@@ -1,6 +1,6 @@
 # QuickSet
 
-A performant sorted *Least Frequently Used* (LFU) set implementation for working with reasonably sized integers. Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (spanning from 0 to 2^16), or extracting unique integers from a large pool of numbers in one pass (between 0 and 2^28).
+A performant sorted *Least Frequently Used* (LFU) set implementation for working with reasonably sized unsigned integers. Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (spanning from 0 to 2^16), or extracting unique integers from a large pool of numbers in one pass (between 0 and 2^28).
 
 ## How it works
 Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (any range between 0 and 2^28) and frequency of occurance. 
@@ -54,6 +54,8 @@ Minimum expected count of each discrete integer in set (lower frequency bound pe
 
 ##### `slot: 0 ... 16`
 Amount of top-k slots to keep track of most frequent integers in set.
+
+#### `QuickSet class { ... }`
 
 ## API
 
@@ -156,6 +158,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ```
 
 ### Setters
+Methods for inserting and updating integer data.
 
 #### `.add(uint[, value])`
 Inserts a single integer into the set if within range (`clip` and `span` parameters), with an optional weight/value. Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
@@ -230,7 +233,7 @@ This technique can be used to build a 'drop' list of integers, or keep unwanted 
 
 #### `.sum(uint[, value])`
 
-Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. Additionally updates the top-k window (see [`mode`](#mode-minsum-winsum)) if the updated integer count exceeds the minimum `freq` value.
+Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum) when the updated integer count exceeds the minimum `freq` value.
 
 Example:
 
@@ -256,12 +259,37 @@ set.sum(2,4);
 ```
 
 ### Getters
+Methods for checking and retrieving integer data.
 
 #### `.has(uint)`
+Checks whether the given integer is present in the set.
+
+``` js
+
+let uints = [0,1,5,7]
+    set.batch(uints);
+
+    set.has(7) // => true
+    set.has(3) // => false
+
+```
 
 #### `.get(uint)`
+Retrieves the given integer's value if present in the set.
+
+``` js
+
+let uints = [0,1,5,7];
+    vals  = [1,2,3,4];
+    set.batch(uints, vals);
+
+    set.get(7) // => 4
+    set.get(3) // => 0
+
+```
 
 ### Jetters 
+Methods for deleting and jettisoning integer data.
 
 #### `.delete(uint)`
 
@@ -287,4 +315,10 @@ set.sum(2,4);
 
 ## Tips
 
+1. Randomly swapping modes
+2. Reuse a single instance
+3. Use multiple QuickSets with a small integer range
+
 ## Caveats
+
+1. Large sets affect performance 
