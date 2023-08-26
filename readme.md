@@ -297,7 +297,7 @@ Methods for deleting and jettisoning integer data.
 
 #### `.delete(uint)`
 Removes a single integer and its value from the set. Does **not** update `.sum()`'s top-k window (use `.derank()` for that). 
-Useful for resetting an integer's count to zero while maintaining its position and last value in the top-k window.
+Useful for resetting an integer's count to zero in the backing array while maintaining its last position and value in the top-k window.
 
 Example:
 
