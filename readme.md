@@ -31,13 +31,14 @@ let set = new QuickSet()
 
 ```
 
-This instantiates a new set with default parameters, which may need additional configuring to suit your needs. As a rule of thumb:
+This instantiates a new set with default parameters and a top-k window of 0-length, which may need additional configuring to suit your needs. As a rule of thumb:
 
 - If you are interested in using unweighted set operations only, use `.add()` for single and `.unique()` for bulk insertion.
 - If you want to assign weights to  integers, use `.sum()` for single and `.batch()` for bulk insertion.
+Updates are only made when the [`slot`](#slot) parameter is set.
 
 However, methods can be mixed and matched to your liking. 
-Take note however, that `.add()` and `unique()` overwrite previous values and **do not** update the top-k window (use `.sum()` and `.batch()` for this).
+Note however, that `.add()` and `.unique()` overwrite previous values and **do not** update the top-k window; use `.sum()` and `.batch()` for this if you want to update the top-k window when inserting new integers.
 
 ## Configuration
 
