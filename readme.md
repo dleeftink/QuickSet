@@ -72,23 +72,23 @@ let config = {
 Sets the default summing mode when using `.sum()`. 
 See [rankers](#rankers) for more.
 
-##### `span: 0..2^28`
+##### `span: 0 .. 2^28`
 Maximum expected integer in set (upper range bound). 
 Values above this number are ignored when added to the set.
 
-##### `clip: 0..2^28`
+##### `clip: 0 .. 2^28`
 Minimum expected integer in set (lower range bound). 
 Values below this number are ignored when added to the set.
 
-##### `high: 0..2^32`
+##### `high: 0 .. 2^32`
 Maximum expected count of each discrete integer in set (upper frequency bound per integer). 
 Counting is maximised to this value. 
 
-##### `freq: 0..2^32`
+##### `freq: 0 .. 2^32`
 Minimum expected count of each discrete integer in set (lower frequency bound per integer). 
 Functions as minimum threshold for integers to be included in top-k window.
 
-##### `slot: 0..16`
+##### `slot: 0 .. 16`
 Amount of top-k slots to track most frequent integers in the set.
 
 #### `QuickSet class { ... }`
