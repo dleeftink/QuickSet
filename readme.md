@@ -377,11 +377,11 @@ let set = new QuickSet({
     set.delete(1);
     set.delete(3);
 
-//  1 & 3  deleted from backing array
+//  [ 1, 3 ]  deleted from backing array
 //  set.keys()   = [ 0,4,5,7 ]
 //  set.values() = [ 1,1,1,1 ]
 
-//  1 & 3 kept in top-k window
+//  [ 1, 3 ] kept in top-k window
 //  set.rank = [ 1,3,0,4,5,7 ]
 //  set.stat = [ 3,2,1,1,1,1 ]
 
@@ -414,11 +414,11 @@ let set = new QuickSet({
     set.derank(0);
     set.derank(4);
 
-//  [ 1,0,4 ] deleted from backing array
+//  [ 1, 0, 4 ] deleted from backing array
 //  set.keys()   = [ 3,5,7 ]
 //  set.values() = [ 2,1,1 ]
 
-//  [ 1,0,4 ] deranked from top-k window
+//  [ 1, 0, 4 ] deranked from top-k window
 //  set.rank = [ 3,5,7,0,0,0 ]
 //  set.stat = [ 2,1,1,0,0,0 ]
 
