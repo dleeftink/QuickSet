@@ -313,6 +313,12 @@ Methods for deleting and jettisoning integer data.
 
 #### `.entries(iters[, reverse])` 
 
+### Windows
+
+#### `.topK(pick[, reverse])`
+
+#### `.topV(pick[, reverse])`
+
 ### Disposal
 
 #### `.clear(true || 0-16)`
@@ -327,7 +333,8 @@ Methods for deleting and jettisoning integer data.
 
 1. Reuse a single instance
 2. Randomly switch between modes
-4. Use multiple QuickSets with a small integer span
+3. Use multiple QuickSets with a small integer span
+4. Maintain a `new Map()` for reverse value lookups
 
 ## Caveats
 
