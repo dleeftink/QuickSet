@@ -158,7 +158,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 
 #### `.add(uint[, value])`
-Adds a single integer within the configured range (`clip` and `span` parameters), with an optional weight/value to the set. Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
+Inserts a single integer into the set if within range (`clip` and `span` parameters), with an optional weight/value. Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
 
 Example:
 
@@ -230,7 +230,7 @@ This technique can be used to build a 'drop' list of integers, or keep unwanted 
 
 #### `.sum(uint[, value])`
 
-Inserts integer into the set and increases its frequency by one (or optional custom weight/value) if already present. Also updates the top-k window based on `mode` if the integer count exceeds the minimum `freq` value.
+Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. Additionally updates the top-k window (see [`mode`](#mode-minsum-winsum)) if the updated integer count exceeds the minimum `freq` value.
 
 Example:
 
