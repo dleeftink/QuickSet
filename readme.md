@@ -83,7 +83,7 @@ Minimum expected count of each discrete integer in set (lower frequency bound pe
 Functions as minimum threshold for integers to be included in top-k window.
 
 ##### `slot: 0 ... 16`
-Amount of top-k slots to keep track of most frequent integers in set.
+Amount of top-k slots to track most frequent integers in the set.
 
 #### `QuickSet class { ... }`
 
