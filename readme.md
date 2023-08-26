@@ -422,12 +422,13 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,4,2,0)
 
 //  1 is overwritten by 4
+
 //  set.rank = [ 0,4,2,3 ]
 //  set.stat = [ 3,1,2,1 ]
 
 ```
 
-This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()`.
+This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()` due to absence of copying.
 
 #### `.winsum(uint[, value])`
 Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
@@ -445,7 +446,8 @@ let set = new QuickSet({
     })
     set.batch(0,1,2,0,3,4,2,0)
 
-//  1 is overwritten by 4
+//  1 is dropped when 4 is inserted
+
 //  set.rank = [ 0,2,4,3 ]
 //  set.stat = [ 3,2,1,1 ]
 
