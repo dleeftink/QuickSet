@@ -310,8 +310,11 @@ let set = new QuickSet({
     });
     set.batch(3,1,0,1,3,4,3,5,7,1)
 
+//  Backing array
 //  set.keys()   = [ 0,1,3,4,5,7 ]
 //  set.values() = [ 1,3,2,1,1,1 ]
+
+//  Top-k window 
 //  set.rank = [ 3,1,0,4,5,7 ]
 //  set.stat = [ 2,3,1,1,1,1 ]
 
@@ -319,12 +322,10 @@ let set = new QuickSet({
     set.delete(1);
 
 //  integers deleted from backing array
-
 //  set.keys()   = [ 3,4,5,7 ]
 //  set.values() = [ 2,1,1,1 ]
 
 //  integers not deleted from  top-k window
-
 //  set.rank = [ 3,1,0,4,5,7 ]
 //  set.stat = [ 2,3,1,1,1,1 ]
 
