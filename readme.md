@@ -443,7 +443,6 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,4,2,0)
 
 //  1 is overwritten by 4
-
 //  set.rank = [ 0,4,2,3 ]
 //  set.stat = [ 3,1,2,1 ]
 
@@ -470,7 +469,6 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,4,2,0)
 
 //  1 is dropped when 4 is inserted
-
 //  set.rank = [ 0,2,4,3 ] -> [1] dropped
 //  set.stat = [ 3,2,1,1 ] -> [1] dropped
 
