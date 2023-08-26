@@ -296,6 +296,40 @@ let uints = [0,1,5,7];
 Methods for deleting and jettisoning integer data.
 
 #### `.delete(uint)`
+Removes a single integer and its value from the set. Does **not** update `.sum()`'s top-k window (use `.derank()` for that). 
+Useful for resetting an integer's count during summing operations.
+
+Example:
+
+``` js
+
+let set = new QuickSet({
+      mode: "minsum",
+      freq:  1,
+      slot:  6
+    });
+
+    set.batch(3,1,0,1,3,4,3,5,7,1)
+
+//  set.keys()   = [ 0,1,3,4,5,7 ]
+//  set.values() = [ 1,3,2,1,1,1 ]
+
+//  set.rank = [ 3,1,0,4,5,7 ]
+//  set.stat = [ 2,3,1,1,1,1 ]
+
+    set.delete(0)
+    set.delete(1);
+
+//  set.keys()   = [ 3,4,5,7 ]
+//  set.values() = [ 2,1,1,1 ]
+
+//  does not update top-k window
+
+//  set.rank = [ 3,1,0,4,5,7 ]
+//  set.stat = [ 2,3,1,1,1,1 ]
+
+```
+
 
 #### `.derank(uint)`
 
@@ -312,6 +346,8 @@ Methods for deleting and jettisoning integer data.
 #### `.values(iters[, reverse])`
 
 #### `.entries(iters[, reverse])` 
+
+#### `.sorted(iters[, reverse])`
 
 ### Windows
 
