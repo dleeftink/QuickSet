@@ -315,9 +315,9 @@ Methods for deleting and jettisoning integer data.
 
 ### Windows
 
-#### `.topK(pick[, reverse])`
+#### `.topKeys(pick[, reverse])`
 
-#### `.topV(pick[, reverse])`
+#### `.topVals(pick[, reverse])`
 
 ### Disposal
 
