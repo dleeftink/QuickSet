@@ -233,7 +233,7 @@ let set = new QuickSet({
 
 ```
 
-This technique can be used to build a 'drop' list of integers, or keep unwanted integers out of the top-k ranking without having to validate integers during more expansive `.sum()` operations ('tombstoned' values are simply ignored).
+This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive `.sum()` operations ('tombstoned' values are simply ignored).
 
 #### `.sum(uint[, value])`
 
