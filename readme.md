@@ -478,18 +478,17 @@ If integer counts are tied, the last inserted value takes precedence in the rank
 Slightly slower than `.minsum()` due to frequent copying.
 
 ### Sorters 
+Methods for sorting and returning the set data. 
+Each can be exit early by providing a maximum number of `iters`, or return items in descending order by setting its `reverse` to `true`.
 
 #### `.keys(iters[, reverse])`
-Method that returns all keys in the set in natural ascending order (set `reverse` to `true` for descending order).
-Exit early by providing a maximum number of `iters`.
+Method that returns all integer keys in the set in natural ascending order.
 
 #### `.values(iters[, reverse])`
-Method that returns all values associated with each key in natural ascending order of keys (set `reverse` to `true` for descending order).
-Exit early by providing a maximum number of `iters`.
+Method that returns all values associated with each key in natural ascending order of keys.
 
 #### `.entries(iters[, reverse])` 
-Method that returns all key and value entries in natural ascending order of keys (set `reverse` to `true` for descending).
-Exit early by providing a maximum number of `iters`.
+Method that returns all key/value entries in natural ascending order of keys.
 
 #### `.sorted(iters[, reverse])`
 Implementation forthcoming.
