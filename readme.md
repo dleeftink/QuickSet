@@ -1,5 +1,4 @@
 # QuickSet
-
 A performant *Least Frequently Used* (LFU) sorted set implementation for working with reasonably sized integers (unsigned). Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (spanning from 0 to 2^16), or extracting unique integers (spanning from 0 to 2^28) from a large pool of numbers in one pass.
 
 ### Use cases
@@ -8,7 +7,6 @@ A performant *Least Frequently Used* (LFU) sorted set implementation for working
 3. A lightweight key/value dictionary
 4. Duplicate integer counting
 5. Unique integer extraction
-
 
 ## How it works
 Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurance (counts between 0 and 2^32). 
@@ -49,7 +47,6 @@ Note however, that `.add()` and `.unique()` overwrite previous values and **do n
 ## Configuration
 
 #### `new QuickSet({...config})`
-
 Creates a new QuickSet instance with default settings (top-k window is turned off by default):
 
 ```js
@@ -92,7 +89,6 @@ Functions as minimum threshold for integers to be included in top-k window.
 Amount of top-k slots to track most frequent integers in the set.
 
 #### `QuickSet class { ... }`
-
 Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
 While these arrays can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
 
@@ -105,11 +101,13 @@ The window size is determined from [`slot`](#slot-0--16).
 
 ##### `set.stat: [UintArray]`
 This property displays the values associated with the ranked integers.
-Same length as `rank`
+Same length as `.rank`
 
-**Together, `rank` and `stat` yield the top-k window of most frequent integers in a `QuickSet`.**
+___
 
-> Note that `rank` and `stat` may contain multiple zeroes. If zero is an integer you have previously inserted, you can access this by looking for the first indexed zero in `rank`, its value reflected at the same index position in `stat`.
+Together, `.rank` and `.stat` provide the top-k window of most frequent integers in a `QuickSet`.
+
+> Note that `.rank` and `.stat` may contain multiple zeroes. If 0 is an integer you have previously inserted, you can access this by looking for the first indexed 0 in `.rank`, its value reflected at the same index position in `.stat`.
 
 ## API
 
@@ -293,7 +291,6 @@ let set = new QuickSet({
 This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive `.sum()` operations ('tombstoned' values are simply ignored).
 
 #### `.sum(uint[, value])`
-
 Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum `freq` parameter.
 
