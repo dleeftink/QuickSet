@@ -196,7 +196,7 @@ Methods for inserting and updating integer data.
 #### `.add(uint[, value])`
 Inserts a single integer into the set if within range (`clip` and `span` parameters), with an optional weight/value. 
 Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). 
-Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
+Overwrites previously set values, but does **not** update the top-k window (use `.sum()` for this).
 
 Example:
 
