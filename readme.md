@@ -386,8 +386,23 @@ Methods for inserting and updating integers counts by one or a custom value, inc
 Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window using the `minsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
-1. Find the first integer with lowest frequency count
+1. If already in top-k window, update count by one or custom weight/value
+2. Else find the first integer with lowest frequency count
 2. Replace this integer with the updated one and its new value
+
+``` js
+
+let set = new QuickSet({
+      slot:4,
+      freq;2
+    })
+    set.batch(0,1,2,0,3,4,2,0)
+
+//  1 is overwritten by 4
+//  set.rank = [ 0,4,2,3 ]
+//  set.stat = [ 3,1,2,1 ]
+
+```
 
 This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()` 
 
@@ -395,11 +410,27 @@ This insertion method resembles random access while guaranteeing the most freque
 Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window using the `winsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
-1. Find the last integer in the window with a value exceeding the updated value
-2. From this index Move every integer and its value one position to the right
+1. Find the last integer in the window with a count exceeding the value to insert
+2. From this index move every integer and its value one position to the right
 3. Insert the new integer and its value into the newly opened position
 
-This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency. Slightly slower than `.minsum()` on account of frequent copying.
+``` js
+
+let set = new QuickSet({
+      slot:4,
+      freq;2
+    })
+    set.batch(0,1,2,0,3,4,2,0)
+
+//  1 is overwritten by 4
+//  set.rank = [ 0,2,4,3 ]
+//  set.stat = [ 3,2,1,1 ]
+
+```
+
+This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency.
+If integer counts are tied, the last inserted value takes precedence in the ranking, i.e. integers that are inserted later are ranked higher than those inserted earlier (*Least Recently Used* or LRU-style).
+Slightly slower than `.minsum()` due to frequent copying.
 
 ### Sorters 
 
@@ -433,6 +464,7 @@ This method resembles insertion sort, and keeps all integers in the top-k window
 2. Randomly switch between modes
 3. Use multiple QuickSets with a small integer span
 4. Maintain a `new Map()` for reverse value lookups
+5. Set `freq` to a value higher than 1 for top-k window speed-ups
 
 ## Caveats
 
