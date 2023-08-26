@@ -8,10 +8,10 @@ Additionally, it keeps track of how often individual integers are added to the s
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum`. 
 Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (also known as *Least Frequently Used* or LFU). 
-But whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps a sorted ranking  in decreasing order of occurrence (slightly more computationally expensive).
+Whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps a sorted ranking  in decreasing order of occurrence (slightly more computationally expensive).
 
 This makes `QuickSet` a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations while providing a ranked window of most frequent  integers up till a break point of your choosing. 
-This allows you to work with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
+This enables working with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
 
 ## Quickstart 
 
@@ -158,7 +158,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 
 #### `.add(uint[, value])`
-Inserts single integers to the set with an optional weight/value within the configured integer range. Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
+Adds a single integer within the configured range (`clip` and `span` parameters), with an optional weight/value to the set. Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
 
 Example:
 
@@ -171,6 +171,9 @@ let set = new QuickSet()
 
 // set.keys()   = [ 1,2 ]
 // set.values() = [ 1,4 ]
+
+// set.rank = []
+// set.stat = []
 
 ```
 
@@ -192,12 +195,16 @@ let set = new QuickSet({
 // set.keys()   = [ 1 , 2 ]
 // set.values() = [ 255,0 ]
 
+// set.rank = []
+// set.stat = []
+
 ```
 
-This method is useful for 'tombstoning' integers, e.g. setting an integer's value higher than the `high` watermark prevents it to be picked up by the `.sum()` top-k window:
+This method is useful for 'tombstoning' integers, e.g. setting an integer's value higher than the `high` watermark to prevent it being picked up by the `.sum()` top-k window:
 
 ``` js
 let set = new QuickSet({
+      mode; "minsum",
       high: 127,
       slot: 2
     });
@@ -209,9 +216,17 @@ let set = new QuickSet({
 // set.rank = [ 2, 0 ]
 // set.stat = [ 4, 0 ]
 
+// allow 1 to be picked up by .sum()
+// by setting its value below the 'high' frequency mark
+   set.put(1,2);
+   set.sum(1,3);
+
+// set.rank = [ 2, 1 ]
+// set.stat = [ 4, 5 ]
+
 ```
 
-This technique can be used to build a 'drop' list of integers, or keep unwanted integers out of the top-k ranking without having to validate integers during expansive `.sum()` operations ('tombstoned' values are simply ignored).
+This technique can be used to build a 'drop' list of integers, or keep unwanted integers out of the top-k ranking without having to validate integers during more expansive `.sum()` operations ('tombstoned' values are simply ignored).
 
 #### `.sum(uint[, value])`
 
@@ -270,6 +285,6 @@ set.sum(2,4);
 
 #### `.clear(true || 0-16)`
 
-## Tipss
+## Tips
 
 ## Caveats
