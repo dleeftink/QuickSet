@@ -23,9 +23,21 @@ npm install @suptxt/quickset
 
 ```
 
-If you are interested in using unweighted set operations, use `.add()` for single- and `.unique()` for bulk insertion.
+After installing, instantiate a `QuickSet` by calling;
 
-If you want to assign weights to  integers, use `.sum()` for single- and `.batch()` for bulk insertion.
+``` js
+
+let set = new QuickSet()
+
+```
+
+This instantiates a new set with default parameters, which may need additional configuring to suit your needs. As a rule of thumb:
+
+- If you are interested in using unweighted set operations only, use `.add()` for single and `.unique()` for bulk insertion.
+- If you want to assign weights to  integers, use `.sum()` for single and `.batch()` for bulk insertion.
+
+However, methods can be mixed and matched to your liking. 
+Take note however, that `.add()` and `unique()` overwrite previous values and **do not** update the top-k window (use `.sum()` and `.batch()` for this).
 
 ## Configuration
 
@@ -478,4 +490,5 @@ Slightly slower than `.minsum()` due to frequent copying.
 
 ## Caveats
 
-1. Large sets affect performance 
+1. Large sets affect performance
+2. Only limited top-k slots available ( <16 )
