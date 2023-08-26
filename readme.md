@@ -387,9 +387,9 @@ Methods for inserting and updating integers counts by one or a custom value, inc
 
 ### Windows
 
-#### `.topKeys(pick[, reverse])`
+#### `.topk(pick[, reverse])`
 
-#### `.topVals(pick[, reverse])`
+#### `.topv(pick[, reverse])`
 
 ### Disposal
 
