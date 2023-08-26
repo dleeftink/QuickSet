@@ -225,8 +225,8 @@ let set = new QuickSet({
  // by setting its value below the 'high' frequency mark
  // note: the first .put() does not update the top-k window, but .sum() does
 
-   set.put(1,2);
-   set.sum(1,3);
+    set.put(1,2);
+    set.sum(1,3);
 
  // set.rank = [ 2, 1 ]
  // set.stat = [ 4, 5 ]
