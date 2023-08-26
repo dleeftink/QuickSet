@@ -411,7 +411,9 @@ Additionally updates the top-k window using the `minsum` strategy when the updat
 
 1. If already in top-k window, update count by one or a custom weight/value
 2. Else find the first integer with lowest frequency count
-2. Replace this integer with the updated one and its new value
+3. Replace this integer with the updated one and its new value
+
+The count of dropped integers remains available in the Typed backing array.
 
 ``` js
 
@@ -438,6 +440,8 @@ Additionally updates the top-k window using the `winsum` strategy when the updat
 2. From this index, move every integer and its value one position to the right
 3. Insert the integer and its updated value into the newly opened spot
 
+The count of dropped integers remains available in the Typed backing array.
+
 ``` js
 
 let set = new QuickSet({
@@ -448,8 +452,8 @@ let set = new QuickSet({
 
 //  1 is dropped when 4 is inserted
 
-//  set.rank = [ 0,2,4,3 ]
-//  set.stat = [ 3,2,1,1 ]
+//  set.rank = [ 0,2,4,3 ] -> [1] dropped
+//  set.stat = [ 3,2,1,1 ] -> [1] dropped
 
 ```
 
