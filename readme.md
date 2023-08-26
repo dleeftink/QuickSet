@@ -205,7 +205,7 @@ let set = new QuickSet({
 
 ```
 
-This method is useful for 'tombstoning' integers, e.g. setting an integer's value higher than the `high` watermark to prevent it being picked up by the `.sum()` top-k window:
+This method is useful for 'tombstoning' integers, e.g. setting an integer's value higher than the `high` watermark to prevent it being picked up by `.sum()`'s top-k window:
 
 ``` js
 let set = new QuickSet({
