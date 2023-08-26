@@ -103,7 +103,7 @@ let vals  = [1,2,3,4]
 
 ```
 
-Columnar example (strided values are summed for duplicate integers):
+Columnar example (values are summed in strided fashion for duplicate integers):
 
 ``` js
 
