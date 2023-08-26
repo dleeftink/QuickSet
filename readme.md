@@ -317,9 +317,9 @@ Methods for deleting and jettisoning integer data.
 
 ## Tips
 
-1. Randomly swapping modes
-2. Reuse a single instance
-3. Use multiple QuickSets with a small integer range
+1. Reuse a single instance
+2. Randomly switch between modes
+4. Use multiple QuickSets with a small integer span
 
 ## Caveats
 
