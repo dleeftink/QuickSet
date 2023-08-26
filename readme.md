@@ -274,9 +274,9 @@ let set = new QuickSet({
  // set.rank = [ 2, 0 ]
  // set.stat = [ 4, 0 ]
 
- // enable '1' to be picked up by .sum() again
- // by setting its value below the 'high' frequency mark
- // note: the first .put() does not update the top-k window, but .sum() does
+ // Enable 1 to be picked up by .sum() again by
+ // setting its value below the 'high' frequency mark
+ // note: the first .put() does not update top-k window, but .sum() does
 
     set.put(1,2);
     set.sum(1,3);
@@ -446,7 +446,7 @@ let set = new QuickSet({
     })
     set.batch(0,1,2,0,3,4,2,0)
 
-//  1 is overwritten by 4
+//  when 4 is inserted 1 is overwritten
 //  set.rank = [ 0,4,2,3 ]
 //  set.stat = [ 3,1,2,1 ]
 
@@ -472,7 +472,7 @@ let set = new QuickSet({
     })
     set.batch(0,1,2,0,3,4,2,0)
 
-//  1 is ejected when 4 is inserted
+//  when 4 is inserted 1 is ejected 
 //  set.rank = [ 0,2,4,3 ] -> [ 1 ] dropped
 //  set.stat = [ 3,2,1,1 ] -> [ 1 ] dropped
 
