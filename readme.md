@@ -90,14 +90,14 @@ Amount of top-k slots to track most frequent integers in the set.
 Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
 While these arrays can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k rank or exceeds a certain value), modifying them can lead to unwanted behaviour. 
 
-##### `QuickSet.bits: [UintArray]`
+##### `set.bits: [UintArray]`
 This property contains the Typed backing array that stores all integers present in the set as well as their values. 
 
-##### `QuickSet.rank: [UintArray]`
+##### `set.rank: [UintArray]`
 This property displays the Typed top-k window of ranked integers. 
 The window size is determined from [`slot`](#slot-0--16).
 
-##### `QuickSet.stat: [UintArray]`
+##### `set.stat: [UintArray]`
 This property displays the values associated with the ranked integers.
 Same length as `.rank`
 
@@ -429,7 +429,7 @@ Additionally updates the top-k window using the `minsum` strategy when the updat
 2. Else find the first integer with lowest frequency count
 3. Replace this integer with the updated one and its new value
 
-The count of dropped integers remains available in the Typed backing array.
+The count of dropped integers remains available in the [Typed backing array](#setbits-uintarray)
 
 ``` js
 
@@ -456,7 +456,7 @@ Additionally updates the top-k window using the `winsum` strategy when the updat
 2. From this index, move every integer and its value one position to the right
 3. Insert the integer and its updated value into the newly opened spot
 
-The count of dropped integers remains available in the Typed backing array.
+The count of dropped integers remains available in the [Typed backing array](#setbits-uintarray).
 
 ``` js
 
