@@ -101,13 +101,11 @@ The window size is determined from [`slot`](#slot-0--16).
 
 ##### `set.stat: [UintArray]`
 This property displays the values associated with the ranked integers.
-Same length as `.rank`
+Same length as `rank`
 
-___
+Together, `rank` and `stat` provide the top-k window of most frequent integers in a `QuickSet`.
 
-Together, `.rank` and `.stat` provide the top-k window of most frequent integers in a `QuickSet`.
-
-> Note that `.rank` and `.stat` may contain multiple zeroes. If 0 is an integer you have previously inserted, you can access this by looking for the first indexed 0 in `.rank`, its value reflected at the same index position in `.stat`.
+> Note that `rank` and `stat` may contain multiple zeroes. If 0 is an integer you have previously inserted, you can access this by looking for the first indexed 0 in `rank`, its value reflected at the same index position in `stat`.
 
 ## API
 
