@@ -64,7 +64,7 @@ Amount of top-k slots to keep track of most frequent integers in set.
 ### Bulk
 
 #### `.batch(...uints[, values])`
-Batch loading method for adding integers and optional  weights/values into the set.
+Batch loading method for inserting integers into the set and summing optional weights/values. Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
 
 Basic example:
 
@@ -125,7 +125,7 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 ```
 
 #### `.unique(...uints)`
-Batch loading method for inserting unique integers into the set once. Overwrites previously set values (i.e. integer frequency).
+Batch loading method for inserting unique integers into the set once. Overwrites previously set values (i.e. integer frequency). Does **not** update the top-k window.
 
 Basic example:
 
