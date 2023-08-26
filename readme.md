@@ -5,7 +5,7 @@ A performant sorted *Least Frequently Used* (LFU) set implementation for working
 ### Use cases
 
 ## How it works
-Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (any range between 0 and 2^28) and frequency of occurance. 
+Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (any number between 0 and 2^28) and frequency of occurance (any count between 0 and 2^32). 
 Additionally, it keeps track of how often individual integers are added to the set, providing a (sorted) top-k window of most frequent integers. 
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum`. 
@@ -16,6 +16,16 @@ This makes `QuickSet` a fast alternative to counting and sorting all elements in
 This enables working with frequently occuring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
 
 ## Quickstart 
+
+```
+
+npm install @suptxt/quickset
+
+```
+
+If you are interested in using unweighted set operations, use `.add()` for single- and `.unique()` for bulk insertion.
+
+If you want to assign weights to  integers, use `.sum()` for single- and `.batch()` for bulk insertion.
 
 ## Configuration
 
@@ -277,7 +287,7 @@ let set = new QuickSet({
 Methods for checking and retrieving integer data.
 
 #### `.has(uint)`
-Checks whether the given integer is present in the set.
+Checks if the given integer is part of the set.
 
 ``` js
 
@@ -383,7 +393,7 @@ let set = new QuickSet({
 Methods for inserting and updating integers counts by one or a custom value, including the top-k window.
 
 #### `.minsum(uint[, value])`
-Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
+Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window using the `minsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
 1. If already in top-k window, update count by one or custom weight/value
@@ -407,7 +417,7 @@ let set = new QuickSet({
 This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()` 
 
 #### `.winsum(uint[, value])`
-Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
+Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window using the `winsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
 1. Find the last integer in the window with a count exceeding the value to insert
@@ -429,7 +439,7 @@ let set = new QuickSet({
 ```
 
 This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency.
-If integer counts are tied, the last inserted value takes precedence in the ranking, i.e. integers that are inserted later are ranked higher than those inserted earlier (*Least Recently Used* or LRU-style).
+If integer counts are tied, the last inserted value takes precedence in the ranking, i.e. integers that are inserted later are ranked higher than those inserted earlier (*Least Recently Used* or LRU).
 Slightly slower than `.minsum()` due to frequent copying.
 
 ### Sorters 
