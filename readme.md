@@ -40,19 +40,24 @@ let config = {
 ```
 
 ##### `mode: "minsum" || "winsum"`
-Sets the default summing mode when using `.sum()`. See [rankers](#rankers) for more.
+Sets the default summing mode when using `.sum()`. 
+See [rankers](#rankers) for more.
 
 ##### `span: 0 ... 2^28`
-Maximum expected integer in set (upper range bound). Values above this number are ignored when added to the set.
+Maximum expected integer in set (upper range bound). 
+Values above this number are ignored when added to the set.
 
 ##### `clip: 0 ... 2^28`
-Minimum expected integer in set (lower range bound). Values below this number are ignored when added to the set.
+Minimum expected integer in set (lower range bound). 
+Values below this number are ignored when added to the set.
 
 ##### `high: 0 ... 2^32`
-Maximum expected count of each discrete integer in set (upper frequency bound per integer). Counting is maximised to this value. 
+Maximum expected count of each discrete integer in set (upper frequency bound per integer). 
+Counting is maximised to this value. 
 
 ##### `freq: 0 ... 2^32`
-Minimum expected count of each discrete integer in set (lower frequency bound per integer). Functions as minimum threshold for integers to be included in top-k window.
+Minimum expected count of each discrete integer in set (lower frequency bound per integer). 
+Functions as minimum threshold for integers to be included in top-k window.
 
 ##### `slot: 0 ... 16`
 Amount of top-k slots to keep track of most frequent integers in set.
@@ -64,7 +69,8 @@ Amount of top-k slots to keep track of most frequent integers in set.
 ### Bulk
 
 #### `.batch(...uints[, values])`
-Batch loading method for inserting integers into the set and summing optional weights/values. Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
+Batch loading method for inserting integers into the set and summing optional weights/values. 
+Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
 
 Basic example:
 
@@ -125,7 +131,9 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 ```
 
 #### `.unique(...uints)`
-Batch loading method for inserting unique integers into the set once. Resets previous set values (i.e. integer counts) to one. Does **not** update the top-k window (use `.batch()` for this).
+Batch loading method for inserting unique integers into the set once. 
+Resets previous set values (i.e. integer counts) to one. 
+Does **not** update the top-k window (use `.batch()` for this).
 
 Basic example:
 
@@ -163,7 +171,9 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 Methods for inserting and updating integer data.
 
 #### `.add(uint[, value])`
-Inserts a single integer into the set if within range (`clip` and `span` parameters), with an optional weight/value. Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
+Inserts a single integer into the set if within range (`clip` and `span` parameters), with an optional weight/value. 
+Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). 
+Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
 
 Example:
 
@@ -237,7 +247,8 @@ This technique can be used to build a 'drop' list of integers and keep unwanted 
 
 #### `.sum(uint[, value])`
 
-Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum) when the updated integer count exceeds the minimum `freq` value.
+Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
+Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum `freq` parameter.
 
 Example:
 
@@ -372,8 +383,23 @@ let set = new QuickSet({
 Methods for inserting and updating integers counts by one or a custom value, including the top-k window.
 
 #### `.minsum(uint[, value])`
+Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
+Additionally updates the top-k window using the `minsum` strategy when the updated value exceeds the minimum `freq` parameter:
+
+1. Find the first integer with lowest frequency count
+2. Replace this integer with the updated one and its new value
+
+This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()` 
 
 #### `.winsum(uint[, value])`
+Inserts a single integer into the set if within range (`clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
+Additionally updates the top-k window using the `winsum` strategy when the updated value exceeds the minimum `freq` parameter:
+
+1. Find the last integer in the window with a value exceeding the updated value
+2. From this index Move every integer and its value one position to the right
+3. Insert the new integer and its value into the newly opened position
+
+This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency. Slightly slower than `.minsum()` on account of frequent copying.
 
 ### Sorters 
 
