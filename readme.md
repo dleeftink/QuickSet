@@ -221,7 +221,7 @@ let set = new QuickSet({
 
 // allow 1 to be picked up by .sum() again
 // by setting its value below the 'high' frequency mark
-
+// note: the first .put() does not update the top-k window, but .sum() does
 
    set.put(1,2);
    set.sum(1,3);
