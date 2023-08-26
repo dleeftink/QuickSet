@@ -52,15 +52,14 @@ Creates a new QuickSet instance with default settings (top-k window is turned of
 ```js
 let config = {
 
-  mode: "minsum" || "winsum",
+    mode: "minsum" || "winsum",
+    slot:   0, // top-k ranked window slots  (0 ... 16\
 
-  span: 512, // max expected integer range (0 ... 2^28)
-  clip:   0, // min expected integer range (0 ... 2^28)
+    span: 512, // max expected integer range (0 ... 2^28)
+    clip:   0, // min expected integer range (0 ... 2^28)
   
-  high: 128, // max expected integer count (0 ... 2^32)
-  freq:   1, // min expected integer count (0 ... 2^32)
-
-  slot:   0, // top-k ranked window slots  (0 ... 16)
+    high: 128, // max expected integer count (0 ... 2^32)
+    freq:   1, // min expected integer count (0 ... 2^32)
 
 }
 ```
