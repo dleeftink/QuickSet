@@ -313,6 +313,12 @@ Methods for deleting and jettisoning integer data.
 
 #### `.entries(iters[, reverse])` 
 
+### Resizing
+
+#### `.grow(slot)`
+
+#### `.crop(slot)`
+
 ### Disposal
 
 #### `.clear(true || 0-16)`
