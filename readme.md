@@ -490,11 +490,11 @@ Method that returns all integer keys in the set in natural ascending order.
 #### `.values(iters[, reverse])`
 Method that returns all values associated with each key in natural ascending order of keys.
 
-#### `.entries(iters[, reverse])` 
-Method that returns all key/value entries in natural ascending order of keys.
-
 #### `.sorted(iters[, reverse])`
 Implementation forthcoming.
+
+#### `.entries(iters[, reverse])` 
+Method that returns all key/value entries in natural ascending order of keys.
 
 ### Windows
 
