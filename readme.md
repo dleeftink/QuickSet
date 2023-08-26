@@ -409,7 +409,7 @@ Methods for inserting and updating integers counts by one or a custom value, inc
 Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window using the `minsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
-1. If already in top-k window, update count by one or custom weight/value
+1. If already in top-k window, update count by one or a custom weight/value
 2. Else find the first integer with lowest frequency count
 2. Replace this integer with the updated one and its new value
 
@@ -427,15 +427,15 @@ let set = new QuickSet({
 
 ```
 
-This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()` 
+This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()`.
 
 #### `.winsum(uint[, value])`
 Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window using the `winsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
 1. Find the last integer in the window with a count exceeding the value to insert
-2. From this index move every integer and its value one position to the right
-3. Insert the new integer and its value into the newly opened position
+2. From this index, move every integer and its value one position to the right
+3. Insert the integer and its updated value into the newly opened spot
 
 ``` js
 
