@@ -274,7 +274,7 @@ let set = new QuickSet({
  // set.rank = [ 2, 0 ]
  // set.stat = [ 4, 0 ]
 
- // allow 1 to be picked up by .sum() again
+ // enable '1' to be picked up by .sum() again
  // by setting its value below the 'high' frequency mark
  // note: the first .put() does not update the top-k window, but .sum() does
 
@@ -374,11 +374,13 @@ let set = new QuickSet({
     set.delete(1);
     set.delete(3);
 
-//  [ 1, 3 ]  deleted from backing array
+//  [ 1,3 ]  deleted from backing array
+
 //  set.keys()   = [ 0,4,5,7 ]
 //  set.values() = [ 1,1,1,1 ]
 
-//  [ 1, 3 ] kept in top-k window
+//  [ 1,3 ] kept in top-k window
+
 //  set.rank = [ 1,3,0,4,5,7 ]
 //  set.stat = [ 3,2,1,1,1,1 ]
 
@@ -411,11 +413,13 @@ let set = new QuickSet({
     set.derank(0);
     set.derank(4);
 
-//  [ 1, 0, 4 ] deleted from backing array
+//  [ 1,0,4 ] deleted from backing array
+
 //  set.keys()   = [ 3,5,7 ]
 //  set.values() = [ 2,1,1 ]
 
-//  [ 1, 0, 4 ] deranked from top-k window
+//  [ 1,0,4 ] deranked from top-k window
+
 //  set.rank = [ 3,5,7,0,0,0 ]
 //  set.stat = [ 2,1,1,0,0,0 ]
 
@@ -468,9 +472,9 @@ let set = new QuickSet({
     })
     set.batch(0,1,2,0,3,4,2,0)
 
-//  1 is dropped when 4 is inserted
-//  set.rank = [ 0,2,4,3 ] -> [1] dropped
-//  set.stat = [ 3,2,1,1 ] -> [1] dropped
+//  1 is ejected when 4 is inserted
+//  set.rank = [ 0,2,4,3 ] -> [ 1 ] dropped
+//  set.stat = [ 3,2,1,1 ] -> [ 1 ] dropped
 
 ```
 
