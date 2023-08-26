@@ -319,9 +319,9 @@ Methods for deleting and jettisoning integer data.
 
 ### Resizing
 
-#### `.grow(slot)`
+#### `.expand(slots)`
 
-#### `.crop(slot)`
+#### `.shrink(slots)`
 
 ## Tips
 
