@@ -297,7 +297,7 @@ Methods for deleting and jettisoning integer data.
 
 #### `.delete(uint)`
 Removes a single integer and its value from the set. Does **not** update `.sum()`'s top-k window (use `.derank()` for that). 
-Useful for resetting an integer's count to zero while maintaining its position in the top-k window.
+Useful for resetting an integer's count to zero while maintaining its position and last value in the top-k window.
 
 Example:
 
@@ -321,11 +321,11 @@ let set = new QuickSet({
     set.delete(0)
     set.delete(1);
 
-//  integers deleted from backing array
+//  0 & 1  deleted from backing array
 //  set.keys()   = [ 3,4,5,7 ]
 //  set.values() = [ 2,1,1,1 ]
 
-//  integers not deleted from  top-k window
+//  0 & 1 kept in top-k window
 //  set.rank = [ 3,1,0,4,5,7 ]
 //  set.stat = [ 2,3,1,1,1,1 ]
 
