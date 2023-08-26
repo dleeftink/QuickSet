@@ -355,19 +355,21 @@ let set = new QuickSet({
 //  set.stat = [ 3,2,1,1,1,1 ]
 
     set.derank(1);
+    set.derank(0);
     set.derank(4);
 
-//  1 & 4  deleted from backing array
-//  set.keys()   = [ 3,0,5,7 ]
-//  set.values() = [ 2,1,1,1 ]
+//  [ 1,0,4 ] deleted from backing array
+//  set.keys()   = [ 3,5,7 ]
+//  set.values() = [ 2,1,1 ]
 
-//  1 & 4 kept deranked from top-k window
-//  set.rank = [ 3,0,5,7,0,0 ]
-//  set.stat = [ 2,1,1,1,0,0 ]
+//  [ 1,0,4 ] deranked from top-k window
+//  set.rank = [ 3,5,7,0,0,0 ]
+//  set.stat = [ 2,1,1,0,0,0 ]
 
 ```
 
 ### Rankers
+Methods for inserting and updating integers counts by one or a custom value, including the top-k window.
 
 #### `.minsum(uint[, value])`
 
