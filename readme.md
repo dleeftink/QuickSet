@@ -88,16 +88,16 @@ Amount of top-k slots to track most frequent integers in the set.
 #### `QuickSet class { ... }`
 
 Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
-While these properties can be read without issue, modifying them can lead to unwanted behaviour. 
+While these arrays can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k rank or exceeds a certain value), modifying them can lead to unwanted behaviour. 
 
-##### `.bits: [UintArray]`
+##### `QuickSet.bits: [UintArray]`
 This property contains the Typed backing array that stores all integers present in the set as well as their values. 
 
-##### `.rank: [UintArray]`
+##### `QuickSet.rank: [UintArray]`
 This property displays the Typed top-k window of ranked integers. 
 The window size is determined from [`slot`](#slot-0--16).
 
-##### `.stat: [UintArray]`
+##### `QuickSet.stat: [UintArray]`
 This property displays the values associated with the ranked integers.
 Same length as `.rank`
 
