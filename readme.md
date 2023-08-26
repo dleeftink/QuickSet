@@ -219,8 +219,10 @@ let set = new QuickSet({
 // set.rank = [ 2, 0 ]
 // set.stat = [ 4, 0 ]
 
-// allow 1 to be picked up by .sum()
+// allow 1 to be picked up by .sum() again
 // by setting its value below the 'high' frequency mark
+
+
    set.put(1,2);
    set.sum(1,3);
 
