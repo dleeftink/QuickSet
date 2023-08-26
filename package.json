@@ -19,13 +19,15 @@
     "set",
     "performant",
     "top-k",
+    "math",
     "LFU",
     "sorted",
-    "ordered",
     "ranked",
     "window",
+    "ordered",
     "integer",
-    "typedArray"
+    "typedArray",
+    "insertion sort"
   ],
   "files": [
     "src/**/*.js"
