@@ -304,7 +304,7 @@ Example:
 ``` js
 
 let set = new QuickSet({
-      mode: "minsum",
+      mode: "winsum",
       freq:  1,
       slot:  6
     });
@@ -315,25 +315,57 @@ let set = new QuickSet({
 //  set.values() = [ 1,3,2,1,1,1 ]
 
 //  Top-k window 
-//  set.rank = [ 3,1,0,4,5,7 ]
-//  set.stat = [ 2,3,1,1,1,1 ]
+//  set.rank = [ 1,3,0,4,5,7 ]
+//  set.stat = [ 3,2,1,1,1,1 ]
 
-    set.delete(0)
     set.delete(1);
+    set.delete(3);
 
-//  0 & 1  deleted from backing array
-//  set.keys()   = [ 3,4,5,7 ]
-//  set.values() = [ 2,1,1,1 ]
+//  1 & 3  deleted from backing array
+//  set.keys()   = [ 0,4,5,7 ]
+//  set.values() = [ 1,1,1,1 ]
 
-//  0 & 1 kept in top-k window
-//  set.rank = [ 3,1,0,4,5,7 ]
-//  set.stat = [ 2,3,1,1,1,1 ]
+//  1 & 3 kept in top-k window
+//  set.rank = [ 1,3,0,4,5,7 ]
+//  set.stat = [ 3,2,1,1,1,1 ]
 
 ```
 
-This method is useful to reset integer counts to 0 when exceeding a threshold, e.g to downsample frequent integers during `.sum()` operations.
+This method is useful to reset integer counts to 0 when exceeding a threshold, which downsamples frequent integers during later `.sum()` operations.
 
 #### `.derank(uint)`
+Removes a single integer and its value from the set. Additionally updates `.sum()`'s top-k window based on [`mode`](#mode-minsum--winsum). 
+Useful to delete an integer from the set and remove it from the top-k window.
+
+``` js
+
+let set = new QuickSet({
+      mode: "winsum",
+      freq:  1,
+      slot:  6
+    });
+    set.batch(3,1,0,1,3,4,3,5,7,1)
+
+//  Backing array
+//  set.keys()   = [ 0,1,3,4,5,7 ]
+//  set.values() = [ 1,3,2,1,1,1 ]
+
+//  Top-k window 
+//  set.rank = [ 1,3,0,4,5,7 ]
+//  set.stat = [ 3,2,1,1,1,1 ]
+
+    set.derank(1);
+    set.derank(4);
+
+//  1 & 4  deleted from backing array
+//  set.keys()   = [ 3,0,5,7 ]
+//  set.values() = [ 2,1,1,1 ]
+
+//  1 & 4 kept deranked from top-k window
+//  set.rank = [ 3,0,5,7,0,0 ]
+//  set.stat = [ 2,1,1,1,0,0 ]
+
+```
 
 ### Rankers
 
