@@ -483,13 +483,13 @@ Slightly slower than `.minsum()` due to frequent copying.
 
 ### Sorters 
 Methods for sorting and returning the set data. 
-Each can be exit early by providing a maximum number of `iters`, or return items in descending order by setting its `reverse` to `true`.
+Each can be exit early by providing a maximum number of `iters` (value greater zerp or `true` for a full sweep), or return items in descending order by setting its `reverse` to `true`.
 
 #### `.keys(iters[, reverse])`
 Method that returns all integer keys in the set in natural ascending order.
 
 #### `.values(iters[, reverse])`
-Method that returns all values associated with each key in natural ascending order of keys.
+Method that returns all values associated to keys in natural ascending order of keys.
 
 #### `.entries(iters[, reverse])` 
 Method that returns all key/value pairs in natural ascending order of keys.
