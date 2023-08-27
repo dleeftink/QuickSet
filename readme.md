@@ -497,11 +497,41 @@ Each can be exit early by providing a maximum number of `iters` (value greater t
 #### `.keys(iters[, reverse])`
 Method that returns all integer keys in the set in natural ascending order.
 
+``` js
+
+let set = new QuickSet()
+    set.batch(4,1,2,3,4,1,2,5,2,0)
+
+//  set.keys()  = [0,1,2,3,4,5]
+//  set.keys(2) = [0,1]
+
+```
+
 #### `.values(iters[, reverse])`
 Method that returns all values associated to keys in natural ascending order of keys.
 
+``` js
+
+let set = new QuickSet()
+    set.batch(4,1,2,3,4,1,2,5,2,0)
+
+//  set.values()  = [1,2,3,1,2,1]
+//  set.values(2) = [1,2]
+
+```
+
 #### `.entries(iters[, reverse])` 
 Method that returns all key/value pairs in natural ascending order of keys.
+
+``` js
+
+let set = new QuickSet()
+    set.batch(4,1,2,3,4,1,2,5,2,0)
+
+//  set.entries()  = [[0,1], [1,2], [2,3], [3,1], [4,2], [5,1]]
+//  set.entries(2) = [[0,1], [1,2]]
+
+```
 
 #### `.sorted(iters[, reverse])`
 Implementation forthcoming.
