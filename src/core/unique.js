@@ -5,7 +5,8 @@ export default function unique(...data) {
   }
 
   let span = data.length;
-  
+
+  // unrolled loop, data is validated in each .add() call
   for (var i = 0; i < span - 7; i = i + 8) {
     this.add(data[i]);
     this.add(data[i + 1]);
