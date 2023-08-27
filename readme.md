@@ -505,10 +505,6 @@ Implementation forthcoming.
 #### `.topv(pick[, reverse])`
 Implementation forthcoming.
 
-### Disposal
-
-#### `.clear(true || 0-16)`
-
 ### Resizing
 
 #### `.expand(slots)`
@@ -516,6 +512,10 @@ Implementation forthcoming.
 
 #### `.shrink(slots)`
 Implementation forthcoming.
+
+### Disposal
+
+#### `.clear(true || 0-16)`
 
 ## Tips
 1. Reuse a single instance
