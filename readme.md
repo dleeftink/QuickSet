@@ -37,8 +37,8 @@ let set = new QuickSet()
 
 This instantiates a new set with default parameters and a top-k window of 0-length, which may need additional configuring to suit your needs. As a rule of thumb:
 
-- If you are interested in using unweighted set operations only, use `.add()` for single and `.unique()` for bulk insertion.
-- If you want to assign weights to  integers, use `.sum()` for single and `.batch()` for bulk insertion.
+- If you are interested in using unweighted set operations only, use `.add()` for single and `.unique()` for bulk insertions.
+- If you want to assign weights to  integers, use `.sum()` for single and `.batch()` for bulk insertions.
 Updates are only made when the [`slot`](#slot-0--16) parameter is set.
 
 However, methods can be mixed and matched to your liking. 
