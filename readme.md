@@ -540,7 +540,8 @@ Implementation forthcoming.
 3. No set size parameter yet
 
 ## Benchmarks
-Average time to extract unique keys on 5 runs of random integers:
+On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
+average time to extract unique keys (5 runs of random integers):
 
 | Unique keys | instance | ms | factor | 
 | -: | :- | -: | -: |
