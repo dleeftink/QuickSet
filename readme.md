@@ -106,7 +106,7 @@ Same length as `rank`
 A constant parameter for accessing the last index in the top-k window.
 
 ##### `set.tmin: Uint`
-A variable parameter displaying the minimum value in the top-k window.
+A variable parameter displaying the minimum value in the top-k window, lower bounded by the [`freq`](#freq-0--232) parameter.
 
 ##### `set.tmax: Uint`
 A variable parameter displaying the maximum value in the top-k window.
