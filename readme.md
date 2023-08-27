@@ -441,7 +441,7 @@ The count of dropped integers remains available in the [Typed backing array](#se
 
 let set = new QuickSet({
       slot:4,
-      freq;2
+      freq:2
     })
     set.batch(0,1,2,0,3,4,2,0)
 
@@ -467,7 +467,7 @@ The count of dropped integers remains available in the [Typed backing array](#se
 
 let set = new QuickSet({
       slot:4,
-      freq;2
+      freq:2
     })
     set.batch(0,1,2,0,3,4,2,0)
 
@@ -523,6 +523,7 @@ Implementation forthcoming.
 3. Use multiple QuickSets with a small integer span
 4. Maintain a `new Map()` for reverse value lookups
 5. Set `freq` to a value higher than 1 for top-k window speed-ups
+6. Use multiple QuickSets with offsets to increase integer range 
 
 ## Caveats
 1. Large sets affect performance
