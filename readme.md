@@ -88,6 +88,7 @@ Amount of top-k slots to track most frequent integers in the set.
 
 #### `QuickSet class { ... }`
 Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
+Together, `set.rank` and `set.stat` provide the top-k window of most frequent integer keys (rank) and values (stat) in a `QuickSet`.
 While these arrays can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
 Some additional properties describe the internal state of the set.
 
@@ -111,7 +112,6 @@ A variable parameter displaying the minimum value in the top-k window, lower bou
 ##### `set.tmax: Uint`
 A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--232).
 
-**Together, `set.rank` and `set.stat` provide the top-k window of most frequent integer keys ('rank') and values ('stat') in a `QuickSet`.**
 
 > Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes. If 0 is an integer you have previously inserted, you can access this by looking for the first indexed 0 in `rank` as well its value at the same index position in `stat`.
 
