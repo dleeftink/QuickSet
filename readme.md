@@ -82,7 +82,7 @@ Counting is maximised to this value.
 
 ##### `freq: 0 .. 2^32`
 Minimum expected count of each discrete integer in set (lower frequency bound per integer). 
-Functions as minimum threshold for integers to be included in top-k window.
+Acts as minimum threshold for integers to be included in top-k window.
 
 ##### `slot: 0 .. 16`
 Amount of top-k slots to track most frequent integers in the set.
