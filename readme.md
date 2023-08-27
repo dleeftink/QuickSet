@@ -537,6 +537,7 @@ Implementation forthcoming.
 ## Caveats
 1. Large sets affect performance
 2. Only limited top-k slots available (<16)
+3. No set size parameter yet
 
 ## Benchmarks
 T.B.D.
