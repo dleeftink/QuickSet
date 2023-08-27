@@ -1,5 +1,5 @@
 # QuickSet
-A performant *Least Frequently Used* (LFU) sorted set implementation for working with reasonably sized integers (unsigned). Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (spanning from 0 to 2^16), or extracting unique integers (spanning from 0 to 2^28) from a large pool of numbers in one pass.
+A performant *Least Frequently Used* (LFU) sorted set implementation for working with reasonably sized integers (unsigned). Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (integers spanning from 0 to 2^16 inclusive) or extracting unique integers from a large pool of integers in one go (integers spanning from 0 to 2^28 inclusive).
 
 ### Use cases
 1. Finding top-k most frequent items in one or many lists
