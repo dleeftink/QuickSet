@@ -128,7 +128,7 @@ Basic example:
 ``` js
 
 let set = new QuickSet();
-    set.batch(0,1,1,2,4,6,7,7,1)
+    set.batch(0,1,1,2,4,6,7,7,1);
 
  // set.keys()   = [0,1,2,4,6,7,1]
  // set.values() = [1,3,1,1,1,2,1]
@@ -139,8 +139,8 @@ Array example:
 
 ``` js
 
-let uints = [0,1,1,2,4,6,7,7,1]
-    set.batch(uints)
+let uints = [0,1,1,2,4,6,7,7,1];
+    set.batch(uints);
 
  // set.keys()   = [0,1,2,4,6,7,1]
  // set.values() = [1,3,1,1,1,2,1]
@@ -151,9 +151,9 @@ Columnar example (values are summed for duplicate integers):
 
 ``` js
 
-let uints = [1,5,7,1]
-let vals  = [1,2,3,4]
-    set.batch(uints, vals)
+let uints = [1,5,7,1];
+let vals  = [1,2,3,4];
+    set.batch(uints, vals);
 
  // set.keys()   = [1,5,7]
  // set.values() = [5,2,3]
@@ -164,9 +164,9 @@ Strided columnar example (values are summed in strided fashion for duplicate int
 
 ``` js
 
-let uints = [1,2,2,5]
-let vals  = [1,3]
-    set.batch(uints, vals)
+let uints = [1,2,2,5];
+let vals  = [1,3];
+    set.batch(uints, vals);
 
  // set.keys()   = [1,2,5]
  // set.values() = [1,4,3]
@@ -190,7 +190,7 @@ Basic example:
 
 ``` js
 
-let set = new QuickSet()
+let set = new QuickSet();
     set.unique(0,2,4,1,6,7,1,2);
 
  // set.keys()   = [0,1,2,4,6,7]
@@ -202,7 +202,7 @@ Array example:
 
 ``` js
 
-let uints = [0,2,4,1,6,7,1,2]
+let uints = [0,2,4,1,6,7,1,2];
     set.unique(uints);
 
  // set.keys()   = [0,1,2,4,6,7]
@@ -230,7 +230,7 @@ Example:
 
 ``` js
 
-let set = new QuickSet()
+let set = new QuickSet();
     set.add(1);
     set.add(2,1);
     set.add(2,4);
@@ -309,7 +309,7 @@ let set = new QuickSet({
       high: 16,
       freq:  2,
       slot:  4,
-    })
+    });
 
     set.sum(1);
     set.sum(2);
@@ -331,7 +331,7 @@ Checks if the given integer is part of the set.
 
 ``` js
 
-let uints = [0,1,5,7]
+let uints = [0,1,5,7];
     set.batch(uints);
 
     set.has(7) // => true
@@ -369,7 +369,7 @@ let set = new QuickSet({
       freq:  1,
       slot:  6
     });
-    set.batch(3,1,0,1,3,4,3,5,7,1)
+    set.batch(3,1,0,1,3,4,3,5,7,1);
 
 //  Backing array
 //  set.keys()   = [ 0,1,3,4,5,7 ]
@@ -407,7 +407,7 @@ let set = new QuickSet({
       freq:  1,
       slot:  6
     });
-    set.batch(3,1,0,1,3,4,3,5,7,1)
+    set.batch(3,1,0,1,3,4,3,5,7,1);
 
 //  Backing array
 //  set.keys()   = [ 0,1,3,4,5,7 ]
@@ -451,8 +451,8 @@ The count of each dropped integer remains accessible in the [Typed backing array
 let set = new QuickSet({
       slot:4,
       freq:2
-    })
-    set.batch(0,1,2,0,3,4,2,0)
+    });
+    set.batch(0,1,2,0,3,4,2,0);
 
 //  when 4 is inserted 1 is overwritten
 //  set.rank = [ 0,4,2,3 ]
@@ -477,8 +477,8 @@ The count of each dropped integer remains accessible in the [Typed backing array
 let set = new QuickSet({
       slot:4,
       freq:2
-    })
-    set.batch(0,1,2,0,3,4,2,0)
+    });
+    set.batch(0,1,2,0,3,4,2,0);
 
 //  when 4 is inserted 1 is ejected 
 //  set.rank = [ 0,2,4,3 ] -> [ 1 ] dropped
@@ -499,8 +499,8 @@ Method that returns all integer keys in the set in natural ascending order.
 
 ``` js
 
-let set = new QuickSet()
-    set.batch(4,1,2,3,4,1,2,5,2,0)
+let set = new QuickSet();
+    set.batch(4,1,2,3,4,1,2,5,2,0);
 
 //  set.keys()  = [0,1,2,3,4,5]
 //  set.keys(2) = [0,1]
@@ -512,8 +512,8 @@ Method that returns all values associated to keys in natural ascending order of 
 
 ``` js
 
-let set = new QuickSet()
-    set.batch(4,1,2,3,4,1,2,5,2,0)
+let set = new QuickSet();
+    set.batch(4,1,2,3,4,1,2,5,2,0);
 
 //  set.values()  = [1,2,3,1,2,1]
 //  set.values(2) = [1,2]
@@ -525,8 +525,8 @@ Method that returns all key/value pairs in natural ascending order of keys.
 
 ``` js
 
-let set = new QuickSet()
-    set.batch(4,1,2,3,4,1,2,5,2,0)
+let set = new QuickSet();
+    set.batch(4,1,2,3,4,1,2,5,2,0);
 
 //  set.entries()  = [[0,1], [1,2], [2,3], [3,1], [4,2], [5,1]]
 //  set.entries(2) = [[0,1], [1,2]]
