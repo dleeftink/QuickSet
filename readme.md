@@ -111,7 +111,7 @@ A variable parameter displaying the minimum value in the top-k window, lower bou
 ##### `set.tmax: Uint`
 A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--232).
 
-Together, `set.rank` and `set.stat` provide the top-k window of most frequent integer keys (`rank`) and values (`stat`) in a `QuickSet`.
+**Together, `set.rank` and `set.stat` provide the top-k window of most frequent integer keys ('rank') and values ('stat') in a `QuickSet`.**
 
 > Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes. If 0 is an integer you have previously inserted, you can access this by looking for the first indexed 0 in `rank` as well its value at the same index position in `stat`.
 
