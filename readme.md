@@ -574,7 +574,7 @@ average time to extract unique keys on 5 runs of random integers:
 
 | Random keys | instance | ms | factor | 
 | -: | :- | -: | -: |
-| 2^28 | native | size exceeded | - |
+| 2^28 | native | size exceeded | - |
 | = 268 435 456 | QuickSet | 4592 | - |
 | 2^24 | native | 6095 | - |
 | = 16 777 216 | QuickSet|  212 | 28x |
