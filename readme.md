@@ -106,10 +106,10 @@ Same length as `rank`
 A constant parameter for accessing the last index in the top-k window.
 
 ##### `set.tmin: Uint`
-A variable parameter displaying the minimum value in the top-k window, lower bounded by the [`freq`](#freq-0--232) parameter.
+A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--232).
 
 ##### `set.tmax: Uint`
-A variable parameter displaying the maximum value in the top-k window.
+A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--232).
 
 Together, `set.rank` and `set.stat` provide the top-k window of most frequent integer keys (`rank`) and values (`stat`) in a `QuickSet`.
 
