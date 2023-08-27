@@ -540,13 +540,13 @@ Implementation forthcoming.
 3. No set size parameter yet
 
 ## Benchmarks
-Average time to extract unique keys from 5 runs of random integers:
+Average time to extract unique keys on 5 runs of random integers:
 
 | Unique keys | instance | ms | factor | 
 | -: | :- | -: | -: |
 | 2^28 | native | Set maximum size exceeded | - |
-| = 268 435 456 ints | QuickSet | 4592 | - |
+| = 268 435 456 | QuickSet | 4592 | - |
 | 2^24 | native | 6095 | - |
-| = 16 777 216 ints | QuickSet|  212 | 28x |
+| = 16 777 216 | QuickSet|  212 | 28x |
 | 2^16 | native |  4.4 | - |
-| = 65 536 ints |QuickSet | 1.3 | 3x |
+| = 65 536 |QuickSet | 1.3 | 3x |
