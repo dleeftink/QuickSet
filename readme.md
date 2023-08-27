@@ -542,11 +542,11 @@ Implementation forthcoming.
 ## Benchmarks
 Average time to extract unique keys from 5 runs of random integers:
 
-|Unique keys | instance | ms | factor | 
+| Unique keys | instance | ms | factor | 
 | -: | :- | -: | -: |
-| 2^28 = 268 435 456 ints | native | Set maximum size exceeded | -
-|| QuickSet | 4592 | -
-| 2^24 = 16 777 216 ints  | native | 6095 | -
-|| QuickSet|  212 | 28x
-|2^16 = 65 536 ints | native |  4.4 | -
-||QuickSet | 1.3 | 3x
+| 2^28 | native | Set maximum size exceeded | - |
+| = 268 435 456 ints | QuickSet | 4592 | - |
+| 2^24 | native | 6095 | - |
+| = 16 777 216 ints | QuickSet|  212 | 28x |
+| 2^16 | native |  4.4 | - |
+| = 65 536 ints |QuickSet | 1.3 | 3x |
