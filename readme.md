@@ -573,7 +573,7 @@ Implementation forthcoming.
 On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
 average time to extract unique keys on 5 runs of random integers:
 
-| Unique keys | instance | ms | factor | 
+| Random keys | instance | ms | factor | 
 | -: | :- | -: | -: |
 | 2^28 | native | Set maximum size exceeded | - |
 | = 268 435 456 | QuickSet | 4592 | - |
