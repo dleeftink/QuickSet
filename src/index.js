@@ -1,12 +1,20 @@
 import prototype from './proto.js'
-export class QuickSet {
+import rewrite from '../src/util/rewrite.js'
+
+export default class QuickSet {
 
   constructor({
     mode = "minsum" || "winsum", 
     clip = 0 , span = 512 , // integer range min - max
     slot = 0 , high = 128 , // frequency slots + range 
     freq = 1 , // minimum item cut frequency 
+    lifo = false,
     } = {}) {
+
+    Object.assign(this.constructor.prototype, prototype);
+    
+    if (lifo) this.constructor.prototype[mode] = 
+    rewrite ( this[mode], 'val > this.tmin', 'val >= this.tmin');
 
     if (span > 2**28) 
     throw Error('Expected integer beyond memory range');
@@ -16,15 +24,13 @@ export class QuickSet {
 
     if (slot > 16) 
     throw Error('Rank slots performance degradation > 16');
-    
-    if (span < slot) slot = span;
 
-    Object.assign(this.constructor.prototype, prototype);
+    if (span < slot) slot = span;
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
-    this.constructor.prototype.default = { Rank, Pool, mode , mult, byte };
+    this.constructor.prototype.default = { Rank, Pool, mode, lifo, mult, byte };
     this.constructor.prototype.sum = this[mode];
 
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 

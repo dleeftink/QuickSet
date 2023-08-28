@@ -60,6 +60,8 @@ let config = {
   high: 128, // max expected integer count (0 .. 2^32)
   freq:   1, // min expected integer count (0 .. 2^32)
 
+  lifo:false // replace earlier values in case of ties
+
 }
 ```
 
@@ -85,6 +87,10 @@ Acts as minimum threshold for integers to be included in top-k window.
 
 ###### `slot: 0 .. 16`
 Amount of top-k slots to track most frequent integers in the set.
+
+###### `lifo: Boolean`
+Whether to eject old values from the top-k window in case of ties. 
+Performance might be affected when `lifo: true`.
 
 #### `QuickSet class { ... }`
 Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 

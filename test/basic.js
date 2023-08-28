@@ -12,7 +12,8 @@ let set = new QuickSet({
   high: 32,
   slot: 4,
   freq: 2,
-  mode: 'minsum',
+  mode: 'winsum',
+  lifo: false
 });
 
 let span = ints.length;
@@ -37,4 +38,4 @@ for (let n = 0; n < iter; ++n) {
 
 let t2 = performance.now() - t1;
 
-console.log(temp, set,t2);
+console.log(temp, set,t2, set.default)
