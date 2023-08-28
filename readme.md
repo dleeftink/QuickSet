@@ -574,7 +574,7 @@ Methods for sorting and returning the set data.
 Each can be exit early by providing a maximum number of `iters` (value greater than zero or `true` for a full sweep), or return items in descending order by setting its `reverse` to `true`.
 
 #### `.keys(iters[, reverse])`
-Method that returns all integer keys in the set in natural ascending order.
+Method that returns all integer keys in the set in natural ascending order. 
 
 ``` js
 
@@ -613,7 +613,8 @@ let set = new QuickSet();
 ```
 
 #### `.sorted(iters[, reverse])`
-Method that sorts all integer keys in the set in natural ascending order.
+Method that sorts all integers in the set in natural ascending order.
+Slightly faster than calling native `.sort()`.
 
 ``` js
 
