@@ -14,7 +14,7 @@ import {
   top,
   topK,
   topV,
-} from './core/windows.js';
+} from './core/copiers.js';
 import { 
   keys, 
   values, 

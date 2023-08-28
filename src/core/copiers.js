@@ -1,11 +1,3 @@
-function topK(k = this.slot) {
-  return this.rank.slice(0,k)
-}
-
-function topV(k = this.slot) {
-  return this.stat.slice(0,k)
-}
-
 function top(k = this.slot) {
 
   if ( k > this.slot ) 
@@ -20,6 +12,14 @@ function top(k = this.slot) {
 
   return exit
 
+}
+
+function topK(k = this.slot) {
+  return this.rank.slice(0,k)
+}
+
+function topV(k = this.slot) {
+  return this.stat.slice(0,k)
 }
 
 export { top, topK, topV }

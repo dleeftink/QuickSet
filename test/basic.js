@@ -10,8 +10,8 @@ let t1 = performance.now();
 let set = new QuickSet({
   span: 2 ** 10,
   high: 32,
-  slot: 8,
-  freq: 3,
+  slot: 4,
+  freq: 2,
   mode: 'minsum',
   lifo: false
 });
