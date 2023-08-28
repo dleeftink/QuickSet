@@ -448,8 +448,9 @@ The count of each dropped integer remains accessible in the [Typed backing array
 ``` js
 
 let set = new QuickSet({
-      slot:4,
-      freq:2
+      mode: "minsum",
+      slot: 4,
+      freq: 0
     });
     set.batch(0,1,2,0,3,4,2,0);
 
@@ -476,14 +477,15 @@ The count of each dropped integer remains accessible in the [Typed backing array
 ``` js
 
 let set = new QuickSet({
-      slot:4,
-      freq:2
+      mode: "winsum,
+      slot: 4,
+      freq: 0
     });
     set.batch(0,1,2,0,3,4,2,0);
 
 //  when 4 is inserted 1 is ejected 
-//  set.rank = [ 0,2,4,3 ] -> [ 1 ] dropped
-//  set.stat = [ 3,2,1,1 ] -> [ 1 ] dropped
+//  set.rank = [ 0,2,4,3 ] -> [1] dropped
+//  set.stat = [ 3,2,1,1 ] -> [1] dropped
 
 ```
 
