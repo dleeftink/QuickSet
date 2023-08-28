@@ -464,7 +464,7 @@ Additionally updates the top-k window using the `minsum` strategy when the updat
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray). 
 Depending on `lifo`, the `minsum` strategy executes as follows.
 
-Example when `lifo: true` (later insertions take precedence):
+When `lifo = true`, later insertions are kept (*Last in-first out*):
 
 ``` js
 
@@ -485,7 +485,7 @@ let set = new QuickSet({
 
 ```
 
-Example when `lifo: false` (earlier insertions take precedence):
+When `lifo = false`, earlier insertions are kept:
 
 ``` js
 
@@ -520,9 +520,9 @@ Additionally updates the top-k window using the `winsum` strategy when the updat
 3. Insert the integer and its updated value into the newly opened spot
 
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray).
-Depending on `lifo`, the `winsum` strategy executes as follows.
+Depending on `lifo`, the `winsum` strategy executes as follows:
 
-When `lifo: true`, later insertions take precedence (*Last in-first out*):
+When `lifo = true`, later insertions are kept (*Last in-first out*):
 
 ``` js
 
@@ -535,6 +535,7 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,4,2,0);
 
 //  when 4 is inserted 1 is ejected 
+//
 //                  [4]
 //                   v
 //  set.rank = [ 0,2,4,3 ] -> [1] dropped
@@ -542,7 +543,7 @@ let set = new QuickSet({
 
 ```
 
-When `lifo: false`, earlier insertions take precedence:
+When `lifo = false`, earlier insertions are kept:
 
 ``` js
 
