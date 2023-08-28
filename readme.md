@@ -88,9 +88,10 @@ Acts as minimum threshold for integers to be included in top-k window.
 ###### `slot: 0 .. 16`
 Amount of top-k slots to track most frequent integers in the set.
 
-###### `lifo: Boolean`
+###### `lifo: true || false`
 Whether to eject old values from the top-k window in case of ties. 
-Performance might be affected when `lifo: true`.
+Performance might be affected when `lifo: true`. 
+Defaults to `false`.
 
 #### `QuickSet class { ... }`
 Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
@@ -235,16 +236,21 @@ Example:
 
 ``` js
 
-let set = new QuickSet();
+let set = new QuickSet({
+      slot:2,
+    });
+
     set.add(1);
     set.add(2,1);
     set.add(2,4);
 
+// .add() overwrites backing array
  // set.keys()   = [ 1,2 ]
  // set.values() = [ 1,4 ]
 
- // set.rank = []
- // set.stat = []
+ // .add() does not update top-k window
+ // set.rank = [ 0,0 ]
+ // set.stat = [ 0,0 ]
 
 ```
 
@@ -257,17 +263,20 @@ Example:
 
 ``` js
 let set = new QuickSet({
-      high: 255
+      high: 255,
+      slot: 2
     });
 
     set.put(1,255);
     set.put(2,256);
 
+// .put() overwrites backing array
  // set.keys()   = [ 1 , 2 ]
  // set.values() = [ 255,0 ]
 
- // set.rank = []
- // set.stat = []
+ // .put() does not update top-k window
+ // set.rank = [ 0,0 ]
+ // set.stat = [ 0,0 ]
 
 ```
 
@@ -275,10 +284,12 @@ This method is useful for 'tombstoning' integers, e.g. setting an integer's valu
 
 ``` js
 let set = new QuickSet({
-      mode; "minsum",
+      mode: "minsum",
       high: 127,
       slot: 2
     });
+
+ // Integers with a value exceeding 'high' are ignored by .sum() 
 
     set.put(1,128);
     set.sum(2,4);
@@ -287,8 +298,8 @@ let set = new QuickSet({
  // set.rank = [ 2, 0 ]
  // set.stat = [ 4, 0 ]
 
- // Enable 1 to be picked up by .sum() again by
- // setting its value below the 'high' frequency mark
+ // Enable 1 to be picked up by .sum() again
+ // by setting its value below the 'high' frequency mark
  // note: the first .put() does not update top-k window, but .sum() does
 
     set.put(1,2);
@@ -442,25 +453,31 @@ let set = new QuickSet({
 Strategies for inserting and updating integer counts and updating the top-k window.
 
 #### `.minsum(uint[, value])`
-Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
+Inserts a single integer into the set if within range (the `clip` and `span` parameters). 
+If already present, increases its frequency by one or a custom weight/value. 
 Additionally updates the top-k window using the `minsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
 1. If already in top-k window, update count by one or a custom weight/value
-2. Else find the first integer with lowest frequency count
+2. If value exceeds `freq` find first integer with lowest frequency count
 3. Replace this integer with the updated one and its new value
 
-The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray)
+The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray). 
+Depending on `lifo`, the `minsum` strategy executes as follows.
+
+Example when `lifo: true` (later insertions take precedence):
 
 ``` js
 
 let set = new QuickSet({
       mode: "minsum",
+      lifo: true ,
       slot: 4,
       freq: 0
     });
     set.batch(0,1,2,0,3,4,2,0);
 
 //  when 4 is inserted 1 is overwritten
+//
 //                [4]
 //                 v
 //  set.rank = [ 0,1,2,3 ]
@@ -468,7 +485,31 @@ let set = new QuickSet({
 
 ```
 
-This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. A bit more efficient than `.winsum()` due to absence of copying.
+Example when `lifo: false` (earlier insertions take precedence):
+
+``` js
+
+let set = new QuickSet({
+      mode: "minsum",
+      lifo: false ,
+      slot: 4,
+      freq: 0
+    });
+    set.batch(0,1,2,0,3,4,2,0);
+
+//  when 4 is inserted
+//  find empty slot with a lower count
+//
+//                [4] [4]    [4]
+//                 x   x  ->  v
+//  set.rank = [ 0,1,2,3 ]   [4] not inserted 
+//  set.stat = [ 3,1,2,1 ]   [1] not inserted
+
+```
+
+This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. 
+If integer counts are tied, [`lifo`](#lifo-true--false) is enacted based on its setting.
+More efficient than `.winsum()` due to absence of copying, but `lifo: true` can introduce a performance penalty.
 
 #### `.winsum(uint[, value])`
 Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
@@ -479,25 +520,53 @@ Additionally updates the top-k window using the `winsum` strategy when the updat
 3. Insert the integer and its updated value into the newly opened spot
 
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray).
+Depending on `lifo`, the `winsum` strategy executes as follows.
+
+When `lifo: true`, later insertions take precedence (*Last in-first out*):
 
 ``` js
 
 let set = new QuickSet({
-      mode: "winsum,
+      mode: "winsum",
+      lifo: true,
       slot: 4,
       freq: 0
     });
     set.batch(0,1,2,0,3,4,2,0);
 
 //  when 4 is inserted 1 is ejected 
+//                  [4]
+//                   v
 //  set.rank = [ 0,2,4,3 ] -> [1] dropped
 //  set.stat = [ 3,2,1,1 ] -> [1] dropped
 
 ```
 
+When `lifo: false`, earlier insertions take precedence:
+
+``` js
+
+let set = new QuickSet({
+      mode: "winsum",
+      lifo: false,
+      slot: 4,
+      freq: 0
+    });
+    set.batch(0,1,2,0,3,4,2,0);
+
+//  when 4 is inserted try to
+//  find empty slot with a lower count
+//
+//                  [4 4]    [4]
+//                   x x  ->  v
+//  set.rank = [ 0,2,3,1 ]   [4] not inserted
+//  set.stat = [ 3,2,1,1 ]   [1] not inserted
+
+```
+
 This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency.
-If integer counts are tied, the last inserted value takes precedence in the ranking, i.e. integers that are inserted later are ranked higher than those inserted earlier (*Least Recently Used* or LRU).
-Slightly slower than `.minsum()` due to frequent copying.
+If integer counts are tied, [`lifo`](#lifo-true--false) is enacted based on its setting.
+Slightly slower than `.minsum()` due to frequent copying, with an additional performance penalty when `lifo: true`.
 
 ### Sorters 
 Methods for sorting and returning the set data. 
