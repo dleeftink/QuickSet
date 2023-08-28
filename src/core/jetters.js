@@ -1,17 +1,15 @@
-// delete
-function del(uint) {
+function del(uint) { // delete
 
-  let invalid = this.invalid;
+  let invalid  =  this.invalid;
 
   if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
   this.bits[uint] = 0
   
 }
 
-// derank
-function rem(uint) {
+function rem(uint) { // derank
 
-  let invalid = this.invalid;
+  let invalid  =  this.invalid;
 
   if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
 
