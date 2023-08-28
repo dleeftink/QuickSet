@@ -1,4 +1,15 @@
-export default function derank(uint) {
+// delete
+function del(uint) {
+
+  let invalid = this.invalid;
+
+  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
+  this.bits[uint] = 0
+  
+}
+
+// derank
+function rem(uint) {
 
   let invalid = this.invalid;
 
@@ -32,3 +43,5 @@ export default function derank(uint) {
   }
 
 }
+
+export { del, rem }

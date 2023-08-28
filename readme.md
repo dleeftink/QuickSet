@@ -613,7 +613,17 @@ let set = new QuickSet();
 ```
 
 #### `.sorted(iters[, reverse])`
-Implementation forthcoming.
+Method that sorts all integer keys in the set in natural ascending order.
+
+``` js
+
+let set = new QuickSet();
+    set.batch(4,1,2,3,4,1,2,5,2,0);
+
+//  set.sorted()  = [0,1,1,2,2,2,3,4,4,5]
+//  set.sorted(2) = [0,1]
+
+```
 
 ### Windows
 

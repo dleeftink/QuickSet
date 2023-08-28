@@ -12,7 +12,7 @@ let set = new QuickSet({
   high: 32,
   slot: 4,
   freq: 2,
-  mode: 'winsum',
+  mode: 'minsum',
   lifo: false
 });
 
@@ -33,9 +33,10 @@ for (let n = 0; n < iter; ++n) {
     
   }
 
-  //temp[n] = set.rank.slice(0)
+  // temp[n] = set.sorted();
+
 }
 
 let t2 = performance.now() - t1;
 
-console.log(temp, set,t2, set.default)
+console.log(temp, set,t2)

@@ -56,7 +56,8 @@ export default class QuickSet {
 
     this.tmin = freq //?? 0; // keeps track of min in window
     this.tmax = 0; // keeps track of max in window
-
+  
+    this.many = 0;
   }    
 
   minsum () {
@@ -116,7 +117,11 @@ export default class QuickSet {
   }
 
   values() {
-    // placeholder
+  // placeholder
+  }
+
+  sorted() {
+  // placeholder
   }
 
   entries() {

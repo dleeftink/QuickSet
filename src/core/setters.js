@@ -9,15 +9,6 @@ function add(uint, val = 1) {
 
 }
 
-function del(uint) {
-
-  let invalid = this.invalid;
-
-  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
-  this.bits[uint] = 0
-  
-}
-
 function put(uint, val = 1) {
 
   // 'unsafe' add
@@ -25,4 +16,4 @@ function put(uint, val = 1) {
   
 }
 
-export { add, del, put }
+export { add, put }
