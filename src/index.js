@@ -39,6 +39,9 @@ export default class QuickSet {
     this.stat = new Pool(slot);
     this.bits = new Pool(data);
 
+    
+    Object.assign(this.constructor.prototype, prototype);
+
     Object.defineProperty(this,'bits', {
       writable: false,
       enumerable: false,
@@ -99,14 +102,26 @@ export default class QuickSet {
   // placeholder
   }
 
-  sum () {
+  sum() {
+  // placeholder
+  }
+
+  top() {
   // placeholder
   }
   
+  topK() {
+  // placeholder    
+  }
+
+  topV() {
+  // placeholder    
+  }
+
   keys() {
   // placeholder
   }
-    
+  
   delete() {
   // placeholder    
   }

@@ -632,11 +632,59 @@ let set = new QuickSet();
 
 ### Windows
 
-#### `.topk(pick[, reverse])`
-Implementation forthcoming.
+#### `.top(k[, reverse])`
+Method for *copying* the top window entries up until position `k`.
 
-#### `.topv(pick[, reverse])`
-Implementation forthcoming.
+``` js
+
+let set = new QuickSet({
+      mode: "minsum",
+      lifo: false,
+      slot: 4,
+      freq: 0
+    });
+    set.batch(0,1,2,0,3,4,2,0);
+
+//  set.top()  = [ [0,3], [1,1], [2,2], [3,1] ]
+//  set.top(2) = [ [0,3], [2,2] ]
+
+```
+
+#### `.topK(k[, reverse])`
+Method for *copying* the top window **keys** up until position `k`.
+
+``` js
+
+let set = new QuickSet({
+      mode: "minsum",
+      lifo: false ,
+      slot: 4,
+      freq: 0
+    });
+    set.batch(0,1,2,0,3,4,2,0);
+ 
+//  set.topK()  = [ 0,1,2,3 ]
+//  set.topK(2) = [ 0,1 ]
+
+```
+
+#### `.topV(k[, reverse])`
+Method for *copying* the top window **values** up until position `k`.
+
+``` js
+
+let set = new QuickSet({
+      mode: "minsum",
+      lifo: false ,
+      slot: 4,
+      freq: 0
+    });
+    set.batch(0,1,2,0,3,4,2,0);
+ 
+//  set.topV()  = [ 3,1,2,1 ]
+//  set.topV(2) = [ 3,1 ]
+
+```
 
 ### Resizing
 

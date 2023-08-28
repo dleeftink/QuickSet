@@ -1,3 +1,4 @@
+
 import batch from './core/batch.js';
 import clear from './core/clear.js';
 import minsum from './rank/minsum.js';
@@ -9,6 +10,11 @@ import invalid from './util/invalid.js';
 import { get, has } from './core/getters.js';
 import { add, put } from './core/setters.js';
 import { del, rem } from './core/jetters.js';
+import {
+  top,
+  topK,
+  topV,
+} from './core/windows.js';
 import { 
   keys, 
   values, 
@@ -21,6 +27,9 @@ const prototype = {
   put,
   get,
   has,
+  top,
+  topK,
+  topV,
   batch,
   clear,
   unique,
