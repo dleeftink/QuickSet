@@ -656,7 +656,8 @@ Implementation forthcoming.
 3. Use multiple QuickSets with a small integer span
 4. Maintain a `new Map()` for reverse value lookups
 5. Set `freq` to a value higher than 1 for top-k window speed-ups
-6. Use multiple QuickSets with offsets to increase integer range 
+6. Use multiple QuickSets with offsets to increase integer range
+7. Subtract the minimum when working with a set of large integers to save on memory
 
 ## Caveats
 1. Large sets affect performance
