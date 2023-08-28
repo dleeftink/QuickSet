@@ -60,7 +60,7 @@ let config = {
   high: 128, // max expected integer count (0 .. 2^32)
   freq:   1, // min expected integer count (0 .. 2^32)
 
-  lifo:false // replace earlier values in case of ties
+  lifo:   0, // replace earlier values in case of ties
 
 }
 ```
