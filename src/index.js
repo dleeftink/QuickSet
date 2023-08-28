@@ -13,8 +13,12 @@ export default class QuickSet {
 
     Object.assign(this.constructor.prototype, prototype);
     
-    if (lifo) this.constructor.prototype[mode] = 
-    rewrite ( this[mode], 'val > this.tmin', 'val >= this.tmin');
+    if (lifo) { 
+      this.constructor.prototype.minsum = 
+      rewrite ( this[minsum], 'val > this.tmin', 'val >= this.tmin');
+      this.constructor.prototype.winsum = 
+      rewrite ( this[winsum], 'val > this.tmin', 'val >= this.tmin');
+    }
 
     if (span > 2**28) 
     throw Error('Expected integer beyond memory range');
