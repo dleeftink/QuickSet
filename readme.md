@@ -433,7 +433,7 @@ let set = new QuickSet({
 ```
 
 ### Rankers
-Methods for inserting and updating integer counts by one or a custom value, while updating the top-k window.
+Strategies for inserting and updating integer counts and updating the top-k window.
 
 #### `.minsum(uint[, value])`
 Inserts a single integer into the set if within range (the `clip` and `span` parameters). If already present, increases its frequency by one or a custom weight/value. 
@@ -454,7 +454,9 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,4,2,0);
 
 //  when 4 is inserted 1 is overwritten
-//  set.rank = [ 0,4,2,3 ]
+//                [4]
+//                 v
+//  set.rank = [ 0,1,2,3 ]
 //  set.stat = [ 3,1,2,1 ]
 
 ```
