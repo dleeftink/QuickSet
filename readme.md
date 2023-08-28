@@ -242,7 +242,7 @@ let set = new QuickSet({
     set.add(2,1);
     set.add(2,4);
 
-// .add() overwrites backing array
+ // .add() overwrites backing array
  // set.keys()   = [ 1,2 ]
  // set.values() = [ 1,4 ]
 
