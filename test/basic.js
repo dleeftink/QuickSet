@@ -26,7 +26,7 @@ for (let n = 0; n < iter; ++n) {
   set.clear(true);
 
   // unrolling only works when multiples of two
-  for (let i = 0; i < span; i = i + 1) {
+  for (let i = 0; i < span; i = i + 2) {
     //let key = ints[i] //+ ( n % 255);
     set.sum(ints[i]+ ( n % 255))
     set.sum(ints[i + 1]+ ( n % 255));
