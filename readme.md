@@ -474,7 +474,8 @@ let set = new QuickSet({
       slot: 4,
       freq: 0
     });
-    set.batch(0,1,2,0,3,4,2,0);
+    set.batch(0,1,2,0,3,2,0);
+    set.minsum(4);
 
 //  when 4 is inserted 1 is overwritten
 //
@@ -495,7 +496,8 @@ let set = new QuickSet({
       slot: 4,
       freq: 0
     });
-    set.batch(0,1,2,0,3,4,2,0);
+    set.batch(0,1,2,0,3,2,0);
+    set.minsum(4);
 
 //  when 4 is inserted
 //  find empty slot with a lower count
@@ -532,7 +534,8 @@ let set = new QuickSet({
       slot: 4,
       freq: 0
     });
-    set.batch(0,1,2,0,3,4,2,0);
+    set.batch(0,1,2,0,3,2,0);
+    set.winsum(4);
 
 //  when 4 is inserted 1 is ejected 
 //
@@ -553,7 +556,8 @@ let set = new QuickSet({
       slot: 4,
       freq: 0
     });
-    set.batch(0,1,2,0,3,4,2,0);
+    set.batch(0,1,2,0,3,2,0);
+    set.winsum(4);
 
 //  when 4 is inserted try to
 //  find empty slot with a lower count
