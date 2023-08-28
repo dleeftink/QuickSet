@@ -33,7 +33,7 @@ for (let n = 0; n < iter; ++n) {
     
   }
 
-  temp[n] = set.top()
+  temp[n] = set.top(2)
 
 }
 
