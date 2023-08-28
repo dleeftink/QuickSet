@@ -695,6 +695,54 @@ Implementation forthcoming.
 ### Disposal
 
 #### `.clear(true || 0-16)`
+Method for clearing the [Typed backing array](#setbits-uintarray) (`.clear()`) and optionally the top-k window (`.clear(true)`). 
+During clearing operations, the top-k window can be resized as desired between 1 and 16 slots (`.clear(1..16)`).
+This method is useful for resetting and reusing a set between runs without having to construct a `new QuickSet()`.
+
+``` js
+
+let set = new QuickSet({
+      mode: "minsum",
+      lifo: false,
+      slot: 4,
+      freq: 0,
+    });
+    set.batch(0,1,1,2,3,4,6,3,1);
+
+//  set.keys()   = [ 0,1,2,3,4,6 ];
+//  set.values() = [ 1,3,1,2,1,1 ];
+
+//  set.rank     = [ 0,1,2,3 ];
+//  set.stat     = [ 1,3,1,2 ];
+
+    set.clear();
+
+//  set.keys()   = [ ];
+//  set.values() = [ ];
+
+//  set.rank     = [ 0,1,2,3 ];
+//  set.stat     = [ 1,3,1,2 ];
+
+     set.clear(true);
+
+//  set.keys()   = [ ];
+//  set.values() = [ ];
+
+//  top-k window set to zeroes
+//  set.rank     = [ 0,0,0,0 ];
+//  set.stat     = [ 0,0,0,0 ];
+
+    set.clear(6);
+    set.batch(0,1,1,2,3,4,6,3,5,7);
+
+//  set.keys()   = [ 0,1,2,3,4,5,6,7 ];
+//  set.values() = [ 1,3,1,2,1,1,1,1 ];
+
+//  top-k window resized to 6 slots
+//  set.rank     = [ 0,1,2,3,4,6 ];
+//  set.stat     = [ 1,3,1,2,1,1 ];
+
+```
 
 ## Tips
 1. Reuse a single instance
