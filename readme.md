@@ -22,9 +22,7 @@ This enables working with frequently occuring items 'earlier' compared to proces
 ## Quickstart 
 
 ```
-
 npm install @suptxt/quickset
-
 ```
 
 After installing, instantiate a `QuickSet` by calling;
