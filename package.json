@@ -20,6 +20,7 @@
     "performant",
     "top-k",
     "math",
+    "statistics",
     "LFU",
     "sorted",
     "ranked",
