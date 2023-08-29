@@ -757,6 +757,7 @@ let set = new QuickSet({
 1. Large sets affect performance
 2. Only limited top-k slots available (<16)
 3. No set size parameter yet
+4. No type checking of unsigned integers 
 
 ## Benchmarks
 On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
