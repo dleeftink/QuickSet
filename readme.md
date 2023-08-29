@@ -5,8 +5,9 @@ A performant *Least Frequently Used* (LFU) sorted set implementation for working
 1. Finding top-k most frequent items in one or many lists
 2. Nearest neighbour finding based on frequency of occurance
 3. A lightweight key/value dictionary
-4. Duplicate integer counting
-5. Unique integer extraction
+4. Preparing lists of random integers for binary search
+5. Duplicate integer counting
+6. Unique integer extraction
 
 ## How it works
 Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurance (counts between 0 and 2^32). 
