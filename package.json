@@ -20,7 +20,6 @@
     "performant",
     "top-k",
     "math",
-    "statistics",
     "LFU",
     "sorted",
     "ranked",
@@ -28,6 +27,7 @@
     "ordered",
     "integer",
     "typedArray",
+    "statistics",
     "insertion sort"
   ],
   "files": [
