@@ -463,7 +463,7 @@ Additionally updates the top-k window using the `minsum` strategy when the updat
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray). 
 Depending on `lifo`, the `minsum` strategy executes as follows.
 
-When `lifo = true` later insertions are kept (*Last in-first out*):
+When `lifo = true` later insertions are kept (*last in-first out*):
 
 ``` js
 
@@ -523,7 +523,7 @@ Additionally updates the top-k window using the `winsum` strategy when the updat
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray).
 Depending on `lifo`, the `winsum` strategy executes as follows:
 
-When `lifo = true` later insertions are kept (*Last in-first out*):
+When `lifo = true` later insertions are kept (*last in-first out*):
 
 ``` js
 
