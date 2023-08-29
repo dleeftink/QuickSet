@@ -13,7 +13,7 @@ Once initialised, `QuickSet` allocates a TypedArray based on the expected range 
 Additionally, it keeps track of how often individual integers are added to the set, providing a (sorted) top-k window of most frequent integers. 
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum`. 
-Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (also known as *Least Frequently Used* or LFU). 
+Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (ejecting the *Least Frequently Used* or LFU). 
 Whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps integers sorted  in decreasing order of occurrence (slightly more computationally expensive).
 
 This makes `QuickSet` a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations and returning a ranked window of most frequent  integers up till a point of your choosing. 
@@ -268,7 +268,7 @@ let set = new QuickSet({
     set.put(1,255);
     set.put(2,256);
 
-// .put() overwrites backing array
+ // .put() overwrites backing array
  // set.keys()   = [ 1 , 2 ]
  // set.values() = [ 255,0 ]
 
