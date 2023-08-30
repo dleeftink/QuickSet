@@ -72,12 +72,12 @@ let config = {
 
 ###### `mode: "minsum" || "winsum"`
 Sets the default summing mode when using [`sum`](#sum-uint-value).
-- See [rankers](#rankers) for in-depth descriptions.
+- See [rankers](#rankers) for differences.
 
 ###### `span: 0 .. 2 ^ 28`
 Maximum expected integer in set (upper range bound).
 - Integers equal or above this number are ignored when added to the set.
-- Default to `512`.
+- Defaults to `512`.
 
 ###### `clip: 0 .. 2 ^ 28`
 Minimum expected integer in set (lower range bound).
@@ -91,12 +91,12 @@ Maximum expected count of individual integers (upper frequency bound per integer
 
 ###### `freq: 0 .. 2 ^ 32`
 Minimum expected count of individual integers (lower frequency bound per integer).
-- Acts as a threshold for integers to qualify for a top-k position.
+- Threshold for integers to qualify for a top-k position.
 - Defaults to `1`.
 
 ###### `slot: 0 .. 16`
 Amount of slots to keep track of the top-k most frequent integers in a set.
-- Any value between `0` and `16` sets the top-k `window` size.
+- Values between `0` and `16` set the top-k `window` size.
 - Defaults to `0`.
 
 ###### `lifo: true || false`
