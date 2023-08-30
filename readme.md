@@ -90,6 +90,7 @@ Acts as minimum threshold for integers to be included in top-k window.
 
 ###### `slot: 0 .. 16`
 Amount of top-k slots to track most frequent integers in the set.
+Defaults to `0`, which turns the top-k window off by default.
 
 ###### `lifo: true || false`
 Whether to eject old values from the top-k window in case of ties. 
@@ -97,8 +98,8 @@ Performance might be affected when `lifo: true`.
 Defaults to `false`.
 
 #### `QuickSet class { ... }`
-Besides the configured options and methods, `QuickSet` returns an object with two visible ([`rank`](#setrank-uintarray)|[`stat`](#setstat-uintarray)) and one hidden backing array ([`bits`](#setbits-uintarray)). 
-Together, `rank` and `stat` provide the top-k window of most frequent integers (rank) and values (stat) added to a set.
+Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array ([`set.bits`](#setbits-uintarray)). 
+The visible arrays, [`set.rank`](#setrank-uintarray) and [`set.stat`](#setstat-uintarray) provide the top-k window of most frequent integers (rank) and values (stat) present in a set.
 While these arrays can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
 Some additional properties describe the internal state of the set.
 
