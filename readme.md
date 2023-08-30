@@ -36,11 +36,11 @@ let set = new QuickSet()
 
 This instantiates a new set with [default parameters](#new-quickset-config) and a top-k window of 0-length, which may need additional configuring to suit your needs. As a rule of thumb:
 
-- If you are interested in using unweighted set operations only, use [`add`](#add-uint-value)/[`put`](#put-uint-value) for single and [`unique`](#unique-uints) for bulk insertions.
-- If you want to assign weights to  integers, use [`sum`](#sum-uint-value) for single and [`batch`](#batch-uints-values) for bulk insertions.
+- If you are interested in using unweighted set operations only, use [`add()`](#add-uint-value)|[`put()`](#put-uint-value) for single and [`unique()`](#unique-uints) for bulk insertions.
+- If you want to assign weights to  integers, use [`sum()`](#sum-uint-value) for single and [`batch()`](#batch-uints-values) for bulk insertions.
 Updates to the top-k window are only made when the [`slot`](#slot-0--16) parameter is set.
 
-Methods can be mixed and matched to your liking, but may yield unwanted results if used without caution: [`add`](#add-uint-value), [`put`](#put-uint-value) and [`unique`](#unique-uints) overwrite previous values and **do not** update the top-k window; use [`sum`](#sum-uint-value) & [`batch`](#batch-uints-values) if you want updates to be reflected in the top-k window when inserting new integers with weights (see the [`put`](#put-uint-value) examples for why this distinction is useful).
+Methods can be mixed and matched to your liking, but may yield unwanted results if used without caution: [`add()`](#add-uint-value), [`put()`](#put-uint-value) and [`unique()`](#unique-uints) overwrite previous values and **do not** update the top-k window; use [`sum()`](#sum-uint-value) & [`batch()`](#batch-uints-values) if you want updates to be reflected in the top-k window when inserting new integers with weights (see the [`put`](#put-uint-value) examples for why this distinction is useful).
 
 ## Configuration
 
