@@ -84,11 +84,11 @@ Integers below this number are ignored when added to the set.
 
 ###### `high: 0 .. 2 ^ 32`
 Maximum expected count of individual integers (upper frequency bound per integer).
-Total counts are limited to this value.
+Individual integer counts are limited to this value.
 
 ###### `freq: 0 .. 2 ^ 32`
 Minimum expected count of individual integers (lower frequency bound per integer).
-Integer counts needs to exceed this threshold to qualify for a top-k position.
+Acts as a threshold for integers to qualify for a top-k position.
 
 ###### `slot: 0 .. 16`
 Amount of slots to keep track of the top-k most frequent integers in a set.
