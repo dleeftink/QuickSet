@@ -12,7 +12,7 @@ Sorted in natural ascending order of integers by default.
 6. Unique integer extraction
 
 ## How it works
-Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (numbers between `0` and `2^28`) and frequency of occurrence (counts between `0` and `2^32`). 
+Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurrence (counts between 0 and 2^32). 
 Additionally, it keeps track of how often individual integers are added to the set, providing a top-k window of most frequently occurring integers. 
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum` 
