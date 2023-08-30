@@ -194,9 +194,9 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 ```
 
 #### `.unique` `(...uints)`
-Batch loading method for inserting unique integers into the set once (uses [`add()`](#add-uint-value) under the hood). 
+Batch loading method for inserting unique integers into the set once (uses [`.add()`](#add-uint-value) under the hood). 
 Resets previous set values (i.e. integer counts) to one. 
-Does **not** update the top-k window (use [`batch()`](#batch-uints-values) to track integer frequencies and have updates reflected).
+Does **not** update the top-k window (use [`.batch()`](#batch-uints-values) to track integer frequencies and have updates reflected).
 
 Basic example:
 
@@ -235,8 +235,8 @@ Methods for inserting and updating integer data.
 
 #### `.add` `(​uint[, value])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound, with an optional weight/value limited to [`high`](#high-0--2--32).
-Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique()`](#unique) for faster key insertion). 
-Overwrites previously set values, but does **not** update the top-k window (use [`sum()`](#sum-uint-value) to have updates reflected).
+Useful for initialising a set with weights, or quickly adding integers to the set (use [`.unique()`](#unique) for faster key insertion). 
+Overwrites previously set values, but does **not** update the top-k [window](#quickset-class) (use [`.sum()`](#sum-uint-value) to have updates reflected).
 
 Example:
 
@@ -261,7 +261,7 @@ let set = new QuickSet({
 ```
 
 #### `.put` `(uint[, value])`
-'Unsafe' adds an integer to the set with an optional value **without** checking if the integer falls within range or its value exceeds the [`high`](#high-0--2--32) frequency mark (use [`.add()`](#add-uint-value) for safe insertion). Overwrites previously set values, but does not update the [top-k window](#quickset-class) (use [`.sum()`](#sum-uint-value) for this).
+'Unsafe' adds an integer to the set with an optional value **without** checking if the integer falls within range or its value exceeds the [`high`](#high-0--2--32) frequency mark (use [`.add()`](#add-uint-value) for safe insertion). Overwrites previously set values, but does not update the top-k [window](#quickset-class) (use [`.sum()`](#sum-uint-value) to have updates reflected).
 
 Should in theory provide better performance compared to [`.add()`](#add-uint-value) with the risk of adding integers beyond the configured range or expected frequency (potentially causing overflows). 
 
@@ -321,7 +321,7 @@ This technique can be used to build a 'drop' list of integers and keep unwanted 
 #### `.sum` `(​uint[, value])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
 If already present, increases its frequency by one or a custom weight/value limited to [`high`](#high-0--2--32).
-Additionally updates the [top-k window](#quickset-class) based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum [`freq`](#freq-0--2--32) parameter.
+Additionally updates the top-k [window](#quickset-class) based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum [`freq`](#freq-0--2--32) parameter.
 
 Example:
 
@@ -382,7 +382,7 @@ Methods for deleting and jettisoning integer data.
 #### `.delete` `(uint)`
 Removes a single integer and its value from the set. 
 Does **not** update the top-k window (use [`.derank()`](#derank-uint) for this). 
-Useful for resetting an integer's count to zero in the backing array while maintaining its last position and value in the [top-k window](#quickset-class).
+Useful for resetting an integer's count to zero in the backing array while maintaining its last position and value in the top-k [window](#quickset-class).
 
 Example:
 
