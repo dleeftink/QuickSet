@@ -196,7 +196,7 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 #### `.unique` `(...uints)`
 Batch loading method for inserting unique integers into the set once (uses [`.add()`](#add-uint-value) under the hood). 
 Resets previous set values (i.e. integer counts) to one. 
-Does **not** update the top-k window; use [`.batch()`](#batch-uints-values) to track integer frequencies.
+Does **not** update the top-k window (use [`.batch()`](#batch-uints-values) to track integer frequencies and have updates reflected).
 
 Basic example:
 
