@@ -151,8 +151,8 @@ Basic example:
 let set = new QuickSet();
     set.batch(0,1,1,2,4,6,7,7,1);
 
- // set.keys()   = [0,1,2,4,6,7,1]
- // set.values() = [1,3,1,1,1,2,1]
+//  set.keys()   = [0,1,2,4,6,7,1]
+//  set.values() = [1,3,1,1,1,2,1]
 
 ```
 
@@ -163,8 +163,8 @@ Array example:
 let uints = [0,1,1,2,4,6,7,7,1];
     set.batch(uints);
 
- // set.keys()   = [0,1,2,4,6,7,1]
- // set.values() = [1,3,1,1,1,2,1]
+//  set.keys()   = [0,1,2,4,6,7,1]
+//  set.values() = [1,3,1,1,1,2,1]
 
 ```
 
@@ -176,8 +176,8 @@ let uints = [1,5,7,1];
 let vals  = [1,2,3,4];
     set.batch(uints, vals);
 
- // set.keys()   = [1,5,7]
- // set.values() = [5,2,3]
+//  set.keys()   = [1,5,7]
+//  set.values() = [5,2,3]
 
 ```
 
@@ -189,8 +189,8 @@ let uints = [1,2,2,5];
 let vals  = [1,3];
     set.batch(uints, vals);
 
- // set.keys()   = [1,2,5]
- // set.values() = [1,4,3]
+//  set.keys()   = [1,2,5]
+//  set.values() = [1,4,3]
 
 ```
 
@@ -214,8 +214,8 @@ Basic example:
 let set = new QuickSet();
     set.unique(0,2,4,1,6,7,1,2);
 
- // set.keys()   = [0,1,2,4,6,7]
- // set.values() = [1,1,1,1,1,1]
+//  set.keys()   = [0,1,2,4,6,7]
+//  set.values() = [1,1,1,1,1,1]
 
 ```
 
@@ -226,8 +226,8 @@ Array example:
 let uints = [0,2,4,1,6,7,1,2];
     set.unique(uints);
 
- // set.keys()   = [0,1,2,4,6,7]
- // set.values() = [1,1,1,1,1,1]
+//  set.keys()   = [0,1,2,4,6,7]
+//  set.values() = [1,1,1,1,1,1]
 
 ```
 
@@ -259,13 +259,13 @@ let set = new QuickSet({
     set.add(2,1);
     set.add(2,4);
 
- // .add() overwrites backing array
- // set.keys()   = [ 1,2 ]
- // set.values() = [ 1,4 ]
+//  .add() overwrites backing array
+//  set.keys()   = [ 1,2 ]
+//  set.values() = [ 1,4 ]
 
- // .add() does not update top-k window
- // set.rank = [ 0,0 ]
- // set.stat = [ 0,0 ]
+//  .add() does not update top-k window
+//  set.rank = [ 0,0 ]
+//  set.stat = [ 0,0 ]
 
 ```
 
@@ -285,13 +285,13 @@ let set = new QuickSet({
     set.put(1,255);
     set.put(2,256);
 
- // .put() overwrites backing array
- // set.keys()   = [ 1 , 2 ]
- // set.values() = [ 255,0 ]
+//  .put() overwrites backing array
+//  set.keys()   = [ 1 , 2 ]
+//  set.values() = [ 255,0 ]
 
- // .put() does not update top-k window
- // set.rank = [ 0,0 ]
- // set.stat = [ 0,0 ]
+//  .put() does not update top-k window
+//  set.rank = [ 0,0 ]
+//  set.stat = [ 0,0 ]
 
 ```
 
@@ -304,24 +304,24 @@ let set = new QuickSet({
       slot: 2
     });
 
- // Integers with a value exceeding 'high' are ignored by .sum() 
+//  Integers with a value exceeding 'high' are ignored by .sum() 
 
     set.put(1,128);
     set.sum(2,4);
     set.sum(1,1); 
 
- // set.rank = [ 2, 0 ]
- // set.stat = [ 4, 0 ]
+//  set.rank = [ 2, 0 ]
+//  set.stat = [ 4, 0 ]
 
- // Enable 1 to be picked up by .sum() again
- // by setting its value below the 'high' frequency mark
- // note: the first .put() does not update top-k window, but .sum() does
+//  Enable 1 to be picked up by .sum() again
+//  by setting its value below the 'high' frequency mark
+//  note: the first .put() does not update top-k window, but .sum() does
 
     set.put(1,2);
     set.sum(1,3);
 
- // set.rank = [ 2, 1 ]
- // set.stat = [ 4, 5 ]
+//  set.rank = [ 2, 1 ]
+//  set.stat = [ 4, 5 ]
 
 ```
 
@@ -350,8 +350,8 @@ let set = new QuickSet({
     set.sum(9);
     set.sum(2,4);
 
- // set.rank = [ 1 , 2 , 0 , 0 ];
- // set.stat = [ 3 , 5 , 0 , 0 ]; 
+//  set.rank = [ 1 , 2 , 0 , 0 ];
+//  set.stat = [ 3 , 5 , 0 , 0 ]; 
 
 ```
 
