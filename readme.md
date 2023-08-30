@@ -674,7 +674,7 @@ let set = new QuickSet({
 ```
 
 #### `.topK` `(k[, reverse])`
-Method for *copying* the top window **keys** ([`rank`](#setrank-uintarray)) up until position `k`
+Method for *copying* the top window **keys** [ [`rank`](#setrank-uintarray) ] up until position `k`
 
 ``` js
 
@@ -692,7 +692,7 @@ let set = new QuickSet({
 ```
 
 #### `.topV` `(k[, reverse])`
-Method for *copying* the top window **values** ([`stat`](#setstat-uintarray)) up until position `k`
+Method for *copying* the top window **values** [ [`stat`](#setstat-uintarray) ] up until position `k`
 
 ``` js
 
