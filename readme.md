@@ -72,19 +72,19 @@ let config = {
 Sets the default summing mode when using [`sum`](#sum-uint-value). 
 See [rankers](#rankers) for more.
 
-###### `span: 0 .. 2^28`
+###### `span: 0 .. 2 ^ 28`
 Maximum expected integer in set (upper range bound). 
 Values above this number are ignored when added to the set.
 
-###### `clip: 0 .. 2^28`
+###### `clip: 0 .. 2 ^ 28`
 Minimum expected integer in set (lower range bound). 
 Values below this number are ignored when added to the set.
 
-###### `high: 0 .. 2^32`
+###### `high: 0 .. 2 ^ 32`
 Maximum expected count of each discrete integer in set (upper frequency bound per integer). 
 Counting is maximised to this value. 
 
-###### `freq: 0 .. 2^32`
+###### `freq: 0 .. 2 ^ 32`
 Minimum expected count of each discrete integer in set (lower frequency bound per integer). 
 Acts as minimum threshold for integers to be included in top-k window.
 
@@ -95,29 +95,29 @@ Defaults to `0`.
 
 ###### `lifo: true || false`
 Whether to eject old values from the top-k window in case of ties. 
-Performance might be affected when `lifo: true`. 
+Performance might be affected when set to `true`. 
 Defaults to `false`.
 
 #### `QuickSet class {...}`
-Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
+Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array. 
 The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k window of most frequent integers (rank) and values (stat) present in a set, while the hidden [`bits`](#setbits-uintarray) array tracks the frequencies of all integers in the set.
 
 While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
 Some additional properties describe the internal state of the set.
 
 ###### `set.bits: [UintArray]`
-This (non-enumerable) property contains the Typed backing array that stores all integers present in the set as well as their values. 
+This non-enumerable property contains the Typed backing array that stores all integers present in the set as well as their values. 
 
 ###### `set.rank: [UintArray]`
-This property displays the Typed top-k window of ranked integers. 
+This enumerable property displays the Typed top-k window of ranked integers. 
 The window size is determined from [`slot`](#slot-0--16).
 
 ###### `set.stat: [UintArray]`
-This property displays the values associated with the ranked integers.
+This enumerable property displays the values associated with the ranked integers.
 Same length as [`rank`](#setrank-uintarray).
 
 ###### `set.last: Uint`
-A constant parameter for accessing the last index in the top-k window ([`slot - 1`](#slot-0--16)).
+A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--16).
 
 ###### `set.tmin: Uint`
 A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--232).
@@ -132,7 +132,7 @@ A variable parameter displaying the maximum value in the top-k window, upper bou
 ### Bulk
 
 #### `.batch` `(...uints[, values])`
-Batch loading method for inserting integers into the set and summing optional weights/values (uses [`sum`](#sum-uint-value) under the hood). 
+Batch loading method for inserting integers into the set and summing optional weights/values (uses [`.sum()`](#sum-uint-value) under the hood). 
 Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
 
 Basic example:
@@ -194,9 +194,9 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 ```
 
 #### `.unique` `(...uints)`
-Batch loading method for inserting unique integers into the set once (uses [`add`](#add-uint-value) under the hood). 
+Batch loading method for inserting unique integers into the set once (uses [`.add()`](#add-uint-value) under the hood). 
 Resets previous set values (i.e. integer counts) to one. 
-Does **not** update the top-k window (use [`batch`](#batch-uints-values) for this).
+Does **not** update the top-k window (use [`.batch()`](#batch-uints-values) for this).
 
 Basic example:
 
@@ -236,7 +236,7 @@ Methods for inserting and updating integer data.
 #### `.add` `(​uint[, value])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--228) and below the upper [`span`](#span-0--228) bound, with an optional weight/value limited to [`high`](#high-0--232).
 Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique`](#unique) for faster key insertion). 
-Overwrites previously set values, but does **not** update the top-k window (use [`sum`](#sum-uint-value) for this).
+Overwrites previously set values, but does **not** update the top-k window (use [`.sum()`](#sum-uint-value) for this).
 
 Example:
 
