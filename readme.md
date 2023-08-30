@@ -65,7 +65,7 @@ let config = {
 ```
 
 ###### `mode: "minsum" || "winsum"`
-Sets the default summing mode when using `.sum()`. 
+Sets the default summing mode when using [`sum()`](#sum-uint--value). 
 See [rankers](#rankers) for more.
 
 ###### `span: 0 .. 2^28`
@@ -227,7 +227,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 Methods for inserting and updating integer data.
 
 #### `.add(uint[, value])`
-Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound), with an optional weight/value (bounded by [`high`](#high-0--232). 
+Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound), with an optional weight/value (bounded by [`high`](#high-0--232)). 
 Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). 
 Overwrites previously set values, but does **not** update the top-k window (use `.sum()` for this).
 
@@ -312,7 +312,7 @@ let set = new QuickSet({
 This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive `.sum()` operations ('tombstoned' values are simply ignored).
 
 #### `.sum(uint[, value])`
-Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound). If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232). 
+Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound). If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232)). 
 Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum `freq` parameter.
 
 Example:
@@ -457,7 +457,7 @@ Strategies for inserting and updating integer counts and updating the top-k wind
 
 #### `.minsum(uint[, value])`
 Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound). 
-If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232). 
+If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232)). 
 Additionally updates the top-k window using the `minsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
 1. If already in top-k window, update count by one or a custom weight/value
@@ -518,7 +518,7 @@ More efficient than `.winsum()` due to absence of copying, but `lifo: true` can 
 
 #### `.winsum(uint[, value])`
 Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound). 
-If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232). 
+If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232)). 
 Additionally updates the top-k window using the `winsum` strategy when the updated value exceeds the minimum `freq` parameter:
 
 1. Find the last integer in the window with a count exceeding the value to insert
