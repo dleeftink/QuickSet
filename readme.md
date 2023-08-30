@@ -151,8 +151,8 @@ Basic example:
 let set = new QuickSet();
     set.batch(0,1,1,2,4,6,7,7,1);
 
-//  set.keys()   = [0,1,2,4,6,7,1]
-//  set.values() = [1,3,1,1,1,2,1]
+ // set.keys()   = [0,1,2,4,6,7,1]
+ // set.values() = [1,3,1,1,1,2,1]
 
 ```
 
@@ -163,8 +163,8 @@ Array example:
 let uints = [0,1,1,2,4,6,7,7,1];
     set.batch(uints);
 
-//  set.keys()   = [0,1,2,4,6,7,1]
-//  set.values() = [1,3,1,1,1,2,1]
+ // set.keys()   = [0,1,2,4,6,7,1]
+ // set.values() = [1,3,1,1,1,2,1]
 
 ```
 
@@ -176,8 +176,8 @@ let uints = [1,5,7,1];
 let vals  = [1,2,3,4];
     set.batch(uints, vals);
 
-//  set.keys()   = [1,5,7]
-//  set.values() = [5,2,3]
+ // set.keys()   = [1,5,7]
+ // set.values() = [5,2,3]
 
 ```
 
@@ -189,8 +189,8 @@ let uints = [1,2,2,5];
 let vals  = [1,3];
     set.batch(uints, vals);
 
-//  set.keys()   = [1,2,5]
-//  set.values() = [1,4,3]
+ // set.keys()   = [1,2,5]
+ // set.values() = [1,4,3]
 
 ```
 
@@ -214,8 +214,8 @@ Basic example:
 let set = new QuickSet();
     set.unique(0,2,4,1,6,7,1,2);
 
-//  set.keys()   = [0,1,2,4,6,7]
-//  set.values() = [1,1,1,1,1,1]
+ // set.keys()   = [0,1,2,4,6,7]
+ // set.values() = [1,1,1,1,1,1]
 
 ```
 
@@ -226,8 +226,8 @@ Array example:
 let uints = [0,2,4,1,6,7,1,2];
     set.unique(uints);
 
-//  set.keys()   = [0,1,2,4,6,7]
-//  set.values() = [1,1,1,1,1,1]
+ // set.keys()   = [0,1,2,4,6,7]
+ // set.values() = [1,1,1,1,1,1]
 
 ```
 
@@ -259,13 +259,13 @@ let set = new QuickSet({
     set.add(2,1);
     set.add(2,4);
 
-//  .add() overwrites backing array
-//  set.keys()   = [ 1,2 ]
-//  set.values() = [ 1,4 ]
+ // .add() overwrites backing array
+ // set.keys()   = [ 1,2 ]
+ // set.values() = [ 1,4 ]
 
-//  .add() does not update top-k window
-//  set.rank = [ 0,0 ]
-//  set.stat = [ 0,0 ]
+ // .add() does not update top-k window
+ // set.rank = [ 0,0 ]
+ // set.stat = [ 0,0 ]
 
 ```
 
@@ -285,13 +285,13 @@ let set = new QuickSet({
     set.put(1,255);
     set.put(2,256);
 
-//  .put() overwrites backing array
-//  set.keys()   = [ 1 , 2 ]
-//  set.values() = [ 255,0 ]
+ // .put() overwrites backing array
+ // set.keys()   = [ 1 , 2 ]
+ // set.values() = [ 255,0 ]
 
-//  .put() does not update top-k window
-//  set.rank = [ 0,0 ]
-//  set.stat = [ 0,0 ]
+ // .put() does not update top-k window
+ // set.rank = [ 0,0 ]
+ // set.stat = [ 0,0 ]
 
 ```
 
@@ -304,24 +304,24 @@ let set = new QuickSet({
       slot: 2
     });
 
-//  Integers with a value exceeding 'high' are ignored by .sum() 
+ // Integers with a value exceeding 'high' are ignored by .sum() 
 
     set.put(1,128);
     set.sum(2,4);
     set.sum(1,1); 
 
-//  set.rank = [ 2, 0 ]
-//  set.stat = [ 4, 0 ]
+ // set.rank = [ 2, 0 ]
+ // set.stat = [ 4, 0 ]
 
-//  Enable 1 to be picked up by .sum() again
-//  by setting its value below the 'high' frequency mark
-//  note: the first .put() does not update top-k window, but .sum() does
+ // Enable 1 to be picked up by .sum() again
+ // by setting its value below the 'high' frequency mark
+ // note: the first .put() does not update top-k window, but .sum() does
 
     set.put(1,2);
     set.sum(1,3);
 
-//  set.rank = [ 2, 1 ]
-//  set.stat = [ 4, 5 ]
+ // set.rank = [ 2, 1 ]
+ // set.stat = [ 4, 5 ]
 
 ```
 
@@ -350,8 +350,8 @@ let set = new QuickSet({
     set.sum(9);
     set.sum(2,4);
 
-//  set.rank = [ 1 , 2 , 0 , 0 ];
-//  set.stat = [ 3 , 5 , 0 , 0 ]; 
+ // set.rank = [ 1 , 2 , 0 , 0 ];
+ // set.stat = [ 3 , 5 , 0 , 0 ]; 
 
 ```
 
@@ -404,26 +404,26 @@ let set = new QuickSet({
     });
     set.batch(3,1,0,1,3,4,3,5,7,1);
 
-//  Backing array
-//  set.keys()   = [ 0,1,3,4,5,7 ]
-//  set.values() = [ 1,3,2,1,1,1 ]
+ // Backing array
+ // set.keys()   = [ 0,1,3,4,5,7 ]
+ // set.values() = [ 1,3,2,1,1,1 ]
 
-//  Top-k window 
-//  set.rank = [ 1,3,0,4,5,7 ]
-//  set.stat = [ 3,2,1,1,1,1 ]
+ // Top-k window 
+ // set.rank = [ 1,3,0,4,5,7 ]
+ // set.stat = [ 3,2,1,1,1,1 ]
 
     set.delete(1);
     set.delete(3);
 
-//  [ 1,3 ]  deleted from backing array
+ // [ 1,3 ]  deleted from backing array
 
-//  set.keys()   = [ 0,4,5,7 ]
-//  set.values() = [ 1,1,1,1 ]
+ // set.keys()   = [ 0,4,5,7 ]
+ // set.values() = [ 1,1,1,1 ]
 
-//  [ 1,3 ] kept in top-k window
+ // [ 1,3 ] kept in top-k window
 
-//  set.rank = [ 1,3,0,4,5,7 ]
-//  set.stat = [ 3,2,1,1,1,1 ]
+ // set.rank = [ 1,3,0,4,5,7 ]
+ // set.stat = [ 3,2,1,1,1,1 ]
 
 ```
 
@@ -447,27 +447,27 @@ let set = new QuickSet({
     });
     set.batch(3,1,0,1,3,4,3,5,7,1);
 
-//  Backing array
-//  set.keys()   = [ 0,1,3,4,5,7 ]
-//  set.values() = [ 1,3,2,1,1,1 ]
+ // Backing array
+ // set.keys()   = [ 0,1,3,4,5,7 ]
+ // set.values() = [ 1,3,2,1,1,1 ]
 
-//  Top-k window 
-//  set.rank = [ 1,3,0,4,5,7 ]
-//  set.stat = [ 3,2,1,1,1,1 ]
+ // Top-k window 
+ // set.rank = [ 1,3,0,4,5,7 ]
+ // set.stat = [ 3,2,1,1,1,1 ]
 
     set.derank(1);
     set.derank(0);
     set.derank(4);
 
-//  [ 1,0,4 ] deleted from backing array
+ // [ 1,0,4 ] deleted from backing array
 
-//  set.keys()   = [ 3,5,7 ]
-//  set.values() = [ 2,1,1 ]
+ // set.keys()   = [ 3,5,7 ]
+ // set.values() = [ 2,1,1 ]
 
-//  [ 1,0,4 ] deranked from top-k window
+ // [ 1,0,4 ] deranked from top-k window
 
-//  set.rank = [ 3,5,7,0,0,0 ]
-//  set.stat = [ 2,1,1,0,0,0 ]
+ // set.rank = [ 3,5,7,0,0,0 ]
+ // set.stat = [ 2,1,1,0,0,0 ]
 
 ```
 
@@ -499,12 +499,12 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,2,0);
     set.minsum(4);
 
-//  when 4 is inserted 1 is overwritten
+ // when 4 is inserted 1 is overwritten
 //
-//                [4]
-//                 v
-//  set.rank = [ 0,1,2,3 ]
-//  set.stat = [ 3,1,2,1 ]
+ //               [4]
+ //                v
+ // set.rank = [ 0,1,2,3 ]
+ // set.stat = [ 3,1,2,1 ]
 
 ```
 
@@ -521,13 +521,13 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,2,0);
     set.minsum(4);
 
-//  when 4 is inserted
-//  find empty slot with a lower count
+ // when 4 is inserted
+ // find empty slot with a lower count
 //
-//                [4] [4]    [4]
-//                 x   x  ->  v
-//  set.rank = [ 0,1,2,3 ]   [4] not inserted 
-//  set.stat = [ 3,1,2,1 ]   [1] not inserted
+ //               [4] [4]    [4]
+ //                x   x  ->  v
+ // set.rank = [ 0,1,2,3 ]   [4] not inserted 
+ // set.stat = [ 3,1,2,1 ]   [1] not inserted
 
 ```
 
@@ -560,12 +560,12 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,2,0);
     set.winsum(4);
 
-//  when 4 is inserted 1 is ejected 
+ // when 4 is inserted 1 is ejected 
 //
-//                  [4]
-//                   v
-//  set.rank = [ 0,2,4,3 ] -> [1] dropped
-//  set.stat = [ 3,2,1,1 ] -> [1] dropped
+ //                 [4]
+ //                  v
+ // set.rank = [ 0,2,4,3 ] -> [1] dropped
+ // set.stat = [ 3,2,1,1 ] -> [1] dropped
 
 ```
 
@@ -582,13 +582,13 @@ let set = new QuickSet({
     set.batch(0,1,2,0,3,2,0);
     set.winsum(4);
 
-//  when 4 is inserted try to
-//  find empty slot with a lower count
+ // when 4 is inserted try to
+ // find empty slot with a lower count
 //
-//                  [4 4]    [4]
-//                   x x  ->  v
-//  set.rank = [ 0,2,3,1 ]   [4] not inserted
-//  set.stat = [ 3,2,1,1 ]   [1] not inserted
+ //                 [4 4]    [4]
+ //                  x x  ->  v
+ // set.rank = [ 0,2,3,1 ]   [4] not inserted
+ // set.stat = [ 3,2,1,1 ]   [1] not inserted
 
 ```
 
@@ -608,8 +608,8 @@ Method that returns all integer keys in the set in natural ascending order.
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.keys()  = [0,1,2,3,4,5]
-//  set.keys(2) = [0,1]
+ // set.keys()  = [0,1,2,3,4,5]
+ // set.keys(2) = [0,1]
 
 ```
 
@@ -621,8 +621,8 @@ Method that returns all values associated to keys in natural ascending order of 
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.values()  = [1,2,3,1,2,1]
-//  set.values(2) = [1,2]
+ // set.values()  = [1,2,3,1,2,1]
+ // set.values(2) = [1,2]
 
 ```
 
@@ -634,8 +634,8 @@ Method that returns all key/value pairs in natural ascending order of keys.
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.entries()  = [[0,1], [1,2], [2,3], [3,1], [4,2], [5,1]]
-//  set.entries(2) = [[0,1], [1,2]]
+ // set.entries()  = [[0,1], [1,2], [2,3], [3,1], [4,2], [5,1]]
+ // set.entries(2) = [[0,1], [1,2]]
 
 ```
 
@@ -648,8 +648,8 @@ Slightly faster than calling native `sort()`
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.sorted()  = [0,1,1,2,2,2,3,4,4,5]
-//  set.sorted(2) = [0,1]
+ // set.sorted()  = [0,1,1,2,2,2,3,4,4,5]
+ // set.sorted(2) = [0,1]
 
 ```
 
@@ -668,8 +668,8 @@ let set = new QuickSet({
     });
     set.batch(0,1,2,0,3,4,2,0);
 
-//  set.top()  = [ [0,3], [1,1], [2,2], [3,1] ]
-//  set.top(2) = [ [0,3], [2,2] ]
+ // set.top()  = [ [0,3], [1,1], [2,2], [3,1] ]
+ // set.top(2) = [ [0,3], [2,2] ]
 
 ```
 
@@ -686,8 +686,8 @@ let set = new QuickSet({
     });
     set.batch(0,1,2,0,3,4,2,0);
  
-//  set.topK()  = [ 0,1,2,3 ]
-//  set.topK(2) = [ 0,1 ]
+ // set.topK()  = [ 0,1,2,3 ]
+ // set.topK(2) = [ 0,1 ]
 
 ```
 
@@ -704,8 +704,8 @@ let set = new QuickSet({
     });
     set.batch(0,1,2,0,3,4,2,0);
  
-//  set.topV()  = [ 3,1,2,1 ]
-//  set.topV(2) = [ 3,1 ]
+ // set.topV()  = [ 3,1,2,1 ]
+ // set.topV(2) = [ 3,1 ]
 
 ```
 
@@ -734,38 +734,38 @@ let set = new QuickSet({
     });
     set.batch(0,1,1,2,3,4,6,3,1);
 
-//  set.keys()   = [ 0,1,2,3,4,6 ];
-//  set.values() = [ 1,3,1,2,1,1 ];
+ // set.keys()   = [ 0,1,2,3,4,6 ];
+ // set.values() = [ 1,3,1,2,1,1 ];
 
-//  set.rank     = [ 0,1,2,3 ];
-//  set.stat     = [ 1,3,1,2 ];
+ // set.rank     = [ 0,1,2,3 ];
+ // set.stat     = [ 1,3,1,2 ];
 
     set.clear();
 
-//  set.keys()   = [ ];
-//  set.values() = [ ];
+ // set.keys()   = [ ];
+ // set.values() = [ ];
 
-//  set.rank     = [ 0,1,2,3 ];
-//  set.stat     = [ 1,3,1,2 ];
+ // set.rank     = [ 0,1,2,3 ];
+ // set.stat     = [ 1,3,1,2 ];
 
     set.clear(true);
 
-//  set.keys()   = [ ];
-//  set.values() = [ ];
+ // set.keys()   = [ ];
+ // set.values() = [ ];
 
-//  top-k window set to zeroes
-//  set.rank     = [ 0,0,0,0 ];
-//  set.stat     = [ 0,0,0,0 ];
+ // top-k window set to zeroes
+ // set.rank     = [ 0,0,0,0 ];
+ // set.stat     = [ 0,0,0,0 ];
 
     set.clear(6);
     set.batch(0,1,1,2,3,4,6,3,5,7);
 
-//  set.keys()   = [ 0,1,2,3,4,5,6,7 ];
-//  set.values() = [ 1,3,1,2,1,1,1,1 ];
+ // set.keys()   = [ 0,1,2,3,4,5,6,7 ];
+ // set.values() = [ 1,3,1,2,1,1,1,1 ];
 
-//  top-k window resized to 6 slots
-//  set.rank     = [ 0,1,2,3,4,6 ];
-//  set.stat     = [ 1,3,1,2,1,1 ];
+ // top-k window resized to 6 slots
+ // set.rank     = [ 0,1,2,3,4,6 ];
+ // set.stat     = [ 1,3,1,2,1,1 ];
 
 ```
 
