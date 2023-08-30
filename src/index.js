@@ -8,12 +8,12 @@ export default class QuickSet {
     clip = 0 , span = 512 , // integer range min - max
     slot = 0 , high = 128 , // frequency slots + range 
     freq = 1 , // minimum item cut frequency 
-    lifo = false,
+    fifo = false,
     } = {}) {
 
     Object.assign(this.constructor.prototype, prototype);
     
-    if (lifo) { 
+    if (fifo) { 
       this.constructor.prototype.minsum = 
       rewrite ( this[minsum], 'val > this.tmin', 'val >= this.tmin');
       this.constructor.prototype.winsum = 
@@ -34,7 +34,7 @@ export default class QuickSet {
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
-    this.constructor.prototype.default = { Rank, Pool, mode, lifo, mult, byte };
+    this.constructor.prototype.default = { Rank, Pool, mode, fifo, mult, byte };
     this.constructor.prototype.sum = this[mode];
 
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
