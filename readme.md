@@ -124,7 +124,7 @@ A variable parameter displaying the maximum value in the top-k window, upper bou
 
 ### Bulk
 
-#### `.batch` `(...uints[, values])`
+#### `.batch` `(...uints[, values])`
 Batch loading method for inserting integers into the set and summing optional weights/values. 
 Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
 
@@ -226,7 +226,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 Methods for inserting and updating integer data.
 
-#### `.add` `(​uint[, value])`
+#### `.add` `(​uint[, value])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--228) and below the upper [`span`](#span-0--228) bound, with an optional weight/value limited to [`high`](#high-0--232).
 Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique`](#unique) for faster key insertion). 
 Overwrites previously set values, but does **not** update the top-k window (use [`sum`](#sum-uint-value) for this).
