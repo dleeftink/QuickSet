@@ -140,7 +140,7 @@ A variable parameter displaying the maximum value in the top-k window, upper bou
 
 ### Bulk
 
-#### `.batch( ...uints [,values] )`
+#### `.batch( ...uints[, values ​])`
 Batch loading method for inserting integers into the set and summing optional weights/values (uses [`.sum()`](#sum-uint-value) under the hood). 
 Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
 
