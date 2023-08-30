@@ -102,10 +102,10 @@ Defaults to `false`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array. While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour.
 - The hidden [`bits`](#setbits-uintarray) array acts as a backing array to track all integer frequencies in a set.
 - The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#quickset-class) of most frequent integers (rank) and values (stat) present in a set.
-
-> Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` as well its value at the same index in `stat`.
  
 Some additional properties describe the internal state of the set.
+
+> Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` as well its value at the same index in `stat`.
 
 ###### `set.bits: [UintArray]`
 This non-enumerable property contains the Typed backing array that stores all integers present in the set as well as their values. 
