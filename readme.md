@@ -104,6 +104,7 @@ Defaults to `false`.
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array. While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour.
 - The hidden [`bits`](#setbits-uintarray) array acts as a backing array to track all integer frequencies in a set.
 - The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#slot-0--16) of most frequent integers (rank) and values (stat) present in a set.
+Some additional properties describe the internal state of the set.
 
 ###### `set.bits: [UintArray]`
 This non-enumerable property contains the backing array (Typed) that stores all integers present in the set as well as their values. 
@@ -116,10 +117,6 @@ The window size is determined from [`slot`](#slot-0--16).
 This enumerable property displays the values associated with each ranked integer (Typed).
 Same length as [`rank`](#setrank-uintarray).
 
-> Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes depending on how filled top-k slots. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` and access its value at the same index in `stat`.
-
-Some additional properties describe the internal state of the set.
-
 ###### `set.last: Uint`
 A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--16).
 
@@ -128,6 +125,8 @@ A variable parameter displaying the minimum value in the top-k window, lower bou
 
 ###### `set.tmax: Uint`
 A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--2--32).
+
+> Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes depending on how filled top-k slots. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` and access its value at the same index in `stat`.
 
 ## API
 
