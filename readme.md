@@ -140,7 +140,7 @@ A variable parameter displaying the maximum value in the top-k window, upper bou
 
 ### Bulk
 
-#### `.batch( ...uints[, values ])`
+#### `.batch( ...uints [, values ])`
 Batch loading method for inserting integers into the set and summing optional weights/values (uses [`.sum()`](#sum-uint-value) under the hood). 
 Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
 
@@ -202,7 +202,7 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 
 ```
 
-#### `.unique( ...uints )`
+#### `.unique( ... uints )`
 Batch loading method for inserting unique integers into the set once (uses [`.add()`](#add-uint-value) under the hood). 
 Resets previous set values (i.e. integer counts) to one. 
 Does **not** update the top-k window (use [`.batch()`](#batch-uints-values) to track integer frequencies and have updates reflected).
@@ -242,7 +242,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 Methods for inserting and updating integer data.
 
-#### `.add( ​uint[, value ])`
+#### `.add( ​uint [, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound, with an optional weight/value limited to [`high`](#high-0--2--32).
 Useful for initialising a set with weights, or quickly adding integers to the set (use [`.unique()`](#unique) for faster key insertion). 
 Overwrites previously set values, but does **not** update the top-k [`window`](#quickset-class) (use [`.sum()`](#sum-uint-value) to have updates reflected).
@@ -269,7 +269,7 @@ let set = new QuickSet({
 
 ```
 
-#### `.put( uint[, value ])`
+#### `.put( uint [, value ])`
 'Unsafe' adds an integer to the set with an optional value **without** checking if the integer falls within range or its value exceeds the [`high`](#high-0--2--32) frequency mark (use [`.add()`](#add-uint-value) for safe insertion). Overwrites previously set values, but does not update the top-k [`window`](#quickset-class) (use [`.sum()`](#sum-uint-value) to have updates reflected).
 
 Should in theory provide better performance compared to [`.add()`](#add-uint-value) with the risk of adding integers beyond the configured range or expected frequency (potentially causing overflows). 
@@ -327,7 +327,7 @@ let set = new QuickSet({
 
 This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive [`.sum()`](#sum-uint-value) operations (*tombstoned* values are simply ignored).
 
-#### `.sum( ​uint[, value ])`
+#### `.sum( ​uint [, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
 If already present, increases its frequency by one or a custom weight/value limited to [`high`](#high-0--2--32).
 Additionally updates the top-k [`window`](#quickset-class) based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum [`freq`](#freq-0--2--32) parameter.
@@ -474,7 +474,7 @@ let set = new QuickSet({
 ### Rankers
 Strategies for inserting and updating integer counts and updating the top-k window.
 
-#### `.minsum( uint[, value ])`
+#### `.minsum( uint [, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
 If already present, increases its frequency by one or a custom weight/value limited to [`high`](#high-0--2--32). 
 Additionally updates the top-k [`window`](#quickset-class) using the 'minsum' strategy when the updated value exceeds the minimum [`freq`](#freq-0--2--32) parameter:
@@ -535,7 +535,7 @@ This insertion method resembles random access while guaranteeing the most freque
 If integer counts are tied, [`lifo`](#lifo-true--false) is enacted based on its setting.
 More efficient than [`.winsum()`](#winsum-uint-value) due to absence of copying, with  a performance penalty when `lifo = true`.
 
-#### `.winsum( uint[, value ])`
+#### `.winsum( uint [, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
 If already present, increases its frequency by one or a custom weight/value limited to [`high`](#high-0--2--32). 
 Additionally updates the top-k [`window`](#quickset-class) using the 'winsum' strategy when the updated value exceeds the minimum [`freq`](#freq-0--2--32) parameter:
@@ -600,7 +600,7 @@ Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, 
 Methods for sorting and returning the set data. 
 Each can be exit early by providing a maximum number of `iters` (value greater than zero or `true` for a full sweep), or return items in descending order by setting its `reverse` to `true`
 
-#### `.keys( iters[, reverse ])`
+#### `.keys( iters [, reverse ])`
 Method that returns all integer keys in the set in natural ascending order. 
 
 ``` js
@@ -613,7 +613,7 @@ let set = new QuickSet();
 
 ```
 
-#### `.values( iters[, reverse ])`
+#### `.values( iters [, reverse ])`
 Method that returns all values associated to keys in natural ascending order of keys.
 
 ``` js
@@ -626,7 +626,7 @@ let set = new QuickSet();
 
 ```
 
-#### `.entries( iters[, reverse ])` 
+#### `.entries( iters [, reverse ])` 
 Method that returns all key/value pairs in natural ascending order of keys.
 
 ``` js
@@ -639,7 +639,7 @@ let set = new QuickSet();
 
 ```
 
-#### `.sorted( iters[, reverse ])`
+#### `.sorted( iters [, reverse ])`
 Method that sorts all integers in the set in natural ascending order.
 Slightly faster than calling native `sort()`
 
@@ -655,7 +655,7 @@ let set = new QuickSet();
 
 ### Windows
 
-#### `.top( k[, reverse ])`
+#### `.top( k [, reverse ])`
 Method for *copying* the top window entries [ [`rank`](#setrank-uintarray) , [`stat`](#setstat-uintarray) ] up until position `k`
 
 ``` js
@@ -673,7 +673,7 @@ let set = new QuickSet({
 
 ```
 
-#### `.topK( k[, reverse ])`
+#### `.topK( k [, reverse ])`
 Method for *copying* the top window **keys** [ [`rank`](#setrank-uintarray) ] up until position `k`
 
 ``` js
@@ -691,7 +691,7 @@ let set = new QuickSet({
 
 ```
 
-#### `.topV( k[, reverse ])`
+#### `.topV( k [, reverse ])`
 Method for *copying* the top window **values** [ [`stat`](#setstat-uintarray) ] up until position `k`
 
 ``` js
@@ -711,10 +711,10 @@ let set = new QuickSet({
 
 ### Resizing
 
-#### `.expand(slots)`
+#### `.expand( slots )`
 Implementation forthcoming.
 
-#### `.shrink(slots)`
+#### `.shrink( slots )`
 Implementation forthcoming.
 
 ### Disposal
