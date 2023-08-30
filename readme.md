@@ -57,7 +57,7 @@ Creates a new QuickSet instance with default settings (the top-k [`window`](#qui
 let config = {
 
   mode: "minsum" || "winsum",
-  slot:   0, // top-k ranked window slots  (0 .. 16)
+  slot:   0, // top-k window off by default  (0 .. 16)
 
   span: 512, // max expected integer range (0 .. 2^28)
   clip:   0, // min expected integer range (0 .. 2^28)
