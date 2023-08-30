@@ -711,9 +711,9 @@ Implementation forthcoming.
 ### Disposal
 
 #### `.clear` `(true || 0-16)`
-Method for clearing the [Typed backing array](#setbits-uintarray) (`.clear()`) and optionally wiping the top-k window (`.clear(true)`). 
+Method for clearing the [Typed backing array](#setbits-uintarray) (`.clear()`) and optionally wiping the [top-k window](#quickset-class) (`.clear(true)`). 
 During clearing operations, the top-k window can be resized as desired between 1 and 16 slots (`.clear(1..16)`).
-This method is useful for resetting and reusing a set between runs without having to construct a [`new QuickSet`](#new-quickset-config).
+This method is useful for resetting and reusing a set between runs without having to construct a new [`QuickSet`](#new-quickset-config).
 
 ``` js
 
