@@ -65,7 +65,7 @@ let config = {
   high: 128, // max expected integer count (0 .. 2^32)
   freq:   1, // min expected integer count (0 .. 2^32)
 
-  lifo:   0, // replace earlier values in case of ties
+  fifo:   0, // replace earlier values in case of ties
 
 }
 ```
@@ -103,8 +103,8 @@ Amount of slots to keep track of the top-k most frequent integers in a set.
 - Values between `0` and `16` set the top-k `window` size.
 - Defaults to `0`.
 
-###### `lifo: true || false`
-Whether to eject old values from the top-k window in case of ties.
+###### `fifo: true || false`
+Whether to eject old values from the top-k window in case of ties (*first-in first-out*).
 - Performance might be affected when set to `true`.
 - Defaults to `false`.
 
@@ -484,15 +484,15 @@ Additionally updates the top-k [`window`](#quickset-class) using the 'minsum' st
 3. Replace this integer with the updated one and its new value
 
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray). 
-Depending on `lifo`, the `minsum` strategy executes as follows.
+Depending on `fifo`, the `minsum` strategy executes as follows.
 
-When `lifo = true` later insertions are kept (*last in-first out*):
+When `fifo = true` later insertions are kept (*first-in first-out*):
 
 ``` js
 
 let set = new QuickSet({
       mode: "minsum",
-      lifo: true ,
+      fifo: true ,
       slot: 4,
       freq: 0
     });
@@ -508,13 +508,13 @@ let set = new QuickSet({
 
 ```
 
-When `lifo = false` earlier insertions are kept:
+When `fifo = false` earlier insertions are kept:
 
 ``` js
 
 let set = new QuickSet({
       mode: "minsum",
-      lifo: false ,
+      fifo: false ,
       slot: 4,
       freq: 0
     });
@@ -532,8 +532,8 @@ let set = new QuickSet({
 ```
 
 This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. 
-If integer counts are tied, [`lifo`](#lifo-true--false) is enacted based on its setting.
-More efficient than [`.winsum()`](#winsum-uint-value) due to absence of copying, with  a performance penalty when `lifo = true`.
+If integer counts are tied, [`fifo`](#fifo-true--false) is enacted based on its setting.
+More efficient than [`.winsum()`](#winsum-uint-value) due to absence of copying, with  a performance penalty when `fifo = true`.
 
 #### `.winsum( uint[, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
@@ -545,15 +545,15 @@ Additionally updates the top-k [`window`](#quickset-class) using the 'winsum' st
 3. Insert the integer and its updated value into the newly opened spot
 
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray).
-Depending on `lifo`, the `winsum` strategy executes as follows:
+Depending on `fifo`, the `winsum` strategy executes as follows:
 
-When `lifo = true` later insertions are kept (*last in-first out*):
+When `fifo = true` later insertions are kept (*first-in first-out*):
 
 ``` js
 
 let set = new QuickSet({
       mode: "winsum",
-      lifo: true,
+      fifo: true,
       slot: 4,
       freq: 0
     });
@@ -569,13 +569,13 @@ let set = new QuickSet({
 
 ```
 
-When `lifo = false` earlier insertions are kept:
+When `fifo = false` earlier insertions are kept:
 
 ``` js
 
 let set = new QuickSet({
       mode: "winsum",
-      lifo: false,
+      fifo: false,
       slot: 4,
       freq: 0
     });
@@ -593,8 +593,8 @@ let set = new QuickSet({
 ```
 
 This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency.
-If integer counts are tied, [`lifo`](#lifo-true--false) is enacted based on its setting.
-Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, with an additional performance penalty when `lifo = true`
+If integer counts are tied, [`fifo`](#fifo-true--false) is enacted based on its setting.
+Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, with an additional performance penalty when `fifo = true`
 
 ### Sorters 
 Methods for sorting and returning the set data. 
@@ -662,7 +662,7 @@ Method for *copying* the top window entries [ [`rank`](#setrank-uintarray) , [`s
 
 let set = new QuickSet({
       mode: "minsum",
-      lifo: false,
+      fifo: false,
       slot: 4,
       freq: 0
     });
@@ -680,7 +680,7 @@ Method for *copying* the top window **keys** [ [`rank`](#setrank-uintarray) ] up
 
 let set = new QuickSet({
       mode: "minsum",
-      lifo: false ,
+      fifo: false ,
       slot: 4,
       freq: 0
     });
@@ -698,7 +698,7 @@ Method for *copying* the top window **values** [ [`stat`](#setstat-uintarray) ] 
 
 let set = new QuickSet({
       mode: "minsum",
-      lifo: false ,
+      fifo: false ,
       slot: 4,
       freq: 0
     });
@@ -728,7 +728,7 @@ This is useful for resetting and reusing a set between runs without having to co
 
 let set = new QuickSet({
       mode: "minsum",
-      lifo: false,
+      fifo: false,
       slot: 4,
       freq: 0,
     });
