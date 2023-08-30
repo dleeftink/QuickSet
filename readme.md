@@ -6,8 +6,8 @@ Sorted in natural ascending order of integers by default.
 ### Use cases
 1. Finding top-k most frequent items in one or many lists
 2. Nearest neighbour finding based on frequency of occurance
-3. A lightweight key/value dictionary
-4. Sorting random integers for binary search
+3. Sorting random integers for binary search
+4. A lightweight key/value dictionary
 5. Duplicate integer counting
 6. Unique integer extraction
 
