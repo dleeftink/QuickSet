@@ -49,7 +49,7 @@ See the [`.put()`](#put-uint-value) examples for why this distinction is useful.
 ## Configuration
 
 #### `new QuickSet` `({...config})`
-Creates a new QuickSet instance with default settings (top-k window is turned off by default):
+Creates a new QuickSet instance with default settings (the top-k window is turned off by default):
 
 ```js
 let config = {
@@ -98,9 +98,9 @@ Performance might be affected when `lifo: true`.
 Defaults to `false`.
 
 #### `QuickSet class {...}`
-Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array ([`bits`](#setbits-uintarray)). 
-The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k window of most frequent integers (rank) and values (stat) present in a set.
-While all arrays can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
+Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
+The visible arrays, [`set.rank`](#setrank-uintarray) and [`set.stat`](#setstat-uintarray) provide the top-k window of most frequent integers ('rank') and values ('stat') present in a set, while the hidden ([`set.bits`](#setbits-uintarray)) array tracks the frequencies of all integers in the set.
+While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
 Some additional properties describe the internal state of the set.
 
 ###### `set.bits: [UintArray]`
