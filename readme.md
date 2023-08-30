@@ -71,23 +71,23 @@ let config = {
 ```
 
 ###### `mode: "minsum" || "winsum"`
-Sets the default summing mode when using [`.sum()`](#sum-uint-value). 
+Sets the default summing mode when using [`.sum()`](#sum-uint-value).
 See [rankers](#rankers) for more.
 
 ###### `span: 0 .. 2 ^ 28`
-Maximum expected integer in set (upper range bound). 
-Values above this number are ignored when added to the set.
+Maximum expected integer in set (upper range bound).
+Integers above this number are ignored when added to the set.
 
 ###### `clip: 0 .. 2 ^ 28`
-Minimum expected integer in set (lower range bound). 
-Values below this number are ignored when added to the set.
+Minimum expected integer in set (lower range bound).
+Integers below this number are ignored when added to the set.
 
 ###### `high: 0 .. 2 ^ 32`
-Maximum expected count of each discrete integer in set (upper frequency bound per integer). 
-Integer counts are limited to this value. 
+Maximum expected count of individual integers (upper frequency bound per integer).
+Total counts are limited to this value.
 
 ###### `freq: 0 .. 2 ^ 32`
-Minimum expected count of each discrete integer in set (lower frequency bound per integer). 
+Minimum expected count of individual integers (lower frequency bound per integer).
 Acts as minimum threshold for integers to be included in top-k window.
 
 ###### `slot: 0 .. 16`
