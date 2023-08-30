@@ -93,8 +93,8 @@ Performance might be affected when `lifo: true`.
 Defaults to `false`.
 
 #### `QuickSet class { ... }`
-Besides the configured options and methods, `QuickSet` returns an object with two visible and one hidden backing array. 
-Together, `set.rank` and `set.stat` provide the top-k window of most frequent integers (rank) and values (stat) added to a set.
+Besides the configured options and methods, `QuickSet` returns an object with two visible ([`rank`](#setrank-uintarray)|[`stat`](#setstat-uintarray)) and one hidden backing array ([`bits`](#setbits-uintarray)). 
+Together, `rank` and `stat` provide the top-k window of most frequent integers (rank) and values (stat) added to a set.
 While these arrays can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
 Some additional properties describe the internal state of the set.
 
@@ -107,10 +107,10 @@ The window size is determined from [`slot`](#slot-0--16).
 
 ###### `set.stat: [UintArray]`
 This property displays the values associated with the ranked integers.
-Same length as `rank`
+Same length as [`rank`](#setrank-uintarray).
 
 ###### `set.last: Uint`
-A constant parameter for accessing the last index in the top-k window.
+A constant parameter for accessing the last index in the top-k window ([`slot - 1`](#slot-0--16)).
 
 ###### `set.tmin: Uint`
 A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--232).
