@@ -100,8 +100,8 @@ Defaults to `false`
 
 #### `QuickSet class { ... }`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array. While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour.
-- The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#quickset-class) of most frequent integers (rank) and values (stat) present in a set.
 - The hidden [`bits`](#setbits-uintarray) array acts as a backing array to track all integer frequencies in a set.
+- The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#quickset-class) of most frequent integers (rank) and values (stat) present in a set.
  
 Some additional properties describe the internal state of the set.
 
