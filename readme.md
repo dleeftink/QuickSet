@@ -50,7 +50,7 @@ See the [`.put()`](#put-uint-value) examples for why this distinction is useful.
 
 ## Configuration
 
-### `new QuickSet` `({...config})`
+#### `new QuickSet` `({...config})`
 Creates a new QuickSet instance with default settings (the top-k [`window`](#quickset-class) is turned off by default):
 
 ```js
