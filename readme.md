@@ -72,7 +72,7 @@ let config = {
 
 ###### `mode: "minsum" || "winsum"`
 Sets the default summing mode when using [`sum`](#sum-uint-value).
-- See [rankers](#rankers) for differences.
+See [rankers](#rankers) for differences.
 
 ###### `span: 0 .. 2 ^ 28`
 Maximum expected integer in set (upper range bound).
