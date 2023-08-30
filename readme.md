@@ -41,8 +41,8 @@ This instantiates a new set with [default parameters](#new-quickset-config) and 
 Updates to the top-k window are only made when the [`slot`](#slot-0--16) parameter is set.
 
 Methods can be mixed and matched to your liking, but may yield unwanted results if used without caution: 
-- [`.add()`](#add-uint-value), [`.put()`](#put-uint-value) and [`.unique()`](#unique-uints) overwrite previous values and **do not** update the top-k window;
-- use [`.sum()`](#sum-uint-value) and [`.batch()`](#batch-uints-values) if you want updates to be reflected in the top-k window when inserting new integers with weights (see the [`.put`](#put-uint-value) examples for why this distinction is useful).
+- [`.add()`](#add-uint-value), [`.put()`](#put-uint-value) and [`.unique()`](#unique-uints) overwrite previous values and **do not** update the top-k window when inserting integers with optional weights;
+- [`.sum()`](#sum-uint-value) and [`.batch()`](#batch-uints-values) maintain previous values and **do** update the top-k window when inserting integers with optional weights (see the [`.put`](#put-uint-value) examples for why this distinction is useful).
 
 ## Configuration
 
