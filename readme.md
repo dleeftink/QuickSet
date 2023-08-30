@@ -50,7 +50,7 @@ See the [`.put()`](#put-uint-value) examples for why this distinction is useful.
 
 ## Configuration
 
-#### `new QuickSet` `({...config})`
+### `new QuickSet` `({...config})`
 Creates a new QuickSet instance with default settings (the top-k [`window`](#quickset-class) is turned off by default):
 
 ```js
@@ -100,7 +100,7 @@ Whether to eject old values from the top-k window in case of ties.
 Performance might be affected when set to `true`.
 Defaults to `false`.
 
-#### `QuickSet class { ... }`
+### `QuickSet class { ... }`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array. While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour.
 - The hidden [`bits`](#setbits-uintarray) array acts as a backing array to track all integer frequencies in a set.
 - The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k `window` of most frequent integers (rank) and values (stat) present in a set.
