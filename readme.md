@@ -34,7 +34,7 @@ let set = new QuickSet()
 
 ```
 
-This instantiates a new set with default parameters and a top-k window of 0-length, which may need additional configuring to suit your needs. As a rule of thumb:
+This instantiates a new set with [default parameters](#new-quickset-config) and a top-k window of 0-length, which may need additional configuring to suit your needs. As a rule of thumb:
 
 - If you are interested in using unweighted set operations only, use `add()`/`put()` for single and `unique()` for bulk insertions.
 - If you want to assign weights to  integers, use `sum` for single and `batch` for bulk insertions.
@@ -44,7 +44,7 @@ Methods can be mixed and matched to your liking, but may yield unwanted results 
 
 ## Configuration
 
-#### `new QuickSet({...config})`
+#### `new QuickSet` `({...config})`
 Creates a new QuickSet instance with default settings (top-k window is turned off by default):
 
 ```js
