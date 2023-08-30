@@ -88,11 +88,11 @@ Total counts are limited to this value.
 
 ###### `freq: 0 .. 2 ^ 32`
 Minimum expected count of individual integers (lower frequency bound per integer).
-Acts as minimum threshold for integers to be included in top-k window.
+Integer counts needs to exceed this threshold to qualify for a top-k position.
 
 ###### `slot: 0 .. 16`
-Amount of slots to keep track of top-k most frequent integers in the set.
-Any value between `0` and `16` sets the size of the top-k `window`.
+Amount of slots to keep track of the top-k most frequent integers in a set.
+Any value between `0` and `16` sets the top-k `window` size.
 Defaults to `0`.
 
 ###### `lifo: true || false`
