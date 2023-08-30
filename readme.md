@@ -113,11 +113,11 @@ Some additional properties describe the internal state of the set.
 This non-enumerable property contains the backing array (Typed) that stores all integers present in the set as well as their values. 
 
 ###### `set.rank: [UintArray]`
-This enumerable property displays the top-k window of ranked integers (Typed). 
+This enumerable property displays the top-k window of ranked integers (Typed).
 The window size is determined from [`slot`](#slot-0--16).
 
 ###### `set.stat: [UintArray]`
-This enumerable property displays the values associated with the ranked integers (Typed).
+This enumerable property displays the values associated with each ranked integer (Typed).
 Same length as [`rank`](#setrank-uintarray).
 
 ###### `set.last: Uint`
