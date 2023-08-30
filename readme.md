@@ -524,7 +524,7 @@ let set = new QuickSet({
 
 This insertion method resembles random access while guaranteeing the most frequent elements to bubble up. 
 If integer counts are tied, [`lifo`](#lifo-true--false) is enacted based on its setting.
-More efficient than [`.winsum()`](#winsum-uint-value) due to absence of copying, but `lifo: true` can introduce a performance penalty.
+More efficient than [`.winsum()`](#winsum-uint-value) due to absence of copying, with  a performance penalty when `lifo = true`.
 
 #### `.winsum` `(uint[, value])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
@@ -585,7 +585,7 @@ let set = new QuickSet({
 
 This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency.
 If integer counts are tied, [`lifo`](#lifo-true--false) is enacted based on its setting.
-Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, with an additional performance penalty when `lifo: true`
+Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, with an additional performance penalty when `lifo = true`
 
 ### Sorters 
 Methods for sorting and returning the set data. 
