@@ -90,6 +90,7 @@ Acts as minimum threshold for integers to be included in top-k window.
 
 ###### `slot: 0 .. 16`
 Amount of slots to keep track of top-k most frequent integers in the set.
+Any value between `0` and `16` sets the top-k window width.
 Defaults to `0`.
 
 ###### `lifo: true || false`
