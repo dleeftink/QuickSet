@@ -235,8 +235,8 @@ Methods for inserting and updating integer data.
 
 #### `.add` `(​uint[, value])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound, with an optional weight/value limited to [`high`](#high-0--2--32).
-Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique`](#unique) for faster key insertion). 
-Overwrites previously set values, but does **not** update the top-k window; use [`.sum()`](#sum-uint-value) to have updates reflected.
+Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique()`](#unique) for faster key insertion). 
+Overwrites previously set values, but does **not** update the top-k window; use [`sum()`](#sum-uint-value) to have updates reflected.
 
 Example:
 
