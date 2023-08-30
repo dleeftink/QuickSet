@@ -48,7 +48,7 @@ See the [`put()`](#put-uint-value) examples for why this distinction is useful.
 
 ## Configuration
 
-#### `.new QuickSet` `({...config})`
+#### `new QuickSet` `({...config})`
 Creates a new QuickSet instance with default settings (the top-k [`window`](#quickset-class) is turned off by default):
 
 ```js
@@ -68,61 +68,61 @@ let config = {
 }
 ```
 
-###### `.mode: "minsum" || "winsum"`
+###### `mode: "minsum" || "winsum"`
 Sets the default summing mode when using [`sum()`](#sum-uint-value). 
 See [rankers](#rankers) for more.
 
-###### `.span: 0 .. 2 ^ 28`
+###### `span: 0 .. 2 ^ 28`
 Maximum expected integer in set (upper range bound). 
 Values above this number are ignored when added to the set.
 
-###### `.clip: 0 .. 2 ^ 28`
+###### `clip: 0 .. 2 ^ 28`
 Minimum expected integer in set (lower range bound). 
 Values below this number are ignored when added to the set.
 
-###### `.high: 0 .. 2 ^ 32`
+###### `high: 0 .. 2 ^ 32`
 Maximum expected count of each discrete integer in set (upper frequency bound per integer). 
 Counting is maximised to this value. 
 
-###### `.freq: 0 .. 2 ^ 32`
+###### `freq: 0 .. 2 ^ 32`
 Minimum expected count of each discrete integer in set (lower frequency bound per integer). 
 Acts as minimum threshold for integers to be included in top-k window.
 
-###### `.slot: 0 .. 16`
+###### `slot: 0 .. 16`
 Amount of slots to keep track of top-k most frequent integers in the set.
 Any value between `0` and `16` sets the top-k window width.
 Defaults to `0`
 
-###### `.lifo: true || false`
+###### `lifo: true || false`
 Whether to eject old values from the top-k window in case of ties. 
 Performance might be affected when set to `true` 
 Defaults to `false`
 
-#### `.QuickSet class {...}`
+#### `QuickSet class {...}`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array. 
 The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k window of most frequent integers (rank) and values (stat) present in a set, while the hidden [`bits`](#setbits-uintarray) array tracks the frequencies of all integers in the set.
 
 While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour. 
 Some additional properties describe the internal state of the set.
 
-###### `.set.bits: [UintArray]`
+###### `set.bits: [UintArray]`
 This non-enumerable property contains the Typed backing array that stores all integers present in the set as well as their values. 
 
-###### `.set.rank: [UintArray]`
+###### `set.rank: [UintArray]`
 This enumerable property displays the Typed top-k window of ranked integers. 
 The window size is determined from [`slot`](#slot-0--16).
 
-###### `.set.stat: [UintArray]`
+###### `set.stat: [UintArray]`
 This enumerable property displays the values associated with the ranked integers.
 Same length as [`rank`](#setrank-uintarray).
 
-###### `.set.last: Uint`
+###### `set.last: Uint`
 A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--16).
 
-###### `.set.tmin: Uint`
+###### `set.tmin: Uint`
 A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--2--32).
 
-###### `.set.tmax: Uint`
+###### `set.tmax: Uint`
 A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--2--32).
 
 > Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes. If 0 is an integer you have previously inserted, you can access this by looking for the first indexed 0 in `rank` as well its value at the same index in `stat`
@@ -131,7 +131,7 @@ A variable parameter displaying the maximum value in the top-k window, upper bou
 
 ### Bulk
 
-#### `..batch` `(...uints[, values])`
+#### `.batch` `(...uints[, values])`
 Batch loading method for inserting integers into the set and summing optional weights/values (uses [`sum()`](#sum-uint-value) under the hood). 
 Additionally updates the the top-k window based on [`mode`](#mode-minsum--winsum).
 
@@ -193,7 +193,7 @@ set.batch(0,1,2,1).batch(1,2).entries() // = [ [0,1], [1,3], [2,2] ]
 
 ```
 
-#### `..unique` `(...uints)`
+#### `.unique` `(...uints)`
 Batch loading method for inserting unique integers into the set once (uses [`add()`](#add-uint-value) under the hood). 
 Resets previous set values (i.e. integer counts) to one. 
 Does **not** update the top-k window (use [`batch()`](#batch-uints-values) to track integer frequencies and have updates reflected).
@@ -233,7 +233,7 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 Methods for inserting and updating integer data.
 
-#### `..add` `(​uint[, value])`
+#### `.add` `(​uint[, value])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound, with an optional weight/value limited to [`high`](#high-0--2--32).
 Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique()`](#unique) for faster key insertion). 
 Overwrites previously set values, but does **not** update the top-k [`window`](#quickset-class) (use [`sum()`](#sum-uint-value) to have updates reflected).
@@ -260,7 +260,7 @@ let set = new QuickSet({
 
 ```
 
-#### `..put` `(uint[, value])`
+#### `.put` `(uint[, value])`
 'Unsafe' adds an integer to the set with an optional value **without** checking if the integer falls within range or its value exceeds the [`high`](#high-0--2--32) frequency mark (use [`add()`](#add-uint-value) for safe insertion). Overwrites previously set values, but does not update the top-k [`window`](#quickset-class) (use [`sum()`](#sum-uint-value) to have updates reflected).
 
 Should in theory provide better performance compared to [`add()`](#add-uint-value) with the risk of adding integers beyond the configured range or expected frequency (potentially causing overflows). 
