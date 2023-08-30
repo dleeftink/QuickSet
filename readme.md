@@ -71,32 +71,32 @@ let config = {
 ```
 
 ###### `mode: "minsum" || "winsum"`
-Sets the default summing mode when using [`sum`](#sum-uint-value).
+- Sets the default summing mode when using [`sum`](#sum-uint-value).
 See [rankers](#rankers) for more.
 
 ###### `span: 0 .. 2 ^ 28`
-Maximum expected integer in set (upper range bound).
+- Maximum expected integer in set (upper range bound).
 Integers above this number are ignored when added to the set.
 
 ###### `clip: 0 .. 2 ^ 28`
-Minimum expected integer in set (lower range bound).
+- Minimum expected integer in set (lower range bound).
 Integers below this number are ignored when added to the set.
 
 ###### `high: 0 .. 2 ^ 32`
-Maximum expected count of individual integers (upper frequency bound per integer).
+- Maximum expected count of individual integers (upper frequency bound per integer).
 Individual integer counts are limited to this value.
 
 ###### `freq: 0 .. 2 ^ 32`
-Minimum expected count of individual integers (lower frequency bound per integer).
+- Minimum expected count of individual integers (lower frequency bound per integer).
 Acts as a threshold for integers to qualify for a top-k position.
 
 ###### `slot: 0 .. 16`
-Amount of slots to keep track of the top-k most frequent integers in a set.
+- Amount of slots to keep track of the top-k most frequent integers in a set.
 Any value between `0` and `16` sets the top-k `window` size.
 Defaults to `0`.
 
 ###### `lifo: true || false`
-Whether to eject old values from the top-k window in case of ties.
+- Whether to eject old values from the top-k window in case of ties.
 Performance might be affected when set to `true`.
 Defaults to `false`.
 
@@ -107,24 +107,24 @@ While each array can be read without issue (for instance, to execute some logic 
 - The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#slot-0--16) of most frequent integers (rank) and values (stat) present in a set.
 
 ###### `set.bits: [UintArray]`
-This non-enumerable property contains the backing array (Typed) that stores all integers present in the set as well as their values. 
+- This non-enumerable property contains the backing array (Typed) that stores all integers present in the set as well as their values. 
 
 ###### `set.rank: [UintArray]`
-This enumerable property displays the top-k window of ranked integers (Typed).
+- This enumerable property displays the top-k window of ranked integers (Typed).
 The window size is determined from [`slot`](#slot-0--16).
 
 ###### `set.stat: [UintArray]`
-This enumerable property displays the values associated with each ranked integer (Typed).
+- This enumerable property displays the values associated with each ranked integer (Typed).
 Same length as [`rank`](#setrank-uintarray).
 
 ###### `set.last: Uint`
-A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--16).
+- A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--16).
 
 ###### `set.tmin: Uint`
-A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--2--32).
+- A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--2--32).
 
 ###### `set.tmax: Uint`
-A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--2--32).
+- A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--2--32).
 
 > Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes depending on how filled top-k slots. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` and access its value at the same index in `stat`.
 
