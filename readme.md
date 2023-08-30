@@ -13,7 +13,7 @@ Sorted in natural ascending order of integers by default.
 
 ## How it works
 Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurrence (counts between 0 and 2^32). 
-Additionally, it keeps track of how often individual integers are added to the set, providing a top-k window of most frequently occurring integers. 
+Additionally, it keeps track of how often individual integers are added to the set, providing a top-k window of most frequent integers. 
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum` 
 Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (ejecting the *Least Frequently Used* or LFU). 
