@@ -107,8 +107,6 @@ Besides the configured options and methods, [`QuickSet`](#new-quickset-config) r
 
 Some additional properties describe the internal state of the set.
 
-> Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes depending on how filled top-k slots. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` and its value at the same index in `stat`.
-
 ###### `set.bits: [UintArray]`
 This non-enumerable property contains the Typed backing array that stores all integers present in the set as well as their values. 
 
@@ -128,6 +126,8 @@ A variable parameter displaying the minimum value in the top-k window, lower bou
 
 ###### `set.tmax: Uint`
 A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--2--32).
+
+> Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes depending on how filled top-k slots. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` and its value at the same index in `stat`.
 
 ## API
 
