@@ -46,7 +46,7 @@ Methods can be mixed and matched to your liking, but may yield unwanted results 
 - [`add`](#add-uint-value) , [`put`](#put-uint-value) and [`unique`](#unique-uints) overwrite previous values and ***do not*** update the top-k window on integer insertion
 - [`sum`](#sum-uint-value) and [`batch`](#batch-uints-values) maintain previous values and ***do*** update the top-k window on integer insertion
 
-See the [tombstoning](#put-uint-value) example for why this distinction is useful.
+See the [tombstoning](#put-uint-value) example for why this is useful.
 
 ## Configuration
 
