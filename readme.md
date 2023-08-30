@@ -89,8 +89,8 @@ Minimum expected count of each discrete integer in set (lower frequency bound pe
 Acts as minimum threshold for integers to be included in top-k window.
 
 ###### `slot: 0 .. 16`
-Amount of top-k slots to track most frequent integers in the set.
-Defaults to `0`, which turns the top-k window off by default.
+Amount of slots to keep track of top-k most frequent integers in the set.
+Defaults to `0`.
 
 ###### `lifo: true || false`
 Whether to eject old values from the top-k window in case of ties. 
