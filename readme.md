@@ -77,30 +77,30 @@ See [rankers](#rankers) for differences.
 ###### `span: 0 .. 2 ^ 28`
 Maximum expected integer in set.
 Integers above this number are ignored when added to the set.
-- Upper range bound for all integers (inclusive)
+- Upper range bound for all integers (inclusive).
 - Defaults to `512`
 
 ###### `clip: 0 .. 2 ^ 28`
 Minimum expected integer in set.
 Integers below this number are ignored when added to the set.
-- Lower range bound for all integers (inclusive)
+- Lower range bound for all integers (inclusive).
 - Defaults to `0`
 
 ###### `high: 0 .. 2 ^ 32`
 Maximum expected count of individual integers.
 Individual integer counts are limited to this value.
-- Upper frequency bound per integer (exclusive)
+- Upper frequency bound per integer (exclusive).
 - Defaults to `128`
 
 ###### `freq: 0 .. 2 ^ 32`
 Minimum expected count of individual integers.
 Threshold for integers to qualify for a top-k position.
-- Lower frequency bound per integer (exclusive)
+- Lower frequency bound per integer (exclusive).
 - Defaults to `1`
 
 ###### `slot: 0 .. 16`
 Amount of slots to keep track of the top-k most frequent integers in a set.
-- Values between `0` and `16` set the top-k `window` size
+- Values between `0` and `16` set the top-k `window` size.
 - Defaults to `0`
 
 ###### `lifo: true || false`
