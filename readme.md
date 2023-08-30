@@ -226,8 +226,8 @@ set.unique(0,1,2,1).unique(1,2).keys() // = [ 0,1,2 ]
 ### Setters
 Methods for inserting and updating integer data.
 
-#### `.add(uint[, value])`
-Inserts a single integer into the set if above the lower [`clip`](#clip-0--228) and below the upper [`span`](#span-0--228) bound, with an optional weight/value limited to [`high`](#high-0--232). 
+#### `.add(​uint[, value])`
+Inserts a single integer into the set if above the lower [`clip`](#clip-0--228) and below the upper [`span`](#span-0--228) bound, with an optional weight/value limited to [`high`](#high-0--232).
 
 Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique`](#unique) for faster key insertion). 
 
@@ -255,7 +255,7 @@ let set = new QuickSet({
 
 ```
 
-#### `.put(uint[, value])`
+#### `.put(​uint[, value])`
 'Unsafe' adds an integer to the set with an optional value without checking if the integer falls within range or its value exceeds the `high` frequency mark (use [`.add()`](#add-uint--value) for safe insertion). Overwrites previously set values, but does not update the top-k window (use `.sum()` for this).
 
 Should in theory provide better performance compared to `.add()` with the risk of adding integers beyond the configured range or expected frequency (potentially causing overflows). 
@@ -313,8 +313,11 @@ let set = new QuickSet({
 
 This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive `.sum()` operations ('tombstoned' values are simply ignored).
 
-#### `.sum( uint[, value])`
-Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound). If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232)). 
+#### `.sum(​uint[, value])`
+Inserts a single integer into the set if above the lower [`clip`](#clip-0--228) and below the upper [`span`](#span-0--228) bound.
+
+If already present, increases its frequency by one or a custom weight/value limited to [`high`](#high-0--232).
+
 Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum [`freq`](#freq-0--232) parameter.
 
 Example:
@@ -374,7 +377,10 @@ let uints = [0,1,5,7];
 Methods for deleting and jettisoning integer data.
 
 #### `.delete(uint)`
-Removes a single integer and its value from the set. Does **not** update the top-k window (use `.derank()` for that). 
+Removes a single integer and its value from the set. 
+
+Does **not** update the top-k window (use `.derank()` for that). 
+
 Useful for resetting an integer's count to zero in the backing array while maintaining its last position and value in the top-k window.
 
 Example:
@@ -418,7 +424,8 @@ let example = forthcoming
 ```
 
 #### `.derank(uint)`
-Removes a single integer and its value from the set. Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum). 
+Removes a single integer and its value from the set. Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum).
+
 Useful to delete an integer from the set and remove it from the top-k window.
 
 ``` js
