@@ -656,7 +656,7 @@ let set = new QuickSet();
 ### Windows
 
 #### `.top` `(k[, reverse])`
-Method for *copying* the top window entries ([ [`rank`](#setrank-uintarray), [`stat`](#setstat-uintarray) ]) up until position `k`
+Method for *copying* the top window entries [ [`rank`](#setrank-uintarray) , [`stat`](#setstat-uintarray) ] up until position `k`
 
 ``` js
 
