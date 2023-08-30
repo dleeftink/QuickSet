@@ -311,7 +311,7 @@ let set = new QuickSet({
 
 This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive `.sum()` operations ('tombstoned' values are simply ignored).
 
-#### `.sum(uint[, value])`
+#### `.sum( uint[, value ])`
 Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound). If already present, increases its frequency by one or a custom weight/value (bounded by [`high`](#high-0--232)). 
 Additionally updates the top-k window based on [`mode`](#mode-minsum--winsum) when the updated value exceeds the minimum `freq` parameter.
 
