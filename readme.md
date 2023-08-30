@@ -71,7 +71,7 @@ let config = {
 ```
 
 ###### `mode: "minsum" || "winsum"`
-Sets the default summing mode when using [`.sum()`](#sum-uint-value).
+Sets the default summing mode when using [`sum`](#sum-uint-value).
 See [rankers](#rankers) for more.
 
 ###### `span: 0 .. 2 ^ 28`
