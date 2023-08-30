@@ -1,6 +1,6 @@
 # QuickSet
 A fast and performant *Least Frequently Used* (LFU) sorted set implementation for working with reasonably sized integers (unsigned). 
-Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (integers ranging from 0 to 2^16) or extracting unique integers from a large pool if numbers in one go (integers ranging from 0 to 2^28). 
+Trades memory for performance, optimised for frequently updating and counting a relatively small set of integers (integers ranging from 0 to 2^16) or extracting unique integers from a large pool of numbers in one go (integers ranging from 0 to 2^28). 
 Sorted in natural ascending order of integers by default.
 
 ### Use cases
