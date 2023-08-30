@@ -65,7 +65,7 @@ let config = {
 ```
 
 ###### `mode: "minsum" || "winsum"`
-Sets the default summing mode when using [`sum()`](#sum-uint--value). 
+Sets the default summing mode when using [`sum()`](#sum-uint-value). 
 See [rankers](#rankers) for more.
 
 ###### `span: 0 .. 2^28`
@@ -228,8 +228,8 @@ Methods for inserting and updating integer data.
 
 #### `.add(uint[, value])`
 Inserts a single integer into the set if within range (using [`clip`](#clip-0--228) as lower and [`span`](#span-0--228) as upper bound), with an optional weight/value (bounded by [`high`](#high-0--232)). 
-Useful for initialising a set with weights, or quickly adding integers to the set (use `.unique()` for even speedier insertion). 
-Overwrites previously set values, but does **not** update the top-k window (use `.sum()` for this).
+Useful for initialising a set with weights, or quickly adding integers to the set (use [`unique()`](#unique) for batch insertion). 
+Overwrites previously set values, but does **not** update the top-k window (use [`sum()`](#sum-uint-value) for this).
 
 Example:
 
