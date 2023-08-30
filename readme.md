@@ -724,7 +724,7 @@ let set = new QuickSet({
 //  set.rank     = [ 0,1,2,3 ];
 //  set.stat     = [ 1,3,1,2 ];
 
-     set.clear(true);
+    set.clear(true);
 
 //  set.keys()   = [ ];
 //  set.values() = [ ];
