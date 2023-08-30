@@ -84,7 +84,7 @@ Values below this number are ignored when added to the set.
 
 ###### `high: 0 .. 2 ^ 32`
 Maximum expected count of each discrete integer in set (upper frequency bound per integer). 
-Counting is maximised to this value. 
+Integer counts are limited to this value. 
 
 ###### `freq: 0 .. 2 ^ 32`
 Minimum expected count of each discrete integer in set (lower frequency bound per integer). 
