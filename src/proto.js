@@ -5,6 +5,7 @@ import minsum from './rank/minsum.js';
 import winsum from './rank/winsum.js';
 import unique from './core/unique.js';
 import lowest from './util/lowest.js';
+import resize from './core/resize.js';
 import expects from './util/expects.js';
 import invalid from './util/invalid.js';
 import { get, has } from './core/getters.js';
@@ -35,6 +36,7 @@ const prototype = {
   unique,
   minsum,
   winsum,
+  resize,
   expects,
   lowest,
   delete: del,

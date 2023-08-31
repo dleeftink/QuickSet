@@ -142,6 +142,10 @@ export default class QuickSet {
   // placeholder
   }
 
+  resize() {
+  // placeholder  
+  }
+  
   entries() {
   // placeholder
   }
