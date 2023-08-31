@@ -711,15 +711,35 @@ let set = new QuickSet({
 
 ### Resizing
 
-#### `.expand( slots )`
-Implementation forthcoming.
+#### `.resize( 0..16 )`
+Method for resizing the top-k [`window`](#quickset-class) to the desired amount of slots.
+Keeps the set [ [`rank`](#setrank-uintarray) ] and [ [`stat`](#setstat-uintarray) ] data intact when increasing the [`slot`](#slot-0--16) parameter, while dropping values when decreased.
 
-#### `.shrink( slots )`
-Implementation forthcoming.
+``` js
+
+let set = new QuickSet({
+      slot: 4
+    });
+    set.batch(0,1,1,2,3,4,6,3,1);
+
+//  set.rank = [ 0,1,2,3 ];
+//  set.stat = [ 1,3,1,2 ];
+
+    set.resize(5);
+
+//  set.rank = [ 0,1,2,3,0 ];
+//  set.stat = [ 1,3,1,2,0 ];
+
+    set.resize(2);
+
+//  set.rank = [ 0,1 ];
+//  set.stat = [ 1,3 ];
+
+```
 
 ### Disposal
 
-#### `.clear( true || 0-16 )`
+#### `.clear( true || 0..16 )`
 Method for clearing the [Typed backing array](#setbits-uintarray) (`.clear(null)`) and optionally wiping the [top-k window](#quickset-class) (`.clear(true)`). 
 During clearing operations, the top-k window can be resized as desired between 1 and 16 slots (`.clear(1..16)`).
 This is useful for resetting and reusing a set between runs without having to construct a `new QuickSet`.
