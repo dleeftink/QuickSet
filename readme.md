@@ -151,8 +151,8 @@ Basic example:
 let set = new QuickSet();
     set.batch(0,1,1,2,4,6,7,7,1);
 
-//  set.keys()   = [0,1,2,4,6,7,1]
-//  set.values() = [1,3,1,1,1,2,1]
+ // set.keys()   = [0,1,2,4,6,7,1]
+ // set.values() = [1,3,1,1,1,2,1]
 
 ```
 
@@ -163,8 +163,8 @@ Array example:
 let uints = [0,1,1,2,4,6,7,7,1];
     set.batch(uints);
 
-//  set.keys()   = [0,1,2,4,6,7,1]
-//  set.values() = [1,3,1,1,1,2,1]
+ // set.keys()   = [0,1,2,4,6,7,1]
+ // set.values() = [1,3,1,1,1,2,1]
 
 ```
 
@@ -176,8 +176,8 @@ let uints = [1,5,7,1];
 let vals  = [1,2,3,4];
     set.batch(uints, vals);
 
-//  set.keys()   = [1,5,7]
-//  set.values() = [5,2,3]
+ // set.keys()   = [1,5,7]
+ // set.values() = [5,2,3]
 
 ```
 
@@ -189,8 +189,8 @@ let uints = [1,2,2,5];
 let vals  = [1,3];
     set.batch(uints, vals);
 
-//  set.keys()   = [1,2,5]
-//  set.values() = [1,4,3]
+ // set.keys()   = [1,2,5]
+ // set.values() = [1,4,3]
 
 ```
 
@@ -214,8 +214,8 @@ Basic example:
 let set = new QuickSet();
     set.unique(0,2,4,1,6,7,1,2);
 
-//  set.keys()   = [0,1,2,4,6,7]
-//  set.values() = [1,1,1,1,1,1]
+ // set.keys()   = [0,1,2,4,6,7]
+ // set.values() = [1,1,1,1,1,1]
 
 ```
 
@@ -226,8 +226,8 @@ Array example:
 let uints = [0,2,4,1,6,7,1,2];
     set.unique(uints);
 
-//  set.keys()   = [0,1,2,4,6,7]
-//  set.values() = [1,1,1,1,1,1]
+ // set.keys()   = [0,1,2,4,6,7]
+ // set.values() = [1,1,1,1,1,1]
 
 ```
 
@@ -259,7 +259,7 @@ let set = new QuickSet({
     set.add(2,1);
     set.add(2,4);
 
-//  .add() overwrites backing array
+// .add() overwrites backing array
 //  set.keys()   = [ 1,2 ]
 //  set.values() = [ 1,4 ]
 
@@ -350,8 +350,8 @@ let set = new QuickSet({
     set.sum(9);
     set.sum(2,4);
 
-//  set.rank = [ 1 , 2 , 0 , 0 ];
-//  set.stat = [ 3 , 5 , 0 , 0 ]; 
+ // set.rank = [ 1 , 2 , 0 , 0 ];
+ // set.stat = [ 3 , 5 , 0 , 0 ]; 
 
 ```
 
@@ -608,8 +608,8 @@ Method that returns all integer keys in the set in natural ascending order.
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.keys()  = [0,1,2,3,4,5]
-//  set.keys(2) = [0,1]
+ // set.keys()  = [0,1,2,3,4,5]
+ // set.keys(2) = [0,1]
 
 ```
 
@@ -621,8 +621,8 @@ Method that returns all values associated to keys in natural ascending order of 
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.values()  = [1,2,3,1,2,1]
-//  set.values(2) = [1,2]
+ // set.values()  = [1,2,3,1,2,1]
+ // set.values(2) = [1,2]
 
 ```
 
@@ -634,8 +634,8 @@ Method that returns all key/value pairs in natural ascending order of keys.
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.entries()  = [[0,1], [1,2], [2,3], [3,1], [4,2], [5,1]]
-//  set.entries(2) = [[0,1], [1,2]]
+ // set.entries()  = [[0,1], [1,2], [2,3], [3,1], [4,2], [5,1]]
+ // set.entries(2) = [[0,1], [1,2]]
 
 ```
 
@@ -648,8 +648,8 @@ Slightly faster than calling native `sort()`
 let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
-//  set.sorted()  = [0,1,1,2,2,2,3,4,4,5]
-//  set.sorted(2) = [0,1]
+ // set.sorted()  = [0,1,1,2,2,2,3,4,4,5]
+ // set.sorted(2) = [0,1]
 
 ```
 
@@ -668,8 +668,8 @@ let set = new QuickSet({
     });
     set.batch(0,1,2,0,3,4,2,0);
 
-//  set.top()  = [ [0,3], [1,1], [2,2], [3,1] ]
-//  set.top(2) = [ [0,3], [2,2] ]
+ // set.top()  = [ [0,3], [1,1], [2,2], [3,1] ]
+ // set.top(2) = [ [0,3], [2,2] ]
 
 ```
 
@@ -686,8 +686,8 @@ let set = new QuickSet({
     });
     set.batch(0,1,2,0,3,4,2,0);
  
-//  set.topK()  = [ 0,1,2,3 ]
-//  set.topK(2) = [ 0,1 ]
+ // set.topK()  = [ 0,1,2,3 ]
+ // set.topK(2) = [ 0,1 ]
 
 ```
 
@@ -704,16 +704,16 @@ let set = new QuickSet({
     });
     set.batch(0,1,2,0,3,4,2,0);
  
-//  set.topV()  = [ 3,1,2,1 ]
-//  set.topV(2) = [ 3,1 ]
+ // set.topV()  = [ 3,1,2,1 ]
+ // set.topV(2) = [ 3,1 ]
 
 ```
 
 ### Resizing
 
 #### `.resize( 0..16 )`
-Method for resizing the top-k [`window`](#quickset-class) to the desired amount of slots.
-Keeps the set [ [`rank`](#setrank-uintarray) ] and [ [`stat`](#setstat-uintarray) ] data intact when increasing the [`slot`](#slot-0--16) parameter, while dropping values when decreased.
+Method for resizing the top-k [`window`](#quickset-class) to a desired amount of slots.
+Keeps the set [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) data intact when increasing the [`slot`](#slot-0--16) parameter and drops data when decreased.
 
 ``` js
 
