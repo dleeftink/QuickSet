@@ -713,7 +713,7 @@ let set = new QuickSet({
 
 #### `.resize( 0..16 )`
 Method for resizing the top-k [`window`](#quickset-class) to a desired amount of slots.
-Keeps the set [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) data intact when increasing the [`slot`](#slot-0--16) parameter and drops data when decreased.
+Keeps the set [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) data intact and pads with zeroes when increasing the [`slot`](#slot-0--16) parameter and drops data when decreased.
 
 ``` js
 
