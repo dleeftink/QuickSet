@@ -486,7 +486,7 @@ Additionally updates the top-k [`window`](#quickset-class) using the 'minsum' st
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray). 
 Depending on `fifo`, the `minsum` strategy executes as follows.
 
-When `fifo = true` later insertions are kept (*first-in first-out*):
+When `fifo = true` earlier insertions are overwritten (*first-in first-out*):
 
 ``` js
 
@@ -547,7 +547,7 @@ Additionally updates the top-k [`window`](#quickset-class) using the 'winsum' st
 The count of each dropped integer remains accessible in the [Typed backing array](#setbits-uintarray).
 Depending on `fifo`, the `winsum` strategy executes as follows:
 
-When `fifo = true` later insertions are kept (*first-in first-out*):
+When `fifo = true` earlier insertions are dropped (*first-in first-out*):
 
 ``` js
 
