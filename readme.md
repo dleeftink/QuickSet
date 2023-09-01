@@ -325,7 +325,7 @@ let set = new QuickSet({
 
 ```
 
-This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive [`.sum()`](#sum-uint-value) operations (*tombstoned* values are simply ignored).
+This technique can be used to build a 'drop' list of integers and keep unwanted integers out of the top-k ranking without having to validate each integer during more expansive [`.sum()`](#sum-uint-value) operations (tombstoned values are simply ignored).
 
 #### `.sum( ​uint[, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
