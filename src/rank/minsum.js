@@ -3,13 +3,13 @@ export default function minsum (uint, val = 1) {
   let invalid = this.invalid;
 
   // range guard
-  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return
+  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return //this
 
   var old = this.bits[uint];
       val = old + val;
 
   // count guard
-  if ( val > this.high ) return
+  if ( val > this.high ) return //this
 
   this.bits[uint] = val;
   let  rank = this.rank,
@@ -17,11 +17,11 @@ export default function minsum (uint, val = 1) {
 
   if ( val > this.tmin && val > this.freq ) {
 
-    var slot = this.slot;
-    var last = this.last;
+    let slot = this.slot;
+    let last = this.last;
 
     //let idx = rank.indexOf(uint); // -> slower
-    for ( var idx = 0; idx < slot; ++idx ) {
+    for ( var idx = 0; idx < slot; idx = idx + 1 ) {
       if ( rank[idx] == uint ) {
         break;
       } else if ( idx == last ) {
@@ -35,15 +35,13 @@ export default function minsum (uint, val = 1) {
     } else {
 
       var low = this.tmin;
-      for ( var ins = 0; ins < slot; ++ins ) {
+      for ( var ins = 0; ins < slot; ins = ins + 1 ) {
        if ( stat[ins] <= low ) break
       }
 
       rank[ins] = uint;
       stat[ins] = val;
 
-      // TO DO: autotuning in case freq settings == 0
-      //if((this.tmin = lowest(stat)) < this.freq ) { this.tmin = this.freq } // => Math.max(lowest(stat),this.freq)
       this.tmin = this.lowest(stat); 
       
     }

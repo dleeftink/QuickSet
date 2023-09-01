@@ -13,7 +13,7 @@ let set = new QuickSet({
   slot: 4,
   freq: 2,
   mode: 'minsum',
-  lifo: false
+  fifo: false
 });
 
 let span = ints.length;
@@ -28,12 +28,14 @@ for (let n = 0; n < iter; ++n) {
   // unrolling only works when multiples of two
   for (let i = 0; i < span; i = i + 2) {
     //let key = ints[i] //+ ( n % 255);
-    set.sum(ints[i]+ ( n % 255))
-    set.sum(ints[i + 1]+ ( n % 255));
+    // let mod = n % 255;
+    set.sum(ints[i])// + (mod))
+    set.sum(ints[i + 1])// +  (mod));
     
   }
+  //set.batch(ints);
 
-  temp[n] = set.top(2)
+  //temp[n] = set.top(2)
 
 }
 

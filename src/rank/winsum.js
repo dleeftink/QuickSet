@@ -20,7 +20,7 @@ export default function winsum(uint,val = 1) {
     var slot = this.slot;
     var idx, ins;
 
-    for (let i = 0; i < slot; ++i) {
+    for ( var i = 0; i < slot; i = i + 1 ) {
   
       if(idx >= 0 && ins >= 0 ) break
       if(idx == undefined && rank[i] == uint) idx = i;
