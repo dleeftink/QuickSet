@@ -11,6 +11,8 @@ export default class QuickSet {
     fifo = false,
     } = {}) {
 
+    let copy = Object.assign({},prototype);
+
     if (span > 2**28) 
     throw Error('Expected integer beyond memory range');
 
@@ -26,6 +28,10 @@ export default class QuickSet {
       prototype.minsum = rewrite ( prototype.minsum, 'val > this.tmin', 'val >= this.tmin');
       prototype.winsum = rewrite ( prototype.winsum, 'val > this.tmin', 'val >= this.tmin');
     }
+
+    //for (let key in prototype) {
+    //  this.constructor.prototype[key] = copy[key].bind(this)
+    //}
 
     Object.assign(this.constructor.prototype, prototype);
 
