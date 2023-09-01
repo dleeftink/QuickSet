@@ -11,8 +11,6 @@ export default class QuickSet {
     fifo = false,
     } = {}) {
 
-    //Object.assign(this.constructor.prototype, prototype);
-
     if (span > 2**28) 
     throw Error('Expected integer beyond memory range');
 
@@ -30,8 +28,10 @@ export default class QuickSet {
     }
 
     for (let key in prototype) {
-      this.constructor.prototype[key] = prototype[key].bind(this)
+      prototype[key] = prototype[key].bind(this)
     }
+
+    Object.assign(this.constructor.prototype, prototype);
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
