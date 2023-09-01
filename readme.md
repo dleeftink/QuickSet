@@ -711,7 +711,7 @@ let set = new QuickSet({
 
 ### Resizing
 
-#### `.resize( 0..16 )`
+#### `.resize( 0 .. 16 )`
 Method for resizing the top-k [`window`](#quickset-class) to a desired amount of slots.
 Keeps the set [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) data intact and pads with zeroes when increasing the [`slot`](#slot-0--16) parameter and drops data when decreased.
 
@@ -739,7 +739,7 @@ let set = new QuickSet({
 
 ### Disposal
 
-#### `.clear( true || 0..16 )`
+#### `.clear( true || 0 .. 16 )`
 Method for clearing the [Typed backing array](#setbits-uintarray) (`.clear(null)`) and optionally wiping the [top-k window](#quickset-class) (`.clear(true)`). 
 During clearing operations, the top-k window can be resized as desired between 1 and 16 slots (`.clear(1..16)`).
 This is useful for resetting and reusing a set between runs without having to construct a `new QuickSet`.
