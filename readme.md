@@ -28,7 +28,7 @@ This enables working with frequently occurring items 'earlier' compared to proce
 npm install @suptxt/quickset
 ```
 
-After installing, create a `QuickSet` by calling;
+After installing, create a `QuickSet` by calling:
 
 ``` js
 
