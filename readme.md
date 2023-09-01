@@ -477,7 +477,7 @@ Strategies for inserting and updating integer counts and updating the top-k wind
 #### `.minsum( uint[, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
 If already present, increases its frequency by one or a custom weight/value limited to [`high`](#high-0--2--32). 
-Additionally updates the top-k [`window`](#quickset-class) using the 'minsum' strategy when the updated value exceeds the minimum [`freq`](#freq-0--2--32) parameter:
+Additionally updates the top-k [`window`](#quickset-class) using the 'minsum' strategy when the updated value exceeds the lower [`freq`](#freq-0--2--32) bound:
 
 1. If already in top-k window, update count by one or a custom weight/value
 2. If value exceeds [`freq`](#freq-0--2--32) find first integer with lowest frequency count
@@ -538,7 +538,7 @@ More efficient than [`.winsum()`](#winsum-uint-value) due to absence of copying,
 #### `.winsum( uint[, value ])`
 Inserts a single integer into the set if above the lower [`clip`](#clip-0--2--28) and below the upper [`span`](#span-0--2--28) bound.
 If already present, increases its frequency by one or a custom weight/value limited to [`high`](#high-0--2--32). 
-Additionally updates the top-k [`window`](#quickset-class) using the 'winsum' strategy when the updated value exceeds the minimum [`freq`](#freq-0--2--32) parameter:
+Additionally updates the top-k [`window`](#quickset-class) using the 'winsum' strategy when the updated value exceeds the lower [`freq`](#freq-0--2--32) bound:
 
 1. Find the last integer in the window with a count exceeding the value to insert
 2. From this index, move every integer and its value one position to the right
