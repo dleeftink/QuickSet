@@ -27,10 +27,6 @@ export default class QuickSet {
       prototype.winsum = rewrite ( prototype.winsum, 'val > this.tmin', 'val >= this.tmin');
     }
 
-    for (let key in prototype) {
-      prototype[key] = prototype[key].bind(this)
-    }
-
     Object.assign(this.constructor.prototype, prototype);
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
