@@ -15,7 +15,7 @@ Sorted in natural ascending order of integers by default.
 Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurrence (counts between 0 and 2^32). 
 Additionally, it keeps track of how often individual integers are added to the set, providing a top-k window of most frequent integers. 
 
-Two modes are provided for establishing top-k ranks, `minsum` and `winsum` 
+Two modes are provided for establishing top-k ranks, `minsum` and `winsum`.
 Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (ejecting the *Least Frequently Used* or LFU). 
 Whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps integers sorted  in decreasing order of occurrence (slightly more computationally expensive).
 
@@ -594,7 +594,7 @@ let set = new QuickSet({
 
 This method resembles insertion sort, and keeps all integers in the top-k window sorted by decreasing order of frequency.
 If integer counts are tied, [`fifo`](#fifo-true--false) is enacted based on its setting.
-Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, with an additional performance penalty when `fifo = true`
+Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, with an additional performance penalty when `fifo = true`.
 
 ### Sorters 
 Methods for sorting and returning the set data. 
