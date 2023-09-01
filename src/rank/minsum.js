@@ -50,6 +50,5 @@ export default function minsum (uint, val = 1) {
 
     if (val > this.tmax) this.tmax = val;
   }
-
   // return this
 };
