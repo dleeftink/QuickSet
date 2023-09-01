@@ -11,7 +11,7 @@ export default class QuickSet {
     fifo = false,
     } = {}) {
 
-    Object.assign(this.constructor.prototype, prototype);
+    //Object.assign(this.constructor.prototype, prototype);
 
     if (span > 2**28) 
     throw Error('Expected integer beyond memory range');
@@ -25,15 +25,12 @@ export default class QuickSet {
     if (span < slot) slot = span;
 
     if (fifo) { 
-    this.constructor.prototype.minsum
-    = rewrite ( this.minsum, 'val > this.tmin', 'val >= this.tmin');
-
-    this.constructor.prototype.winsum
-    = rewrite ( this.winsum, 'val > this.tmin', 'val >= this.tmin');
+      prototype.minsum = rewrite ( prototype.minsum, 'val > this.tmin', 'val >= this.tmin');
+      prototype.winsum = rewrite ( prototype.winsum, 'val > this.tmin', 'val >= this.tmin');
     }
 
     for (let key in prototype) {
-      this.constructor.prototype[key] = this.constructor.prototype[key].bind(this)
+      this.constructor.prototype[key] = prototype[key].bind(this)
     }
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
