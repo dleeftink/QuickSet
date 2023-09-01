@@ -34,7 +34,7 @@ export default class QuickSet {
     }
 
     for (let key in prototype) {
-      this.constructor.prototype[key] = proto[key].bind(this)
+      this.constructor.prototype[key] = proto[key]//.bind(this)
     }
 
     //Object.assign(this.constructor.prototype, prototype);
