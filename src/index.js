@@ -11,7 +11,11 @@ export default class QuickSet {
     fifo = false,
     } = {}) {
 
-    let copy = Object.assign({},prototype);
+    let proto = {};
+
+    for (let key in prototype) {
+      proto[key] = new Function('return ' + prototype[key].toString()).call()
+    }
 
     if (span > 2**28) 
     throw Error('Expected integer beyond memory range');
@@ -25,15 +29,15 @@ export default class QuickSet {
     if (span < slot) slot = span;
 
     if (fifo) { 
-      prototype.minsum = rewrite ( prototype.minsum, 'val > this.tmin', 'val >= this.tmin');
-      prototype.winsum = rewrite ( prototype.winsum, 'val > this.tmin', 'val >= this.tmin');
+      proto.minsum = rewrite ( proto.minsum, 'val > this.tmin', 'val >= this.tmin');
+      proto.winsum = rewrite ( proto.winsum, 'val > this.tmin', 'val >= this.tmin');
     }
 
-    //for (let key in prototype) {
-    //  this.constructor.prototype[key] = copy[key].bind(this)
-    //}
+    for (let key in prototype) {
+      this.constructor.prototype[key] = proto[key].bind(this)
+    }
 
-    Object.assign(this.constructor.prototype, prototype);
+    //Object.assign(this.constructor.prototype, prototype);
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
