@@ -4,7 +4,6 @@ import methods from './proto.js'
 
 export default assign(class QuickSet {
 
-  #bits;
   constructor({
     mode = "minsum" || "winsum", 
     clip = 0 , span = 512 , // integer range min - max
