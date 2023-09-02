@@ -1,8 +1,7 @@
-import assign from './util/assign.js'
-// import rewrite from './util/rewrite.js'
-import methods from './proto.js'
+import rewrite from './util/rewrite.js'
+import prototype from './proto.js';
 
-export default assign(`class QuickSet {
+export default class QuickSet {
 
   constructor({
     mode = "minsum" || "winsum", 
@@ -25,12 +24,12 @@ export default assign(`class QuickSet {
 
     if (fifo) { 
 
-      this.constructor.prototype.minsum = this.rewrite ( this.minsum, 'val > this.tmin', 'val >= this.tmin');
-      this.constructor.prototype.winsum = this.rewrite ( this.winsum, 'val > this.tmin', 'val >= this.tmin');
+      this.constructor.prototype.minsum = rewrite ( prototype.minsum, 'val > this.tmin', 'val >= this.tmin');
+      this.constructor.prototype.winsum = rewrite ( prototype.winsum, 'val > this.tmin', 'val >= this.tmin');
 
     }
 
-    // Object.assign(this.constructor.prototype, prototype);
+    Object.assign(this.constructor.prototype, prototype);
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
@@ -164,4 +163,4 @@ export default assign(`class QuickSet {
   // placeholder
   }
 
-}`, methods)
+}
