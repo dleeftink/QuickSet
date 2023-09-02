@@ -1,5 +1,5 @@
 export default (Class, methods) => {
-  let source = Class.toString();
+  let source = Class//.toString();
 
   for (let call in methods) {
     
