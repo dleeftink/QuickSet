@@ -8,6 +8,8 @@ import lowest from './util/lowest.js';
 import resize from './core/resize.js';
 import expects from './util/expects.js';
 import invalid from './util/invalid.js';
+import rewrite from './util/rewrite.js';
+
 import { get, has } from './core/getters.js';
 import { add, put } from './core/setters.js';
 import { del, rem } from './core/jetters.js';
@@ -36,6 +38,7 @@ const prototype = {
   unique,
   minsum,
   winsum,
+  rewrite,
   resize,
   expects,
   lowest,
