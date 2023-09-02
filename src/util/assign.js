@@ -1,9 +1,9 @@
 export default (Class, methods) => {
-  let source = Class.toString();
+  let source = Class//.toString();
 
   for (let call in methods) {
     
-    let flag = `\\s\\s${call}.*\\{[\\s\\S]+?\\}`;
+    let flag = `${call}.*\\{[\\s\\S]+?\\}`;
     let head = new RegExp(flag, "gim");
     
     let body = methods[call].toString()
@@ -14,6 +14,8 @@ export default (Class, methods) => {
     
        source = source.replace(head, body);
   }
-  
+
+  //source = source.replaceAll('this.bits', 'this.#bits')
+
   return new Function("return " + source).call();
 };

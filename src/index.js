@@ -1,9 +1,10 @@
 import assign from './util/assign.js'
-import rewrite from './util/rewrite.js'
+// import rewrite from './util/rewrite.js'
 import methods from './proto.js'
 
-export default assign(class QuickSet {
+export default assign(`class QuickSet {
 
+  #bits;
   constructor({
     mode = "minsum" || "winsum", 
     clip = 0 , span = 512 , // integer range min - max
@@ -24,8 +25,10 @@ export default assign(class QuickSet {
     if (span < slot) slot = span;
 
     if (fifo) { 
-      this.constructor.prototype.minsum = rewrite ( this.minsum, 'val > this.tmin', 'val >= this.tmin');
-      this.constructor.prototype.winsum = rewrite ( this.winsum, 'val > this.tmin', 'val >= this.tmin');
+
+      this.constructor.prototype.minsum = this.rewrite ( this.minsum, 'val > this.tmin', 'val >= this.tmin');
+      this.constructor.prototype.winsum = this.rewrite ( this.winsum, 'val > this.tmin', 'val >= this.tmin');
+
     }
 
     // Object.assign(this.constructor.prototype, prototype);
@@ -42,11 +45,11 @@ export default assign(class QuickSet {
     this.stat = new Pool(slot);
     this.bits = new Pool(data);
 
-    /*Object.defineProperty(this,'bits', {
+    Object.defineProperty(this,'bits', {
       writable: false,
       enumerable: false,
       configurable: false,
-    });*/
+    });
     
     this.span = span = Math.min(span,m); // clip integers above range extent (inclusive)
     this.clip = clip = Math.max(clip,0); // clip integers under range extent
@@ -150,12 +153,17 @@ export default assign(class QuickSet {
   // placeholder
   }
 
+  rewrite() {
+
+  }
+
   invalid() {
   // placeholder  
   }
 
   default() {
   // placeholder  
+  return {oi:1}
   }
 
-}, methods)
+}`, methods)
