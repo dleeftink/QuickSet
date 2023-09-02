@@ -1,7 +1,8 @@
-import prototype from './proto.js'
-import rewrite from '../src/util/rewrite.js'
+import assign from './util/assign.js'
+import rewrite from './util/rewrite.js'
+import methods from './proto.js'
 
-export default class QuickSet {
+export default assign(class QuickSet {
 
   constructor({
     mode = "minsum" || "winsum", 
@@ -23,11 +24,11 @@ export default class QuickSet {
     if (span < slot) slot = span;
 
     if (fifo) { 
-      prototype.minsum = rewrite ( prototype.minsum, 'val > this.tmin', 'val >= this.tmin');
-      prototype.winsum = rewrite ( prototype.winsum, 'val > this.tmin', 'val >= this.tmin');
+      this.constructor.prototype.minsum = rewrite ( this.minsum, 'val > this.tmin', 'val >= this.tmin');
+      this.constructor.prototype.winsum = rewrite ( this.winsum, 'val > this.tmin', 'val >= this.tmin');
     }
 
-    Object.assign(this.constructor.prototype, prototype);
+    // Object.assign(this.constructor.prototype, prototype);
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
@@ -41,11 +42,11 @@ export default class QuickSet {
     this.stat = new Pool(slot);
     this.bits = new Pool(data);
 
-    Object.defineProperty(this,'bits', {
+    /*Object.defineProperty(this,'bits', {
       writable: false,
       enumerable: false,
       configurable: false,
-    });
+    });*/
     
     this.span = span = Math.min(span,m); // clip integers above range extent (inclusive)
     this.clip = clip = Math.max(clip,0); // clip integers under range extent
@@ -61,15 +62,15 @@ export default class QuickSet {
 
   }    
 
-  minsum () {
+  minsum() {
   // placeholder
   }
 
-  winsum () {
+  winsum() {
   // placeholder
   }
 
-  unique () {
+  unique() {
   // placeholder 
   }
 
@@ -157,4 +158,4 @@ export default class QuickSet {
   // placeholder  
   }
 
-}
+}, methods)

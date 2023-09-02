@@ -1,4 +1,4 @@
-export default function minsum (uint, val = 1) {
+export default function minsum(uint, val = 1) {
   
   let invalid = this.invalid;
 
