@@ -2,7 +2,7 @@ import assign from './util/assign.js'
 // import rewrite from './util/rewrite.js'
 import methods from './proto.js'
 
-export default assign(`class QuickSet {
+export default assign(class QuickSet {
 
   #bits;
   constructor({
@@ -162,8 +162,7 @@ export default assign(`class QuickSet {
   }
 
   default() {
-  // placeholder  
-  return {oi:1}
+  // placeholder
   }
 
-}`, methods)
+}, methods)
