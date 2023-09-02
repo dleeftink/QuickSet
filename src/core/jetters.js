@@ -2,7 +2,7 @@ function del(uint) { // delete
 
   let invalid  =  this.invalid;
 
-  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
+  if ( uint < this.clip || uint > this.span || invalid(uint)) return;
   this.bits[uint] = 0
   
 }
@@ -11,7 +11,7 @@ function rem(uint) { // derank
 
   let invalid  =  this.invalid;
 
-  if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
+  if ( uint < this.clip || uint > this.span || invalid(uint)) return;
 
   this.bits[uint] = 0;
   this.tmin = 0;
