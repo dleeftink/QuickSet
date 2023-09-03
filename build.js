@@ -4,19 +4,21 @@ import methods from './code/proto.js'
 import QuickSet from './code/index.js'
 import * as prettier from 'prettier'
 
-let source = assign(QuickSet,methods,true);
-    source = 'export default ' + source
-    .replaceAll(/\/\/.*/g,'')
-    .replaceAll('this.bits', 'this.#bits')
-    .replaceAll('$minsum', '#minsum')
-    .replaceAll('$winsum', '#winsum')
-    .replace(/Object.assign\(this\.constructor\.prototype.*?\)/g,'')
-    .replace(/Object\.defineProperties\(this,{[\s\S]+?\}\)\;/gm, '');
+// build script that inserts imports 
+// and applies some quickfixes
 
 (async function() {
 
+  let source = 'export default ' + assign(QuickSet,methods,true)
+    .replace(/Object.assign\(this\.constructor\.prototype.*?\)/g,'')
+    .replace(/Object\.defineProperties\(this,{[\s\S]+?\}\)\;/gm, '')
+      .replaceAll('this.bits', 'this.#bits')
+      .replaceAll('$minsum', '#minsum')
+      .replaceAll('$winsum', '#winsum')
+      .replaceAll(/\/\/.*/g,'');
 
-  let format = await prettier.format(source, { semi: true, parser: "babel" });
-  await fs.writeFile('./dist/index.js', format,()=>{})
+  let format = 
+    await prettier.format(source, { semi: true, printWidth: 60, parser: "babel" });
+    await fs.writeFile('./dist/index.js', format,()=>{})
 
 })()
