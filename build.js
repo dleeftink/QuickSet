@@ -11,8 +11,8 @@ import * as prettier from 'prettier'
 
   let source = 'export default ' + assign(QuickSet,methods,true)
     .replace(/Object.assign\(this\.constructor\.prototype.*?\)/g,'')
-    .replace(/Object\.defineProperties\(this,{[\s\S]+?\}\)\;/gm, '')
-      .replaceAll('this.bits', 'this.#bits')
+    //.replace(/Object\.defineProperties\(this,{[\s\S]+?\}\)\;/gm, '')
+      //.replaceAll('this.bits', 'this.#bits')
       .replaceAll('$minsum', '#minsum')
       .replaceAll('$winsum', '#winsum')
       .replaceAll(/\/\/.*/g,'');

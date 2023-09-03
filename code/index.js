@@ -25,18 +25,17 @@ export default class QuickSet {
 
     if (span < slot) slot = span;
 
-    if (fifo) { 
-
-      this.constructor.prototype.minsum = this.$minsum;
-      this.constructor.prototype.winsum = this.$winsum;
-
+    if(fifo) {
+      this.constructor.prototype.minsum =  this.$minsum;
+      this.constructor.prototype.winsum =  this.$winsum;
     }
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
-    this.constructor.prototype.default = { Rank, Pool, mode, mult, byte};
-    this.constructor.prototype.sum = this[mode];
+    this.constructor.prototype.default = { Rank, Pool, mode, fifo, mult, byte};
+
+    this.constructor.prototype.sum = this[mode]
 
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
 

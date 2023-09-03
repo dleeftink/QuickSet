@@ -36,16 +36,26 @@ export default class QuickSet {
       Rank,
       Pool,
       mode,
+      fifo,
       mult,
       byte,
     };
+
     this.constructor.prototype.sum = this[mode];
 
     const data = new ArrayBuffer(byte * (span + 1));
 
     this.rank = new Rank(slot);
     this.stat = new Pool(slot);
-    this.#bits = new Pool(data);
+    this.bits = new Pool(data);
+
+    Object.defineProperties(this, {
+      bits: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
+    });
 
     this.span = span = Math.min(span, m);
     this.clip = clip = Math.max(clip, 0);
@@ -71,12 +81,12 @@ export default class QuickSet {
     )
       return;
 
-    var old = this.#bits[uint];
+    var old = this.bits[uint];
     val = old + val;
 
     if (val > this.high) return;
 
-    this.#bits[uint] = val;
+    this.bits[uint] = val;
     let rank = this.rank,
       stat = this.stat;
 
@@ -122,12 +132,12 @@ export default class QuickSet {
     )
       return;
 
-    var old = this.#bits[uint];
+    var old = this.bits[uint];
     val = old + val;
 
     if (val > this.high) return;
 
-    this.#bits[uint] = val;
+    this.bits[uint] = val;
     let rank = this.rank,
       stat = this.stat;
 
@@ -176,12 +186,12 @@ export default class QuickSet {
     )
       return;
 
-    var old = this.#bits[uint];
+    var old = this.bits[uint];
     val = old + val;
 
     if (val > this.high) return;
 
-    this.#bits[uint] = val;
+    this.bits[uint] = val;
     let rank = this.rank,
       stat = this.stat;
 
@@ -227,12 +237,12 @@ export default class QuickSet {
     )
       return;
 
-    var old = this.#bits[uint];
+    var old = this.bits[uint];
     val = old + val;
 
     if (val > this.high) return;
 
-    this.#bits[uint] = val;
+    this.bits[uint] = val;
     let rank = this.rank,
       stat = this.stat;
 
@@ -339,7 +349,7 @@ export default class QuickSet {
   }
 
   clear(slot) {
-    this.#bits.fill(0);
+    this.bits.fill(0);
 
     if (slot === true) {
       this.rank.fill(0);
@@ -368,20 +378,20 @@ export default class QuickSet {
       return;
     if (val > this.default.byte) return;
 
-    this.#bits[uint] = val;
+    this.bits[uint] = val;
   }
 
   get(uint) {
-    return this.#bits[uint];
+    return this.bits[uint];
   }
 
   has(uint) {
     if (uint < this.clip || uint > this.span) return false;
-    return !!this.#bits[uint];
+    return !!this.bits[uint];
   }
 
   put(uint, val = 1) {
-    this.#bits[uint] = val;
+    this.bits[uint] = val;
   }
 
   sum() {}
@@ -411,8 +421,8 @@ export default class QuickSet {
   }
 
   keys(iter) {
-    let bits = this.#bits;
-    let span = iter ?? this.#bits.length;
+    let bits = this.bits;
+    let span = iter ?? this.bits.length;
 
     let exit = new this.default.Rank(span);
     let last = 0;
@@ -434,7 +444,7 @@ export default class QuickSet {
       invalid(uint)
     )
       return;
-    this.#bits[uint] = 0;
+    this.bits[uint] = 0;
   }
 
   derank(uint) {
@@ -447,7 +457,7 @@ export default class QuickSet {
     )
       return;
 
-    this.#bits[uint] = 0;
+    this.bits[uint] = 0;
     this.tmin = 0;
 
     let slot = this.slot;
@@ -474,8 +484,8 @@ export default class QuickSet {
   }
 
   values(iter) {
-    let bits = this.#bits;
-    let span = iter ?? this.#bits.length;
+    let bits = this.bits;
+    let span = iter ?? this.bits.length;
 
     let exit = new this.default.Pool(span);
     let last = 0;
@@ -489,8 +499,8 @@ export default class QuickSet {
   }
 
   sorted(iter) {
-    let bits = this.#bits;
-    let span = iter ?? this.#bits.length;
+    let bits = this.bits;
+    let span = iter ?? this.bits.length;
 
     let size = 0;
 
@@ -537,8 +547,8 @@ export default class QuickSet {
   }
 
   entries(iter) {
-    let bits = this.#bits;
-    let span = iter ?? this.#bits.length;
+    let bits = this.bits;
+    let span = iter ?? this.bits.length;
 
     let exit = new Array(this.span);
     let last = 0;
