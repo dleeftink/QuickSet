@@ -50,6 +50,19 @@ export default class QuickSet {
         configurable: false,
       },
     });
+
+    Object.defineProperties(this.constructor.prototype, {
+      $minsum: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
+      $winsum: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
+    });
     
     this.span = span = Math.min(span,m); // clip integers above range extent (inclusive)
     this.clip = clip = Math.max(clip,0); // clip integers under range extent

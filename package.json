@@ -1,8 +1,9 @@
 {
   "name": "@suptxt/quickset",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "type": "module",
   "scripts": {
+    "build": "npm install --save-dev && node build.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -40,7 +41,7 @@
     "default": "./dist/index.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "devDependencies": {
     "fs": "^0.0.1-security",

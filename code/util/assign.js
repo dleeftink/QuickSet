@@ -7,7 +7,7 @@ export default (Class, methods, raw = false) => {
 
   for (let call in methods) {
     
-    let flag = `\\s${escapeRegExp(call)}.*\\{[\\s\\S]+?\\}`;
+    let flag = `\\s${escapeRegExp(call)}.*\\)\\s\\{[\\s\\S]+?\\}`;
     let head = new RegExp(flag, "m");
     
     // cheap function parsing;

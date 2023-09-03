@@ -13,8 +13,8 @@ import * as prettier from 'prettier'
     .replace(/Object.assign\(this\.constructor\.prototype.*?\)/g,'')
     //.replace(/Object\.defineProperties\(this,{[\s\S]+?\}\)\;/gm, '')
       //.replaceAll('this.bits', 'this.#bits')
-      .replaceAll('$minsum', '#minsum')
-      .replaceAll('$winsum', '#winsum')
+     // .replaceAll('$minsum', '#minsum')
+     // .replaceAll('$winsum', '#winsum')
       .replaceAll(/\/\/.*/g,'');
 
   let format = 
