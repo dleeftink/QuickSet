@@ -1,9 +1,8 @@
 {
   "name": "@suptxt/quickset",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "type": "module",
   "scripts": {
-    "build": "npm install --save-dev && node build.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
