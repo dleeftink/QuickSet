@@ -3,7 +3,7 @@
   "version": "0.3.7",
   "type": "module",
   "scripts": {
-    "build": "node build.js",
+    "build": "npm install --save-dev && node build.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "data structure"
   ],
   "files": [
-    "dist/*.js"
+    "dist/**/*.js"
   ],
   "module": "dist/index.js",
   "main": "dist/index.js",
