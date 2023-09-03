@@ -1,6 +1,6 @@
 {
   "name": "@suptxt/quickset",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "type": "module",
   "scripts": {
     "build": "node build.js",
