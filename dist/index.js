@@ -1,5 +1,5 @@
 export default class QuickSet {
-  #bits;
+
   constructor({
     mode = "minsum" || "winsum",
     clip = 0,

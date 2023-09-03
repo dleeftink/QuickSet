@@ -1,9 +1,7 @@
-import rewrite from './util/rewrite.js'
 import prototype from './proto.js';
 
 export default class QuickSet {
 
-  #bits;
   constructor({
     mode = "minsum" || "winsum", 
     clip = 0 , span = 512 , // integer range min - max
