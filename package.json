@@ -3,6 +3,7 @@
   "version": "0.3.6",
   "type": "module",
   "scripts": {
+    "build": "node build.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -39,6 +40,10 @@
     "default": "./src/index.js"
   },
   "engines": {
-    "node": ">=17"
+    "node": ">=16"
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security",
+    "prettier": "^3.0.3"
   }
 }

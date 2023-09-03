@@ -1,4 +1,4 @@
-import QuickSet from '../src/index.js';
+import QuickSet from '../dist/index.js';
 
 let ints = Uint32Array.from(
   { length: 2 ** 10 },
@@ -13,7 +13,7 @@ let set = new QuickSet({
   slot: 4,
   freq: 2,
   mode: 'minsum',
-  fifo: true
+  fifo: true,
 });
 
 let span = ints.length;

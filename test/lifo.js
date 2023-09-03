@@ -1,4 +1,4 @@
-import QuickSet from '../src/index.js';
+import QuickSet from '../code/index.js';
 
 let set = new QuickSet({
   slot:4,

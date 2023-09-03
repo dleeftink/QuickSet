@@ -3,6 +3,7 @@ import prototype from './proto.js';
 
 export default class QuickSet {
 
+  #bits;
   constructor({
     mode = "minsum" || "winsum", 
     clip = 0 , span = 512 , // integer range min - max
@@ -10,6 +11,8 @@ export default class QuickSet {
     freq = 1 , // minimum item cut frequency 
     fifo = false,
     } = {}) {
+
+    Object.assign(this.constructor.prototype, prototype);
 
     if (span > 2**28) 
     throw Error('Expected integer beyond memory range');
@@ -24,17 +27,15 @@ export default class QuickSet {
 
     if (fifo) { 
 
-      this.constructor.prototype.minsum = rewrite ( prototype.minsum, 'val > this.tmin', 'val >= this.tmin');
-      this.constructor.prototype.winsum = rewrite ( prototype.winsum, 'val > this.tmin', 'val >= this.tmin');
+      this.constructor.prototype.minsum = this.$minsum;
+      this.constructor.prototype.winsum = this.$winsum;
 
     }
-
-    Object.assign(this.constructor.prototype, prototype);
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
     
-    this.constructor.prototype.default = { Rank, Pool, mode, fifo, mult, byte };
+    this.constructor.prototype.default = { Rank, Pool, mode, mult, byte};
     this.constructor.prototype.sum = this[mode];
 
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
@@ -43,10 +44,12 @@ export default class QuickSet {
     this.stat = new Pool(slot);
     this.bits = new Pool(data);
 
-    Object.defineProperty(this,'bits', {
-      writable: false,
-      enumerable: false,
-      configurable: false,
+    Object.defineProperties(this,{
+      bits: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
     });
     
     this.span = span = Math.min(span,m); // clip integers above range extent (inclusive)
@@ -62,6 +65,14 @@ export default class QuickSet {
     this.tmax = 0; // keeps track of max in window
 
   }    
+
+  $minsum() {
+  // placeholder
+  }
+  
+  $winsum() {
+  // placeholder
+  }
 
   minsum() {
   // placeholder
@@ -149,10 +160,6 @@ export default class QuickSet {
 
   expects() {
   // placeholder
-  }
-
-  rewrite() {
-
   }
 
   invalid() {

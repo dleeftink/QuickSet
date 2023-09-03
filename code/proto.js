@@ -8,7 +8,7 @@ import lowest from './util/lowest.js';
 import resize from './core/resize.js';
 import expects from './util/expects.js';
 import invalid from './util/invalid.js';
-
+import rewrite from './util/rewrite.js';
 import { get, has } from './core/getters.js';
 import { add, put } from './core/setters.js';
 import { del, rem } from './core/jetters.js';
@@ -35,6 +35,10 @@ const prototype = {
   batch,
   clear,
   unique,
+  
+  $minsum: rewrite ( minsum, 'val > this.tmin', 'val >= this.tmin'),
+  $winsum: rewrite ( winsum, 'val > this.tmin', 'val >= this.tmin'),
+  
   minsum,
   winsum,
   resize,
@@ -47,6 +51,7 @@ const prototype = {
   values,
   sorted,
   entries,
+
 };
 
 export default prototype;
