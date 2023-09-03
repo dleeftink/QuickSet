@@ -598,7 +598,7 @@ Slightly slower than [`.minsum()`](#minsum-uint-value) due to frequent copying, 
 
 ### Sorters 
 Methods for sorting and returning the set data. 
-Each can be exit early by providing a maximum number of `iters` (value greater than zero or `true` for a full sweep), or return items in descending order by setting its `reverse` to `true`
+Each can be exit early by providing a maximum number of `iters` (value greater than zero or `true` for a full sweep), or return items in descending order by setting its `reverse` to `true`.
 
 #### `.keys( iters[, reverse ])`
 Method that returns all integer keys in the set in natural ascending order. 
@@ -641,7 +641,7 @@ let set = new QuickSet();
 
 #### `.sorted( iters[, reverse ])`
 Method that sorts all integers in the set in natural ascending order.
-Slightly faster than calling native `sort()`
+Slightly faster than calling native `sort()`.
 
 ``` js
 
@@ -656,7 +656,7 @@ let set = new QuickSet();
 ### Windows
 
 #### `.top( k[, reverse ])`
-Method for *copying* the top window entries [ [`rank`](#setrank-uintarray) , [`stat`](#setstat-uintarray) ] up until position `k`
+Method for *copying* the top window entries [ [`rank`](#setrank-uintarray) , [`stat`](#setstat-uintarray) ] up until position `k`.
 
 ``` js
 
@@ -674,7 +674,7 @@ let set = new QuickSet({
 ```
 
 #### `.topK( k[, reverse ])`
-Method for *copying* the top window **keys** [ [`rank`](#setrank-uintarray) ] up until position `k`
+Method for *copying* the top window **keys** [ [`rank`](#setrank-uintarray) ] up until position `k`.
 
 ``` js
 
@@ -692,7 +692,7 @@ let set = new QuickSet({
 ```
 
 #### `.topV( k[, reverse ])`
-Method for *copying* the top window **values** [ [`stat`](#setstat-uintarray) ] up until position `k`
+Method for *copying* the top window **values** [ [`stat`](#setstat-uintarray) ] up until position `k`.
 
 ``` js
 
@@ -802,7 +802,8 @@ let set = new QuickSet({
 1. Large sets affect performance
 2. Only limited top-k slots available (<16)
 3. No set size parameter yet
-4. No type checking of unsigned integers 
+4. No type checking of unsigned integers
+5. Reverse iteration not implemented yet
 
 ## Benchmarks
 On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
