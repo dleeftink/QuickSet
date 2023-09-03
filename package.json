@@ -1,6 +1,6 @@
 {
   "name": "@suptxt/quickset",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
@@ -40,7 +40,7 @@
     "default": "./dist/index.js"
   },
   "engines": {
-    "node": ">=17"
+    "node": ">=18"
   },
   "devDependencies": {
     "fs": "^0.0.1-security",
