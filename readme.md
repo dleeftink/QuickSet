@@ -67,12 +67,6 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 4. No type checking of unsigned integers
 5. Reverse iteration not implemented yet
 
-### Related
-- [DW Cache](https://www.npmjs.com/package/dw-cache)
-- [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
-- [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
-- [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)
-
 ## Benchmarks
 On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
 average time to extract unique keys on 5 runs of random integers:
@@ -85,3 +79,9 @@ average time to extract unique keys on 5 runs of random integers:
 | = 16 777 216 | QuickSet|  212 | 28x |
 | 2^16 | native |  4.4 | - |
 | = 65 536 |QuickSet | 1.3 | 3x |
+
+### Related
+- [DW Cache](https://www.npmjs.com/package/dw-cache)
+- [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
+- [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
+- [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)
