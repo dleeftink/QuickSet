@@ -601,7 +601,7 @@ let set = new QuickSet();
     set.batch(4,1,2,3,4,1,2,5,2,0);
 
  // set.sorted()  = [0,1,1,2,2,2,3,4,4,5]
- // set.sorted(2) = [0,1]
+ // set.sorted(3) = [0,1,1]
 
 ```
 
