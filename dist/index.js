@@ -54,29 +54,6 @@ export default class QuickSet {
       },
     });
 
-    Object.defineProperties(this.constructor.prototype, {
-      $minsum: {
-        writable: false,
-        enumerable: false,
-        configurable: false,
-      },
-      $winsum: {
-        writable: false,
-        enumerable: false,
-        configurable: false,
-      },
-      minsum: {
-        writable: true,
-        enumerable: false,
-        configurable: false,
-      },
-      winsum: {
-        writable: true,
-        enumerable: false,
-        configurable: false,
-      },
-    });
-
     this.span = span = Math.min(span, m);
     this.clip = clip = Math.max(clip, 0);
 
