@@ -59,7 +59,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 
 ## Caveats
 1. Large sets affect performance
-2. Only limited top-k slots available (<16)
+2. Only limited top-k slots available (<64)
 3. No set size parameter yet
 4. No type checking of unsigned integers
 5. Reverse iteration not implemented yet
