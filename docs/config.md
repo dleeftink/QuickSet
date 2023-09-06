@@ -7,7 +7,7 @@ Creates a new QuickSet instance with default settings (the top-k [`window`](#qui
 let config = {
 
   mode: "minsum" || "winsum",
-  slot:   0, // top-k window off by default  (0 .. 16)
+  slot:   0, // top-k window off by default  (0 .. 64)
 
   span: 512, // max expected integer range (0 .. 2^28)
   clip:   0, // min expected integer range (0 .. 2^28)
@@ -48,9 +48,9 @@ Threshold for integers to qualify for a top-k position.
 - Lower frequency bound per integer (exclusive).
 - Defaults to `1`.
 
-###### `slot: 0 .. 16`
+###### `slot: 0 .. 64`
 Amount of slots to keep track of the top-k most frequent integers in a set.
-- Values between `0` and `16` set the top-k `window` size.
+- Values between `0` and `64` set the top-k `window` size.
 - Defaults to `0`.
 
 ###### `fifo: true || false`
@@ -62,21 +62,21 @@ Whether to eject old values from the top-k window in case of ties (*first-in fir
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array and some additional properties describing the internal state.
 While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour.
 - The hidden [`bits`](#setbits-uintarray) array acts as a backing array to track all integer frequencies in a set.
-- The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#slot-0--16) of most frequent integers (rank) and values (stat) present in a set.
+- The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#slot-0--64) of most frequent integers (rank) and values (stat) present in a set.
 
 ###### `set.bits: [UintArray]`
 This non-enumerable property contains the backing array (Typed) that stores all integers present in the set as well as their values. 
 
 ###### `set.rank: [UintArray]`
 This enumerable property displays the top-k window of ranked integers (Typed).
-The window size is determined from [`slot`](#slot-0--16).
+The window size is determined from [`slot`](#slot-0--64).
 
 ###### `set.stat: [UintArray]`
 This enumerable property displays the values associated with each ranked integer (Typed).
 Same length as [`rank`](#setrank-uintarray).
 
 ###### `set.last: Uint`
-A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--16).
+A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--64).
 
 ###### `set.tmin: Uint`
 A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--2--32).
@@ -661,9 +661,9 @@ let set = new QuickSet({
 
 ### Resizing
 
-#### `.resize( 0 .. 16 )`
+#### `.resize( 0 .. 64 )`
 Method for resizing the top-k [`window`](#quickset-class) to a desired amount of slots.
-Keeps the set [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) data intact and pads with zeroes when increasing the [`slot`](#slot-0--16) parameter and drops data when decreased.
+Keeps the set [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) data intact and pads with zeroes when increasing the [`slot`](#slot-0--64) parameter and drops data when decreased.
 
 ``` js
 
@@ -689,9 +689,9 @@ let set = new QuickSet({
 
 ### Disposal
 
-#### `.clear( true || 0 .. 16 )`
+#### `.clear( true || 0 .. 64 )`
 Method for clearing the [Typed backing array](#setbits-uintarray) (`.clear(null)`) and optionally wiping the [top-k window](#quickset-class) (`.clear(true)`). 
-During clearing operations, the top-k window can be resized as desired between 1 and 16 slots (`.clear(1..16)`).
+During clearing operations, the top-k window can be resized as desired between 1 and 64 slots (`.clear(1..64)`).
 This is useful for resetting and reusing a set between runs without constructing a `new QuickSet`.
 
 ``` js
