@@ -60,7 +60,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 6. Use multiple QuickSets with offsets to increase integer range
 7. Subtract the minimum when working with a set of large integers to save on memory
 
-### Caveats
+## Caveats
 1. Large sets affect performance
 2. Only limited top-k slots available (<64)
 3. No set size parameter yet
@@ -80,7 +80,7 @@ average time to extract unique keys on 5 runs of random integers:
 | 2^16 | native |  4.4 | - |
 | = 65 536 |QuickSet | 1.3 | 3x |
 
-### Related
+## Related
 - [DW Cache](https://www.npmjs.com/package/dw-cache)
 - [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
 - [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
