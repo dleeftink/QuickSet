@@ -80,7 +80,7 @@ average time to extract unique keys on 5 runs of random integers:
 | 2^16 | native |  4.4 | - |
 | = 65 536 |QuickSet | 1.3 | 3x |
 
-### See also
+## See also
 - [DW Cache](https://www.npmjs.com/package/dw-cache)
 - [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
 - [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
