@@ -75,8 +75,7 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    )
-      return;
+    ) return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -91,7 +90,7 @@ export default class QuickSet {
       let slot = this.slot;
       let last = this.last;
 
-      for (var idx = 0; idx < slot; idx = idx + 1) {
+      for (var idx = 0; idx < slot; ++idx) {
         if (rank[idx] == uint) {
           break;
         } else if (idx == last) {
@@ -104,7 +103,7 @@ export default class QuickSet {
         stat[idx] = val;
       } else {
         var low = this.tmin;
-        for (var ins = 0; ins < slot; ins = ins + 1) {
+        for (var ins = 0; ins < slot; ++ins) {
           if (stat[ins] <= low) break;
         }
 
@@ -126,8 +125,7 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    )
-      return;
+    ) return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -142,7 +140,7 @@ export default class QuickSet {
       var slot = this.slot;
       var idx, ins;
 
-      for (var i = 0; i < slot; i = i + 1) {
+      for (var i = 0; i < slot; ++i) {
         if (idx >= 0 && ins >= 0) break;
         if (idx == undefined && rank[i] == uint) idx = i;
         if (ins == undefined && stat[i] <= val) ins = i;
@@ -180,8 +178,7 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    )
-      return;
+    ) return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -196,7 +193,7 @@ export default class QuickSet {
       let slot = this.slot;
       let last = this.last;
 
-      for (var idx = 0; idx < slot; idx = idx + 1) {
+      for (var idx = 0; idx < slot; ++idx) {
         if (rank[idx] == uint) {
           break;
         } else if (idx == last) {
@@ -209,7 +206,7 @@ export default class QuickSet {
         stat[idx] = val;
       } else {
         var low = this.tmin;
-        for (var ins = 0; ins < slot; ins = ins + 1) {
+        for (var ins = 0; ins < slot; ++ins) {
           if (stat[ins] <= low) break;
         }
 
@@ -231,8 +228,7 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    )
-      return;
+    ) return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -247,7 +243,7 @@ export default class QuickSet {
       var slot = this.slot;
       var idx, ins;
 
-      for (var i = 0; i < slot; i = i + 1) {
+      for (var i = 0; i < slot; ++i) {
         if (idx >= 0 && ins >= 0) break;
         if (idx == undefined && rank[i] == uint) idx = i;
         if (ins == undefined && stat[i] <= val) ins = i;

@@ -21,7 +21,7 @@ export default function minsum(uint, val = 1) {
     let last = this.last;
 
     //let idx = rank.indexOf(uint); // -> slower
-    for ( var idx = 0; idx < slot; idx = idx + 1 ) {
+    for ( var idx = 0; idx < slot; ++idx ) {
       if ( rank[idx] == uint ) {
         break;
       } else if ( idx == last ) {
@@ -35,7 +35,7 @@ export default function minsum(uint, val = 1) {
     } else {
 
       var low = this.tmin;
-      for ( var ins = 0; ins < slot; ins = ins + 1 ) {
+      for ( var ins = 0; ins < slot; ++ins ) {
        if ( stat[ins] <= low ) break
       }
 
