@@ -64,6 +64,11 @@ average time to extract unique keys on 5 runs of random integers:
 | 2^16 | native |  4.4 | - |
 | = 65 536 |QuickSet | 1.3 | 3x |
 
+#### Related
+- [DW Cache](https://www.npmjs.com/package/dw-cache)
+- [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
+- [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
+- [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)
 
 ## Tips
 1. Reuse a single instance
@@ -80,9 +85,3 @@ average time to extract unique keys on 5 runs of random integers:
 3. No set size parameter yet
 4. No type checking of unsigned integers
 5. Reverse iteration not implemented yet
-
-## Related
-- [DW Cache](https://www.npmjs.com/package/dw-cache)
-- [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
-- [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
-- [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)
