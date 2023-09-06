@@ -36,7 +36,7 @@ let set = new QuickSet()
 
 ```
 
-This instantiates a new set with [default parameters](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#new-quickset-config) and a top-k window of 0-length, which may need additional configuring to suit your needs. As a rule of thumb:
+This instantiates a new set with [default parameters](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#new-quickset-config) and a top-k window of `0` length, which may need additional configuring to suit your needs. As a rule of thumb:
 
 1. If you are interested in using unweighted set operations only, use [`add`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#add-uint-value) or [`put`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) for single and [`unique`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#unique-uints) for bulk insertions.
 2. If you want to assign weights to integers, use [`sum`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#sum-uint-value) for single and [`batch`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#batch-uints-values) for bulk insertions.
