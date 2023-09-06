@@ -66,12 +66,12 @@ export default class QuickSet {
         configurable: false,
       },
       minsum: {
-        writable: false,
+        writable: true,
         enumerable: false,
         configurable: false,
       },
       winsum: {
-        writable: false,
+        writable: true,
         enumerable: false,
         configurable: false,
       },
