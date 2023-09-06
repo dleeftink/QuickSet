@@ -49,7 +49,20 @@ Methods can be mixed and matched to your liking, but may yield unwanted results 
 See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) example for why this is useful.
 
 ## Documentation
-- Read the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for more in-depth examples.
+- See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for more in-depth examples.
+
+## Benchmarks
+On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
+average time to extract unique keys on 5 runs of random integers:
+
+| Random keys | instance | ms | factor | 
+| -: | :- | -: | :- |
+| 2^28 | native | size exceeded | - |
+| = 268 435 456 | QuickSet | 4592 | - |
+| 2^24 | native | 6095 | - |
+| = 16 777 216 | QuickSet|  212 | 28x |
+| 2^16 | native |  4.4 | - |
+| = 65 536 |QuickSet | 1.3 | 3x |
 
 ## Tips
 1. Reuse a single instance
@@ -67,20 +80,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 4. No type checking of unsigned integers
 5. Reverse iteration not implemented yet
 
-## Benchmarks
-On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
-average time to extract unique keys on 5 runs of random integers:
-
-| Random keys | instance | ms | factor | 
-| -: | :- | -: | :- |
-| 2^28 | native | size exceeded | - |
-| = 268 435 456 | QuickSet | 4592 | - |
-| 2^24 | native | 6095 | - |
-| = 16 777 216 | QuickSet|  212 | 28x |
-| 2^16 | native |  4.4 | - |
-| = 65 536 |QuickSet | 1.3 | 3x |
-
-Compare:
+## Related
 - [DW Cache](https://www.npmjs.com/package/dw-cache)
 - [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
 - [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
