@@ -51,15 +51,6 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 ## Documentation
 > See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for more in-depth examples.
 
-## Tips
-1. Reuse a single instance
-2. Randomly switch between modes
-3. Use multiple QuickSets with a small integer span
-4. Maintain a `new Map()` for reverse value lookups
-5. Set `freq` to a value higher than 1 for top-k window speed-ups
-6. Use multiple QuickSets with offsets to increase integer range
-7. Subtract the minimum when working with a set of large integers to save on memory
-
 ## Benchmarks
 On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
 average time to extract unique keys on 5 runs of random integers:
@@ -72,6 +63,16 @@ average time to extract unique keys on 5 runs of random integers:
 | = 16 777 216 | QuickSet|  212 | 28x |
 | 2^16 | native |  4.4 | - |
 | = 65 536 |QuickSet | 1.3 | 3x |
+
+
+## Tips
+1. Reuse a single instance
+2. Randomly switch between modes
+3. Use multiple QuickSets with a small integer span
+4. Maintain a `new Map()` for reverse value lookups
+5. Set `freq` to a value higher than 1 for top-k window speed-ups
+6. Use multiple QuickSets with offsets to increase integer range
+7. Subtract the minimum when working with a set of large integers to save on memory
 
 ## Caveats
 1. Large sets affect performance
