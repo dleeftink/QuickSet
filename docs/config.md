@@ -58,7 +58,7 @@ Whether to eject old values from the top-k window in case of ties (*first-in fir
 - Performance might be affected when set to `true`.
 - Defaults to `false`.
 
-> WARNING: Setting `fifo` to `true` overwrites the default [`ranking`](#rankers) method. To reset the ranking algorithm [`.minsum()`](#minsum-uint-value) and [`.winsum()`](#winsum-uint-value), initiate a [`new QuickSet`](#new-quickset-config).
+> WARNING: Setting `fifo` to `true` overwrites the default [`ranking`](#rankers) method. To reset the [`.minsum()`](#minsum-uint-value) and [`.winsum()`](#winsum-uint-value) rankers, initiate a [`new QuickSet`](#new-quickset-config).
 
 ### `QuickSet class { ... }`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array and some additional properties describing the internal state.
