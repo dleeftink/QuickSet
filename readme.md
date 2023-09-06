@@ -46,7 +46,7 @@ Methods can be mixed and matched to your liking, but may yield unwanted results 
 - [`add`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#add-uint-value) , [`put`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) and [`unique`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#unique-uints) overwrite previous values and ***do not*** update the top-k window on integer insertion
 - [`sum`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#sum-uint-value) and [`batch`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#batch-uints-values) maintain previous values and ***do*** update the top-k window on integer insertion
 
-See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) example for why this is useful.
+See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) example for why this is useful. Read the [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for more in-depth examples.
 
 ## Tips
 1. Reuse a single instance
