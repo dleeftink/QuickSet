@@ -51,7 +51,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 ## Documentation
 > See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for more in-depth examples.
 
-### Tips
+## Tips
 1. Reuse a single instance
 2. Randomly switch between modes
 3. Use multiple QuickSets with a small integer span
