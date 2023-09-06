@@ -12,14 +12,14 @@ Sorted in natural ascending order of integers by default.
 6. Unique integer extraction
 
 ## How it works
-Once initialised, `QuickSet` allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurrence (counts between 0 and 2^32). 
+Once initialised, [`QuickSet`](https://github.com/dleeftink/QuickSet) allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurrence (counts between 0 and 2^32). 
 Additionally, it keeps track of how often individual integers are added to the set, providing a top-k window of most frequent integers. 
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum`.
 Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (ejecting the *Least Frequently Used* or LFU). 
 Whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps integers sorted  in decreasing order of occurrence (slightly more computationally expensive).
 
-This makes `QuickSet` a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations and returning a ranked window of most frequent  integers up till a point of your choosing. 
+This makes [`QuickSet`](https://github.com/dleeftink/QuickSet) a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations and returning a ranked window of most frequent  integers up till a point of your choosing. 
 This enables working with frequently occurring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
 
 ## Quickstart 
