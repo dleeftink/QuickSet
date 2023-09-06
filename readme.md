@@ -76,3 +76,9 @@ average time to extract unique keys on 5 runs of random integers:
 | = 16 777 216 | QuickSet|  212 | 28x |
 | 2^16 | native |  4.4 | - |
 | = 65 536 |QuickSet | 1.3 | 3x |
+
+Compare:
+- [DW Cache](https://www.npmjs.com/package/dw-cache)
+- [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
+- [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
+- [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)

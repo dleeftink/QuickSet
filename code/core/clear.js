@@ -1,3 +1,5 @@
+import { MAX_SLOTS } from './params.js';
+
 export default function clear(slot) {
 
   this.bits.fill(0);
@@ -9,7 +11,7 @@ export default function clear(slot) {
 
   } else if (slot > 0) {
 
-    this.slot = Math.min(slot,16); // maximum slot guard
+    this.slot = Math.min(slot,MAX_SLOTS); // maximum slot guard
     this.last = slot - 1;
 
     this.rank = new this.default.Rank(slot);

@@ -1,5 +1,4 @@
 export default class QuickSet {
-
   constructor({
     mode = "minsum" || "winsum",
     clip = 0,
@@ -9,16 +8,14 @@ export default class QuickSet {
     freq = 1,
     fifo = false,
   } = {}) {
-    if (span > 2 ** 28)
+    if (span > 268435456)
       throw Error("Expected integer beyond memory range");
 
-    if (high > 2 ** 32 - 1)
+    if (high > 4294967295)
       throw Error("Expected count beyond frequency range");
 
-    if (slot > 16)
-      throw Error(
-        "Rank slots performance degradation > 16",
-      );
+    if (slot > 64)
+      throw Error("Rank slots exceed recommended length");
 
     if (span < slot) slot = span;
 
@@ -368,7 +365,7 @@ export default class QuickSet {
       this.rank.fill(0);
       this.stat.fill(0);
     } else if (slot > 0) {
-      this.slot = Math.min(slot, 16);
+      this.slot = Math.min(slot, 64);
       this.last = slot - 1;
 
       this.rank = new this.default.Rank(slot);
@@ -536,7 +533,7 @@ export default class QuickSet {
   }
 
   resize(slot) {
-    if (slot >= 0 && slot <= 16) {
+    if (slot >= 0 && slot <= 64) {
       let rank = new this.default.Rank(slot);
       let stat = new this.default.Pool(slot);
 

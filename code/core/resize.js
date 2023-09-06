@@ -1,6 +1,8 @@
+import { MAX_SLOTS } from './params.js';
+
 export default function resize(slot) {
     
-  if(slot >= 0 && slot <= 16) {
+  if(slot >= 0 && slot <= MAX_SLOTS) {
     
     let rank = new this.default.Rank(slot);
     let stat = new this.default.Pool(slot);

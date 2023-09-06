@@ -2,7 +2,7 @@ function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
 
-export default (Class, methods, raw = false) => {
+export default (Class, methods, params, raw = false) => {
   let source = Class.toString();
 
   for (let call in methods) {
@@ -19,6 +19,14 @@ export default (Class, methods, raw = false) => {
        source = source.replace(head, body);
 
   }
-  
+
+  for(let name in params) {
+    // find and replace Stackblitz filename prefix
+    // let rgx = new RegExp('[\\w_]+\\.(?=' + name + ')','g') // => negative match
+    let rgx = new RegExp('[\\w_]+\\.(' + name + ')','g')
+     source = source.replace(rgx,params[name])
+     
+   }
+
   return raw ? source : new Function("return " + source).call();
 };

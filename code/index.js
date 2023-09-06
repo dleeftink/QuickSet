@@ -1,4 +1,5 @@
 import prototype from './proto.js';
+import { MAX_SLOTS, MAX_FREQ, MAX_SPAN } from './core/params.js';
 
 export default class QuickSet {
 
@@ -12,14 +13,14 @@ export default class QuickSet {
 
     Object.assign(this.constructor.prototype, prototype);
 
-    if (span > 2**28) 
+    if (span > MAX_SPAN) 
     throw Error('Expected integer beyond memory range');
 
-    if (high > (2**32)-1) 
+    if (high > MAX_FREQ) 
     throw Error('Expected count beyond frequency range');
 
-    if (slot > 16) 
-    throw Error('Rank slots performance degradation > 16');
+    if (slot > MAX_SLOTS) 
+    throw Error('Rank slots exceed recommended length');
 
     if (span < slot) slot = span;
 
@@ -49,6 +50,7 @@ export default class QuickSet {
       },
     });
 
+    // seemingly improved performance ??
     Object.defineProperties(this.constructor.prototype, {
       $minsum: {
         writable: false,
