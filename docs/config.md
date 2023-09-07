@@ -58,7 +58,7 @@ Whether to eject old values from the top-k window in case of ties (*first-in fir
 - Performance might be affected when set to `true`.
 - Defaults to `false`.
 
-> Setting `fifo` to `true` overwrites the default [`Ranker`](#rankers) methods. To revert the [`.minsum()`](#minsum-uint-value) and [`.winsum()`](#winsum-uint-value) rankers to their 'non-fifo' state, initiate a [`new QuickSet`](#new-quickset-config).
+> Setting `fifo` to `true` [overwrites](https://github.com/dleeftink/QuickSet/blob/c304133e58b626d3372400f2c4fd3040c223e2b7/dist/index.js#L22) the default [`Ranker`](#rankers) methods. To revert the [`.minsum()`](#minsum-uint-value) and [`.winsum()`](#winsum-uint-value) rankers to their 'non-fifo' state, initiate a [`new QuickSet`](#new-quickset-config).
 
 ### `QuickSet class { ... }`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array and some additional properties describing the internal state.
