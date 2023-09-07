@@ -68,8 +68,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 5. Reverse iteration not implemented yet
 
 ## Benchmarks
-On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM,
-average time to extract unique keys on 5 runs of random integers:
+On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM, the average time to extract unique keys from 5 runs of uniformly distributed random integers:
 
 | Random keys | instance | ms | factor | 
 | -: | :- | -: | :- |
