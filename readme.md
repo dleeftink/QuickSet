@@ -57,8 +57,8 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 3. Use multiple QuickSets with a small integer span
 4. Maintain a `new Map()` for reverse value lookups
 5. Set `freq` to a value higher than 1 for top-k window speed-ups
-6. Use multiple QuickSets with offsets to increase integer range
-7. Subtract the minimum and adjust the [`span`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#span-0--2-28) parameter to the new maximum expected integer range to save on memory when working with a set of large integers 
+6. Subtract the minimum and adjust the [`span`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#span-0--2-28) parameter to the new maximum expected integer range to save on memory when working with a set of large integers
+7. Use multiple QuickSets with custom offsets to increase the maximum integer range
 
 ## Caveats
 1. Decreased performance on large sets (2^24+ uniformly distributed integers)
