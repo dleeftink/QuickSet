@@ -22,6 +22,9 @@ Whereas `minsum` ejects integers from their initial point of insertion (i.e. ran
 This makes [`QuickSet`](https://github.com/dleeftink/QuickSet) a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations and returning a ranked window of most frequent  integers up till a point of your choosing. 
 This enables working with frequently occurring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
 
+## Documentation
+> See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for in-depth examples and configuration.
+
 ## Quickstart 
 
 ```
@@ -47,9 +50,6 @@ Methods can be mixed and matched to your liking, but may yield unwanted results 
 - [`sum`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#sum-uint-value) and [`batch`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#batch-uints-values) maintain previous values and ***do*** update the top-k window on integer insertion
 
 See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) example for why this is useful.
-
-## Documentation
-> See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for more in-depth examples.
 
 ## Tips
 1. Reuse a single instance
