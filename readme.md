@@ -61,7 +61,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 7. Subtract the minimum when working with a set of large integers to save on memory
 
 ## Caveats
-1. Large sets affect performance
+1. Decreased performance on large sets (2^24+ uniformly distributed integers)
 2. Only limited top-k slots available (<64)
 3. No set size parameter yet
 4. No type checking of unsigned integers
