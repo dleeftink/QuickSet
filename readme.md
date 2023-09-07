@@ -8,8 +8,8 @@ Sorted in natural ascending order of integers by default.
 2. Nearest neighbour finding based on frequency of occurrence
 3. Ordering random integers for binary search
 4. A lightweight key/value dictionary
-5. Duplicate integer counting
-6. Unique integer extraction
+5. Unique integer extraction
+6. Duplicate integer counting
 
 ## Documentation
 > See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for in-depth examples and configuration.
