@@ -61,7 +61,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 7. Use multiple QuickSets with custom offsets to increase the maximum integer range
 
 ## Caveats
-1. Decreased performance on large sets (2^24+ uniformly distributed integers)
+1. Decreased performance on large sets (>2^24 uniformly distributed integers)
 2. Only limited top-k slots available (<64)
 3. No set size parameter yet
 4. No type checking of unsigned integers
