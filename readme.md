@@ -14,7 +14,7 @@ Sorted in natural ascending order of integers by default.
 ## Documentation
 > See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for in-depth examples and configuration.
 
-___
+> ---
 
 > See the [ObservableHQ collection](https://observablehq.com/collection/@dleeftink/quickset) for hands-on examples.
 
