@@ -1,8 +1,8 @@
 import fs from 'node:fs'
-import assign from './code/util/assign.js'
-import methods from './code/proto.js'
-import * as params from './code/core/params.js'
-import QuickSet from './code/index.js'
+import assign from '../code/util/assign.js'
+import methods from '../code/proto.js'
+import QuickSet from '../code/index.js'
+import * as params from '../code/core/params.js'
 import * as prettier from 'prettier'
 
 // build script that inserts imports 

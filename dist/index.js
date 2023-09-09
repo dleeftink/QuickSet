@@ -75,7 +75,8 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    ) return;
+    )
+      return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -125,7 +126,8 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    ) return;
+    )
+      return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -178,7 +180,8 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    ) return;
+    )
+      return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -228,7 +231,8 @@ export default class QuickSet {
       uint > this.span ||
       invalid(uint) ||
       invalid(val)
-    ) return;
+    )
+      return;
 
     var old = this.bits[uint];
     val = old + val;
@@ -278,7 +282,7 @@ export default class QuickSet {
       data = data[0];
     }
 
-    let span = data.length;
+    let span = 8 * Math.ceil(data.length * 0.125);
 
     for (var i = 0; i < span - 7; i = i + 8) {
       this.add(data[i]);
