@@ -21,7 +21,7 @@ Once initialised, [`QuickSet`](https://github.com/dleeftink/QuickSet) allocates 
 Additionally, it keeps track of how often individual integers are added to the set, providing a top-k window of most frequent integers. 
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum`.
-Both eject the least frequent integer from the ranking upon inserting new items, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (ejecting the *Least Frequently Used* or LFU). 
+Both eject the least frequent integer from their ranks upon integer insertion, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (ejecting the *Least Frequently Used* or LFU). 
 Whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps integers sorted  in decreasing order of occurrence (slightly more computationally expensive).
 
 This makes [`QuickSet`](https://github.com/dleeftink/QuickSet) a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations and returning a ranked window of most frequent  integers up till a point of your choosing. 
