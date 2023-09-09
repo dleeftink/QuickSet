@@ -13,6 +13,7 @@ export default function batch(...data) {
     data = data[0];
   }
 
+  // round to nearest multiple of 8 when unrolling -> see unique.js
   let span = data.length;
 
   if (vals) {

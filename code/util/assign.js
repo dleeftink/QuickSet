@@ -2,6 +2,9 @@ function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
 
+// only inlines Class methods
+// not nested functions
+
 export default (Class, methods, params, raw = false) => {
   let source = Class.toString();
 

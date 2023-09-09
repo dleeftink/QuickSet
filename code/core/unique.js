@@ -4,7 +4,8 @@ export default function unique(...data) {
     data = data[0];
   }
 
-  let span = data.length;
+  // round to nearest multiple of 8
+  let span = 8*Math.ceil(data.length * 0.125);
 
   // unrolled loop, data is validated in each .add() call
   for (var i = 0; i < span - 7; i = i + 8) {
