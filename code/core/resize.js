@@ -21,6 +21,6 @@ export default function resize(slot) {
     this.slot = slot;
     
   } else {
-    throw new Error("Set window size between 0 an 16 inclusive.")
+    throw new Error(`Set window size between 0 and ${MAX_SLOTS} inclusive.`)
   }
 }
