@@ -5,10 +5,11 @@ on: workflow_dispatch
 jobs:
   simple_template:
     runs-on: ubuntu-latest
+    
     permissions:
       contents: write
+      
     steps:
-    
     - name: Checkout main branch
       uses: actions/checkout@v3
       with: 
