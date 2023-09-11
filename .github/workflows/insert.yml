@@ -6,15 +6,12 @@ jobs:
   simple_template:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Markdown insert
-        uses: ryohidaka/action-md-insert@v1.2.0
+      - uses: actions/checkout@v3
+      - uses: ryohidaka/action-md-insert@v1.2.0
         with:
           template_path: "./pack/template.md"
           src_dir: "./docs"
           dest_file: ./output.md
-      - name: Store readme
-        uses: actions/upload-artifact@v3
-        with:
-          name: NPM md file
-          path: pack/output.md
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
