@@ -25,8 +25,8 @@ export default class QuickSet {
     if (span < slot) slot = span;
 
     if(fifo) {
-      this.minsum =  this.$minsum;
-      this.winsum =  this.$winsum;
+      this.constructor.prototype.minsum =  this.$minsum;
+      this.constructor.prototype.winsum =  this.$winsum;
     }
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
@@ -48,6 +48,29 @@ export default class QuickSet {
         enumerable: false,
         configurable: false,
       },
+      prev: {
+        writable:true,
+        enumerable: false
+      }
+    });
+
+    Object.defineProperties(this.constructor.prototype,{
+      $minsum: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
+      $winsum: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
+      minsum: {
+        enumerable: false
+      },
+      winsum: {
+        enumerable:false
+      }
     });
 
     this.span = span = Math.min(span,m); // clip integers above range extent (inclusive)
@@ -58,6 +81,8 @@ export default class QuickSet {
     
     this.slot = slot; // ranked integer slots
     this.last = slot - 1 ; // last item const
+
+    this.prev = -1;
 
     this.tmin = freq //?? 0; // keeps track of min in window
     this.tmax = 0; // keeps track of max in window

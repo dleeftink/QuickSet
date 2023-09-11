@@ -1,8 +1,25 @@
-export default function rewrite (func, rgx, rep) {
+export default function rewrite(func, pats, reps) {
 
-  let pat = 'return ' + func.toString() // remove /add'function' keyword if base class !== string
- // .replaceAll('function','').trim()
-  .replace(rgx, rep) 
+  if (!Array.isArray(pats)) {
+    pats = [pats];
+  }
 
-  return new Function(pat).call() 
+  if (!Array.isArray(reps)) {
+    reps = [reps];
+  }
+
+  if (pats.length == reps.length) {
+    let span = pats.length;
+        func = func.toString();
+
+    for (let i = 0; i < span; ++i) {
+      func = func.replace(pats[i], reps[i]);
+    }
+
+  } else {
+    throw new Error('Unbalanced pattern replacements');
+  }
+  
+  return new Function('return '+func).call();
+  
 }

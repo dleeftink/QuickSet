@@ -13,7 +13,7 @@ let set = new QuickSet({
   slot: 4,
   freq: 2,
   mode: 'minsum',
-  fifo: false,
+  fifo: true,
 });
 
 let span = ints.length;
