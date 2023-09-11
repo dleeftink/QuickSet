@@ -12,7 +12,7 @@ Sorted in natural ascending order of integers by default.
 6. A lightweight key/value dictionary
 
 ## Documentation
-> See the full [configuration](https://github.com/dleeftink/QuickSet#Configuration) and [API documentation](https://github.com/dleeftink/QuickSet#API) for in-depth examples.
+> See the full [configuration](https://github.com/dleeftink/QuickSet#Configuration) and [API documentation](https://github.com/dleeftink/QuickSet#API) for in-depth settings and examples.
 
 > See the [ObservableHQ collection](https://observablehq.com/collection/@dleeftink/quickset) for hands-on examples.
 
