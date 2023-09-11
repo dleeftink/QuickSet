@@ -22,7 +22,7 @@ jobs:
     - name: Prepare NPM readme
       uses: ryohidaka/action-md-insert@v1.2.0
       with:
-        template_path: "./docs/main.md"
+        template_path: "./docs/basics.md"
         src_dir: "./"
         dest_file: readme.md
         
@@ -35,7 +35,7 @@ jobs:
     - name: Prepare GitHub readme
       uses: ryohidaka/action-md-insert@v1.2.0
       with:
-        template_path: "./docs/main.md"
+        template_path: "./docs/basics.md"
         src_dir: "./docs"
         dest_file: readme.md
         
