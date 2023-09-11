@@ -70,6 +70,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 3. No set size parameter yet
 4. No type checking of unsigned integers
 5. Reverse iteration not implemented yet
+6. Backing array resizing not yet implemented
 
 ## Benchmarks
 On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM, the average time to extract unique keys from 5 runs of uniformly distributed random integers:
