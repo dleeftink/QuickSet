@@ -3,7 +3,7 @@ name: Prepare readme's
 on: workflow_dispatch
 
 permissions:
-  actions: read|write
+  actions: write
 
 jobs:
   simple_template:
