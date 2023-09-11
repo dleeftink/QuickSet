@@ -2,12 +2,11 @@ name: Prepare readme's
 
 on: workflow_dispatch
 
-permissions:
-  actions: write
-
 jobs:
   simple_template:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     
     - name: Checkout main branch
