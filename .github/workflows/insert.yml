@@ -26,8 +26,8 @@ jobs:
         src_dir: "./docs"
         dest_file: pack/output.md
         
-    # - name: Upload artifact
-    #  uses: actions/upload-artifact@v2
-    #  with:
-    #    name: result-artifact
-    #    path: pack/output.md
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: result-artifact
+        path: pack/output.md
