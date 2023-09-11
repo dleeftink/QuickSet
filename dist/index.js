@@ -39,6 +39,8 @@ export default class QuickSet {
     let [Pool, byte] = this.expects(high - 1),
       b = 2 ** (byte * 8) - 1;
 
+    const data = new ArrayBuffer(byte * (span + 1));
+
     this.constructor.prototype.default = {
       Rank,
       Pool,
@@ -49,8 +51,6 @@ export default class QuickSet {
     };
 
     this.constructor.prototype.sum = this[mode];
-
-    const data = new ArrayBuffer(byte * (span + 1));
 
     this.rank = new Rank(slot);
     this.stat = new Pool(slot);
@@ -101,10 +101,10 @@ export default class QuickSet {
     this.slot = slot;
     this.last = slot - 1;
 
-    this.prev = -1;
-
     this.tmin = freq;
     this.tmax = 0;
+
+    this.prev = -1;
   }
 
   $minsum(uint, val = 1) {
@@ -583,7 +583,7 @@ export default class QuickSet {
       this.slot = slot;
     } else {
       throw new Error(
-        "Set window size between 0 an 16 inclusive.",
+        `Set window size between 0 and ${64} inclusive.`,
       );
     }
   }

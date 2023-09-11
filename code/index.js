@@ -41,13 +41,14 @@ export default class QuickSet {
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
+
     
+    const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
+   
     this.constructor.prototype.default = { Rank, Pool, mode, fifo, mult, byte};
 
     this.constructor.prototype.sum = this[mode]
-
-    const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
-
+    
     this.rank = new Rank(slot);
     this.stat = new Pool(slot);
     this.bits = new Pool(data);
@@ -60,6 +61,16 @@ export default class QuickSet {
       },
       prev: {
         writable:true,
+        enumerable: false,
+        configurable: false,
+      },
+      $minsum: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
+      $winsum: {
+        writable: false,
         enumerable: false,
         configurable: false,
       },
@@ -87,10 +98,10 @@ export default class QuickSet {
     this.slot = slot; // ranked integer slots
     this.last = slot - 1 ; // last item const
 
-    this.prev = -1;
-
     this.tmin = freq //?? 0; // keeps track of min in window
     this.tmax = 0; // keeps track of max in window
+    
+    this.prev = -1; // .minsum() internal previous insertion position
 
   }    
 
