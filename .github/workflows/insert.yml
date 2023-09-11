@@ -15,17 +15,11 @@ jobs:
       with: 
         clean: true
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: outputA
-        path: readme.md
-
     # - name: Change permissions
     #  run: |
     #    sudo chmod -R 777 pack/
         
-    - name: Insert markdown
+    - name: Prepare NPM readme
       uses: ryohidaka/action-md-insert@v1.2.0
       with:
         template_path: "./pack/template.md"
