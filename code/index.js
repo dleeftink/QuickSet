@@ -41,7 +41,6 @@ export default class QuickSet {
 
     let [ Rank , mult ] = this.expects( span - 1 ), m = 2**(mult*8)-0;
     let [ Pool , byte ] = this.expects( high - 1 ), b = 2**(byte*8)-1;
-
     
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
    
