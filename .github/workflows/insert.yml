@@ -6,7 +6,6 @@ jobs:
   simple_template:
     runs-on: ubuntu-latest
     steps:
-      - name: Markdown insert
       - uses: actions/checkout@v3
       - uses: ryohidaka/action-md-insert@v1.2.0
         with:
