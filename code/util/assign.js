@@ -3,7 +3,7 @@ function escapeRegExp(string) {
 }
 
 // only inlines Class methods
-// no nested functions inside methods
+// not nested functions inside methods
 
 export default (Class, methods, params, raw = false) => {
   let source = Class.toString();
