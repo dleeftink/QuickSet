@@ -7,8 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ryohidaka/action-md-insert@v1.2.0
+      - name: Markdown insert
+        uses: ryohidaka/action-md-insert@v1.2.0
         with:
           template_path: "./pack/template.md"
           src_dir: "./docs"
-          dest_file: "./pack/output.md"
+          dest_file: ./output.md
+      - name: Store readme
+        uses: actions/upload-artifact@v3
+        with:
+          name: NPM md file
+          path: pack/output.md
