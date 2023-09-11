@@ -69,7 +69,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 2. Only limited top-k slots available (<64)
 3. No set size parameter yet
 4. No type checking of unsigned integers
-5. Reverse iteration not implemented yet
+5. Reverse iteration not yet implemented
 6. Backing array resizing not yet implemented
 
 ## Benchmarks
