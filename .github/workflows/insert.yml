@@ -27,7 +27,7 @@ jobs:
         dest_file: pack/output.md
         
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: result-artifact
         path: pack/output.md
