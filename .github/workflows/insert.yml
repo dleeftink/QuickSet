@@ -2,15 +2,20 @@ name: Prepare readme's
 
 on: workflow_dispatch
 
+permissions:
+  actions: write
+
 jobs:
   simple_template:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with: 
-          clean: false
-      - uses: ryohidaka/action-md-insert@v1.2.0
-        with:
-          template_path: "./pack/template.md"
-          src_dir: "./docs"
-          dest_file: "./output.md"
+    - name: Checkout main branch
+      uses: actions/checkout@v3
+      with: 
+        clean: false
+    - name: Insert markdiwn
+      uses: ryohidaka/action-md-insert@v1.2.0
+      with:
+        template_path: "./pack/template.md"
+        src_dir: "./docs"
+        dest_file: ./output.md
