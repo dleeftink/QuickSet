@@ -15,9 +15,9 @@ jobs:
       with: 
         clean: false
 
-    - name: Change permissions
-      run: |
-        sudo chmod -R 777 pack/
+    # - name: Change permissions
+    #  run: |
+    #    sudo chmod -R 777 pack/
         
     - name: Insert markdown
       uses: ryohidaka/action-md-insert@v1.2.0
@@ -29,5 +29,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: result-artifact
+        name: output.md
         path: pack/output.md
