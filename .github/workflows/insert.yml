@@ -13,7 +13,13 @@ jobs:
     - name: Checkout main branch
       uses: actions/checkout@v3
       with: 
-        clean: false
+        clean: true
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: outputA
+        path: readme.md
 
     # - name: Change permissions
     #  run: |
@@ -24,10 +30,10 @@ jobs:
       with:
         template_path: "./pack/template.md"
         src_dir: "./docs"
-        dest_file: pack/output.md
+        dest_file: readme.md
         
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: output
-        path: pack/output.md
+        name: outputB
+        path: readme.md
