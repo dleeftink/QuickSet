@@ -11,11 +11,6 @@ Sorted in natural ascending order of integers by default.
 5. Sorting random integers for binary operations
 6. A lightweight key/value dictionary
 
-## Documentation
-> See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for in-depth examples and configuration.
-
-> See the [ObservableHQ collection](https://observablehq.com/collection/@dleeftink/quickset) for hands-on examples.
-
 ## How it works
 Once initialised, [`QuickSet`](https://github.com/dleeftink/QuickSet) allocates a TypedArray based on the expected range of integers (numbers between 0 and 2^28) and frequency of occurrence (counts between 0 and 2^32). 
 Additionally, it keeps track of how often individual integers are added to the set, providing a top-k window of most frequent integers. 
@@ -26,6 +21,11 @@ Whereas `minsum` ejects integers from their initial point of insertion (i.e. ran
 
 This makes [`QuickSet`](https://github.com/dleeftink/QuickSet) a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations and returning a ranked window of most frequent  integers up till a point of your choosing. 
 This enables working with frequently occurring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
+
+## Documentation
+> See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for in-depth examples and configuration.
+
+> See the [ObservableHQ collection](https://observablehq.com/collection/@dleeftink/quickset) for hands-on examples.
 
 ## Quickstart 
 
