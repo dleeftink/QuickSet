@@ -53,7 +53,7 @@ Methods can be mixed and matched to your liking, but may yield unwanted results 
 
 See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) example for why this is useful.
 
-<!-- config.md -->
+<!--config.md-->
 
 ## Tips
 1. Reuse a single instance
