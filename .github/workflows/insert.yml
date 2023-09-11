@@ -19,7 +19,7 @@ jobs:
     #  run: |
     #    sudo chmod -R 777 pack/
         
-    - name: Prepare Git readme
+    - name: Prepare NPM readme
       uses: ryohidaka/action-md-insert@v1.2.0
       with:
         template_path: "./docs/main.md"
@@ -29,5 +29,18 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: output
+        name: outputA
+        path: readme.md
+
+    - name: Prepare GitHub readme
+      uses: ryohidaka/action-md-insert@v1.2.0
+      with:
+        template_path: "./docs/main.md"
+        src_dir: "./docs"
+        dest_file: readme.md
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: outputB
         path: readme.md
