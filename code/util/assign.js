@@ -24,7 +24,9 @@ export default (Class, methods, params, raw = false) => {
   }
 
   for(let name in params) {
-    // find and replace Stackblitz filename prefix
+    
+    // only works for Stackblitz import file prefix
+
     // let rgx = new RegExp('[\\w_]+\\.(?=' + name + ')','g') // => negative match
     let rgx = new RegExp('[\\w_]+\\.(' + name + ')','g')
      source = source.replace(rgx,params[name])
