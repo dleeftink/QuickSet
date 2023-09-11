@@ -11,7 +11,7 @@ import * as prettier from 'prettier'
 (async function() {
 
   let source = 'export default ' + assign(QuickSet,methods,params,true)
-    .replace(/Object.assign\(this\.constructor\.prototype.*?\)/g,'')
+    .replace(/Object.assign\(this\.constructor\.prototype.*?\)/g,'') // matches has first occurance only? -> make more explicit
     //.replace(/Object\.defineProperties\(this,{[\s\S]+?\}\)\;/gm, '')
       //.replaceAll('this.bits', 'this.#bits')
      // .replaceAll('$minsum', '#minsum')
