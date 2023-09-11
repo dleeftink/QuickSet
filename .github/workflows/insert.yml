@@ -23,7 +23,7 @@ jobs:
       uses: ryohidaka/action-md-insert@v1.2.0
       with:
         template_path: "./docs/main.md"
-        src_dir: "./pack"
+        src_dir: "./"
         dest_file: readme.md
         
     - name: Upload artifact
