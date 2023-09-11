@@ -2,6 +2,9 @@ name: Prepare readme's
 
 on: workflow_dispatch
 
+permissions:
+  actions: read|write
+
 jobs:
   simple_template:
     runs-on: ubuntu-latest
@@ -11,6 +14,4 @@ jobs:
         with:
           template_path: "./pack/template.md"
           src_dir: "./docs"
-          dest_file: ./output.md
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3
+          dest_file: "./output.md"
