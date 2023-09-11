@@ -23,7 +23,7 @@ This makes [`QuickSet`](https://github.com/dleeftink/QuickSet) a fast alternativ
 This enables working with frequently occurring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
 
 ## Documentation
-> See the full [API documentation](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md) for in-depth examples and configuration.
+> See the full [API documentation](https://github.com/dleeftink/QuickSet) for in-depth examples and configuration.
 
 > See the [ObservableHQ collection](https://observablehq.com/collection/@dleeftink/quickset) for hands-on examples.
 
