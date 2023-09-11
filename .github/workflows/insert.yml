@@ -11,4 +11,4 @@ jobs:
         with:
           template_path: "./pack/template.md"
           src_dir: "./docs"
-          dest_file: "./output.md"
+          dest_file: ./output.md
