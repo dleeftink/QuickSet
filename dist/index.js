@@ -20,8 +20,18 @@ export default class QuickSet {
     if (span < slot) slot = span;
 
     if (fifo) {
-      this.constructor.prototype.minsum = this.$minsum;
-      this.constructor.prototype.winsum = this.$winsum;
+      Object.defineProperties(this, {
+        minsum: {
+          value: this.$minsum,
+          enumerable: false,
+          configurable: false,
+        },
+        winsum: {
+          value: this.$winsum,
+          enumerable: false,
+          configurable: false,
+        },
+      });
     }
 
     let [Rank, mult] = this.expects(span - 1),
@@ -55,6 +65,17 @@ export default class QuickSet {
       prev: {
         writable: true,
         enumerable: false,
+        configurable: false,
+      },
+      $minsum: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
+      },
+      $winsum: {
+        writable: false,
+        enumerable: false,
+        configurable: false,
       },
     });
 
@@ -68,12 +89,6 @@ export default class QuickSet {
         writable: false,
         enumerable: false,
         configurable: false,
-      },
-      minsum: {
-        enumerable: false,
-      },
-      winsum: {
-        enumerable: false,
       },
     });
 
