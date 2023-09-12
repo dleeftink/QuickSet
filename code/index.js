@@ -44,7 +44,7 @@ export default class QuickSet {
     
     const data = new ArrayBuffer(byte*( span + 1 )); // range+1 to make inclusive // 
    
-    this.constructor.prototype.default = { Rank, Pool, mode, fifo, mult, byte};
+    this.constructor.prototype.default = { Rank, Pool, mode, fifo, mult, byte };
 
     this.constructor.prototype.sum = this[mode]
     

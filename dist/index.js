@@ -418,7 +418,7 @@ export default class QuickSet {
       invalid(val)
     )
       return;
-    if (val > this.default.byte) return;
+    if (val > this.high) return;
 
     this.bits[uint] = val;
   }

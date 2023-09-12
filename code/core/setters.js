@@ -3,7 +3,7 @@ function add(uint, val = 1) {
   let invalid = this.invalid;
 
   if ( uint < this.clip || uint > this.span || invalid(uint) || invalid(val)) return;
-  if ( val  > this.default.byte ) return; // prevent overflow
+  if ( val  > this.high ) return; // prevent overflow
 
   this.bits[uint] = val;
 
