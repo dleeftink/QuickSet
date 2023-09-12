@@ -1,6 +1,6 @@
 {
   "name": "@suptxt/quickset",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "type": "module",
   "scripts": {
     "build": "npm install --save-dev && node './pack/build.js'",
