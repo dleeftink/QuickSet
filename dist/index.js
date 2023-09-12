@@ -617,6 +617,7 @@ export default class QuickSet {
   }
 
   invalid(input) {
+    input >>>= 1;
     return (input ^ 0) !== input;
   }
 

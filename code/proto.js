@@ -3,7 +3,7 @@ import clear from './core/clear.js';
 import minsum from './rank/minsum.js';
 import winsum from './rank/winsum.js';
 import unique from './core/unique.js';
-import lowest from './util/lowest.js';
+import lowest from './core/lowest.js';
 import resize from './core/resize.js';
 import expects from './util/expects.js';
 import invalid from './util/invalid.js';

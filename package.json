@@ -3,7 +3,8 @@
   "version": "0.4.5",
   "type": "module",
   "scripts": {
-    "build": "npm install --save-dev && node build.js",
+    "build": "npm install --save-dev && node './pack/build.js'",
+    "pack": "node './pack/build.js'",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
