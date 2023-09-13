@@ -85,8 +85,8 @@ On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM, the averag
 | = 65 536 |QuickSet | 1.3 | 3x |
 
 ## See also
+- [BitSet](https://www.npmjs.com/package/cell-bitset)
 - [DW Cache](https://www.npmjs.com/package/dw-cache)
 - [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
 - [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
 - [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)
-- [BitSet](https://www.npmjs.com/package/cell-bitset)
