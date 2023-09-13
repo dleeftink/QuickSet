@@ -12,7 +12,7 @@ Sorted in natural ascending order of integers by default.
 6. A lightweight key/value dictionary
 
 ## Documentation
-> See the full [API documentation](https://github.com/dleeftink/QuickSet#API) for in-depth settings and examples.
+> See the full [API documentation](https://github.com/dleeftink/QuickSet) for in-depth settings and examples.
 
 > See the [ObservableHQ collection](https://observablehq.com/collection/@dleeftink/quickset) for hands-on examples.
 
@@ -22,7 +22,7 @@ Additionally, it keeps track of how often individual integers are added to the s
 
 Two modes are provided for establishing top-k ranks, `minsum` and `winsum`.
 Both eject the least frequent integer from their ranks upon integer insertion, yielding a ranked 'window' that guarantees the k-most occurring elements of the set to 'bubble up' (ejecting the *Least Frequently Used* or LFU). 
-Whereas `minsum` ejects integers from their initial point of insertion (i.e. random access), `winsum` keeps integers sorted  in decreasing order of occurrence (slightly more computationally expensive).
+Whereas `minsum` overwrites the least frequent integer (i.e. random access), `winsum` keeps integers sorted  in decreasing order of occurrence (slightly more computationally expensive).
 
 This makes [`QuickSet`](https://github.com/dleeftink/QuickSet) a fast alternative to counting and sorting all elements in a given set, preventing costly sorting operations and returning a ranked window of most frequent  integers up till a point of your choosing. 
 This enables working with frequently occurring items 'earlier' compared to processing and sorting the input data in full, especially if the underlying integers follow a non-uniform distribution.
@@ -812,7 +812,7 @@ let set = new QuickSet({
 2. Only limited top-k slots available (<64)
 3. No set size parameter yet
 4. No type checking of unsigned integers
-5. Reverse iteration not implemented yet
+5. Reverse iteration not yet implemented
 6. Backing array resizing not yet implemented
 
 ## Benchmarks
@@ -828,6 +828,7 @@ On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM, the averag
 | = 65 536 |QuickSet | 1.3 | 3x |
 
 ## See also
+- [BitSet](https://www.npmjs.com/package/cell-bitset)
 - [DW Cache](https://www.npmjs.com/package/dw-cache)
 - [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
 - [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
