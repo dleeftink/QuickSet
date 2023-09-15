@@ -90,4 +90,5 @@ On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM, the averag
 - [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
 - [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
 - [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)
+- [FT Set](https://www.npmjs.com/package/ftset) (for strings)
 - [QB Uint](https://www.npmjs.com/package/qb-uint)
