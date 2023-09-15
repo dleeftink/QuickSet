@@ -57,7 +57,7 @@ See the [tombstoning](https://github.com/dleeftink/QuickSet/tree/main/docs/confi
 ## Configuration
 
 #### `new QuickSet ({...config})`
-Creates a new QuickSet instance with default settings (the top-k [`window`](#quickset-class) is turned off by default):
+Creates a new QuickSet instance with default settings (the top-k [`window`](#slot-0--64) is turned off by default):
 
 ```js
 let config = {
@@ -76,70 +76,70 @@ let config = {
 }
 ```
 
-###### `mode: "minsum" || "winsum"`
+##### `mode: "minsum" || "winsum"`
 Sets the default summing mode when using [`sum`](#sum-uint-value).
 See [rankers](#rankers) for differences.
 
-###### `span: 0 .. 2 ^ 28`
+##### `span: 0 .. 2 ^ 28`
 Maximum expected integer in set.
 Integers above this number are ignored when added to the set.
 - Upper range bound for all integers (inclusive).
 - Defaults to `512`.
 
-###### `clip: 0 .. 2 ^ 28`
+##### `clip: 0 .. 2 ^ 28`
 Minimum expected integer in set.
 Integers below this number are ignored when added to the set.
 - Lower range bound for all integers (inclusive).
 - Defaults to `0`.
 
-###### `high: 0 .. 2 ^ 32`
+##### `high: 0 .. 2 ^ 32`
 Maximum expected count of individual integers.
 Individual integer counts are limited to this value.
 - Upper frequency bound per integer (exclusive).
 - Defaults to `128`.
 
-###### `freq: 0 .. 2 ^ 32`
+##### `freq: 0 .. 2 ^ 32`
 Minimum expected count of individual integers.
 Threshold for integers to qualify for a top-k position.
 - Lower frequency bound per integer (exclusive).
 - Defaults to `1`.
 
-###### `slot: 0 .. 64`
+##### `slot: 0 .. 64`
 Amount of slots to keep track of the top-k most frequent integers in a set.
 - Values between `0` and `64` set the top-k `window` size.
 - Defaults to `0`.
 
-###### `fifo: true || false`
+##### `fifo: true || false`
 Whether to eject old values from the top-k window in case of ties (*first-in first-out*).
 - Performance might be affected when set to `true`.
 - Defaults to `false`.
 
 > Setting `fifo` to `true` [overwrites](https://github.com/dleeftink/QuickSet/blob/c304133e58b626d3372400f2c4fd3040c223e2b7/dist/index.js#L22) the default [`Ranker`](#rankers) methods. To revert the [`.minsum()`](#minsum-uint-value) and [`.winsum()`](#winsum-uint-value) rankers to their 'non-fifo' state, initiate a [`new QuickSet`](#new-quickset-config).
 
-### `QuickSet class { ... }`
+## `QuickSet class { ... }`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array and some additional properties describing the internal state.
 While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour.
 - The hidden [`bits`](#setbits-uintarray) array acts as a backing array to track all integer frequencies in a set.
 - The visible arrays, [`rank`](#setrank-uintarray) and [`stat`](#setstat-uintarray) provide the top-k [`window`](#slot-0--64) of most frequent integers (rank) and values (stat) present in a set.
 
-###### `set.bits: [UintArray]`
+##### `set.bits: [UintArray]`
 This non-enumerable property contains the backing array (Typed) that stores all integers present in the set as well as their values. 
 
-###### `set.rank: [UintArray]`
+##### `set.rank: [UintArray]`
 This enumerable property displays the top-k window of ranked integers (Typed).
 The window size is determined from [`slot`](#slot-0--64).
 
-###### `set.stat: [UintArray]`
+##### `set.stat: [UintArray]`
 This enumerable property displays the values associated with each ranked integer (Typed).
 Same length as [`rank`](#setrank-uintarray).
 
-###### `set.last: Uint`
+##### `set.last: Uint`
 A constant parameter for accessing the last item in the top-k window defined by [`slot`](#slot-0--64).
 
-###### `set.tmin: Uint`
+##### `set.tmin: Uint`
 A variable parameter displaying the minimum value in the top-k window, lower bounded by [`freq`](#freq-0--2--32).
 
-###### `set.tmax: Uint`
+##### `set.tmax: Uint`
 A variable parameter displaying the maximum value in the top-k window, upper bounded by [`high`](#high-0--2--32).
 
 > Note that due to being TypedArrays, `rank` and `stat` may contain multiple zeroes depending on how filled top-k slots. If `0` is an integer you have previously inserted, you can access this by looking for the first indexed `0` in `rank` and access its value at the same index in `stat`.
@@ -833,3 +833,4 @@ On a Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz-1.99 GHz with 16GB RAM, the averag
 - [Fast Int Set](https://www.npmjs.com/package/fast-int-set)
 - [Boolean Array](https://www.npmjs.com/package/@asaitama/boolean-array)
 - [Rimbu MultiSet](https://rimbu.org/docs/collections/multiset)
+- [QB Uint](https://www.npmjs.com/package/qb-uint)
