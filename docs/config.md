@@ -1,7 +1,7 @@
 ## Configuration
 
 #### `new QuickSet ({...config})`
-Creates a new QuickSet instance with default settings (the top-k [`window`](#quickset-class) is turned off by default):
+Creates a new QuickSet instance with default settings (the top-k [`window`](#slot-0--64) is turned off by default):
 
 ```js
 let config = {
