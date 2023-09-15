@@ -116,7 +116,7 @@ Whether to eject old values from the top-k window in case of ties (*first-in fir
 
 > Setting `fifo` to `true` [overwrites](https://github.com/dleeftink/QuickSet/blob/c304133e58b626d3372400f2c4fd3040c223e2b7/dist/index.js#L22) the default [`Ranker`](#rankers) methods. To revert the [`.minsum()`](#minsum-uint-value) and [`.winsum()`](#winsum-uint-value) rankers to their 'non-fifo' state, initiate a [`new QuickSet`](#new-quickset-config).
 
-## `QuickSet class { ... }`
+### `QuickSet class { ... }`
 Besides the configured options and methods, [`QuickSet`](#new-quickset-config) returns an object with two visible and one hidden backing array and some additional properties describing the internal state.
 While each array can be read without issue (for instance, to execute some logic when a specific integer reaches a certain top-k position or when its frequency exceeds a certain threshold), modifying them can lead to unwanted behaviour.
 - The hidden [`bits`](#setbits-uintarray) array acts as a backing array to track all integer frequencies in a set.
