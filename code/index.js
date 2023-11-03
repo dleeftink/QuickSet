@@ -14,7 +14,7 @@ export default class QuickSet {
     Object.assign(this.constructor.prototype, prototype);
 
     if (span > MAX_SPAN) 
-    throw Error('Expected integer beyond memory range');
+    throw Error('Expected integer out of memory range');
 
     if (high > MAX_FREQ) 
     throw Error('Expected count beyond frequency range');
