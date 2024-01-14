@@ -47,7 +47,7 @@ This instantiates a new set with [default parameters](https://github.com/dleefti
 2. If you want to assign weights to integers, use [`sum`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#sum-uint-value) for single and [`batch`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#batch-uints-values) for bulk insertions.
 Updates to the top-k window are only made when the [`slot`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#slot-0--16) parameter is set.
 
-Methods can be mixed and matched to your liking, but may yield unwanted results if used without caution: 
+Methods can be mixed and matched at will, but can yield unwanted results if used without caution: 
 - [`add`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#add-uint-value) , [`put`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#put-uint-value) and [`unique`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#unique-uints) overwrite previous values and ***do not*** update the top-k window on integer insertion
 - [`sum`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#sum-uint-value) and [`batch`](https://github.com/dleeftink/QuickSet/tree/main/docs/config.md#batch-uints-values) maintain previous values and ***do*** update the top-k window on integer insertion
 
