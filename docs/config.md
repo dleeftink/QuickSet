@@ -26,13 +26,13 @@ See [rankers](#rankers) for differences.
 
 ##### `span: 0 .. 2 ^ 28`
 Maximum expected integer in set.
-Integers above this number are ignored when added to the set.
+Integers with a value higher than `span` are ignored when added to the set.
 - Upper range bound for all integers (inclusive).
 - Defaults to `512`.
 
 ##### `clip: 0 .. 2 ^ 28`
 Minimum expected integer in set.
-Integers below this number are ignored when added to the set.
+Integers with a value below `clip` are ignored when added to the set.
 - Lower range bound for all integers (inclusive).
 - Defaults to `0`.
 
